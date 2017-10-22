@@ -1,18 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SIPCA.CLASES
 {
-    class Proveedor
+    [Table ("Proveedor")]
+ public  class Proveedor
     {
+        [Key]
+        public int IdProveedor { get; set;  }
 
-        private int IdProveedor { get; set;  }
-        private string Nombre { get; set; }
-        private string Correo { get; set; }
-        private string Telefono { get; set; }
-        private bool Eliminado { get; set; }
+        [Required(ErrorMessage ="Se requiere el nombre del proveedor ")]
+        [Display(Name =" Nombre del proveedor")]
+        public string Nombre { get; set; }
+
+        [Required(ErrorMessage = "Se requiere el {0}")]
+        [Display(Name = "Correo")]
+        public string Correo { get; set; }
+
+        [Required(ErrorMessage = "Se requiere la {0}")]
+        [Display(Name = "Dirección")]
+        public string Direccion { get; set; }
+
+        [Required(ErrorMessage = "Se requiere el {0}")]
+        [Display(Name = "Teléfono")]
+        public string Telefono { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
     }
 }

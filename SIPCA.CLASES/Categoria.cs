@@ -1,14 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SIPCA.CLASES
 {
-    class Categoria
+    [Table ("Categoria")]
+    public class Categoria
     {
-        private int IdCategoria { get; set; }
-        private int Nombre { get; set; }
+
+        [Key]
+        public int IdCategoria { get; set; }
+
+        [Required(ErrorMessage = "Se requiere el nombre de la categoría")]
+        [Display(Name = "Nombre")]
+        public int Nombre { get; set; }
+
+        public IEnumerable<Producto> Productos { get; set; }
+
     }
 }

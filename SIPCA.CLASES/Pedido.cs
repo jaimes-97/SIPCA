@@ -26,6 +26,13 @@ namespace SIPCA.CLASES
         [ForeignKey("ClienteId")]
         public virtual Cliente Cliente { get; set; }
 
+        [ForeignKey("TipoEntregaId")]
+        public virtual TipoEntrega TipoEntrega { get; set; }
+
+        [Required(ErrorMessage = "Se requiere el {0}")]
+        [Display(Name = "Tipo de entrega")]
+        public int TipoEntregaId { get; set; }
+
         [Required(ErrorMessage = "Fallo en el número de pedido")]
         [Display(Name = "Número de pedido")]
         public string NPedido { get; set;}
@@ -33,6 +40,8 @@ namespace SIPCA.CLASES
         [Required(ErrorMessage = "Se requiere el total")]
         [Display(Name = "Total")]
         public float Total { get; set; }
+
+        public virtual IEnumerable<DetallePedido> DetallePedidos { get; set; }
 
     }
 }

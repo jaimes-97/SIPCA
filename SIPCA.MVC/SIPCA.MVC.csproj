@@ -201,11 +201,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\CategoriaViewModel.cs" />
+    <Compile Include="ViewModels\ClienteViewModel.cs" />
+    <Compile Include="ViewModels\CompraViewModel.cs" />
+    <Compile Include="ViewModels\DetallePedidoViewModel.cs" />
+    <Compile Include="ViewModels\IdentityModels.cs" />
+    <Compile Include="ViewModels\LoteViewModel.cs" />
+    <Compile Include="ViewModels\LoteDetallePedidoViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\MarcaViewModel.cs" />
+    <Compile Include="ViewModels\PedidoViewModel.cs" />
+    <Compile Include="ViewModels\ProductoViewModel.cs" />
+    <Compile Include="ViewModels\ProveedorViewModel.cs" />
+    <Compile Include="ViewModels\TipoEntregaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -233,7 +245,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -278,6 +292,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIPCA.CLASES\SIPCA.CLASES.csproj">
+      <Project>{871a6d3c-852a-472b-b00e-545a1e4ad18c}</Project>
+      <Name>SIPCA.CLASES</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

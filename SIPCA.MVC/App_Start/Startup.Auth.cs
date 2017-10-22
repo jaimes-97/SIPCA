@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using SIPCA.MVC.Models;
+using SIPCA.MVC.ViewModels;
 
 namespace SIPCA.MVC
 {
