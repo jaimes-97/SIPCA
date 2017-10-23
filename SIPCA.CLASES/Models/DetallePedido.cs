@@ -16,7 +16,7 @@ namespace SIPCA.CLASES
 
         [Required]
         [ScaffoldColumn(false)]
-        public int IdPedido { get; set; }
+        public int PedidoId { get; set; }
 
         [ForeignKey("PedidoId")]
         public virtual Pedido Pedido { get; set; }

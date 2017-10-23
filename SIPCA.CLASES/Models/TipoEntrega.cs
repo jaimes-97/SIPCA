@@ -18,8 +18,5 @@ namespace SIPCA.CLASES
         [Required(ErrorMessage ="Se requiere el costo")]
         [Display(Name ="Costo")]
         public float Costo { get; set; }
-
-
-
     }
 }

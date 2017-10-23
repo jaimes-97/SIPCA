@@ -8,3 +8,13 @@ C:\Users\Jaime\documents\visual studio 2015\Projects\Sipca\SIPCA.CLASES\bin\Debu
 C:\Users\Jaime\documents\visual studio 2015\Projects\Sipca\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
 C:\Users\Jaime\documents\visual studio 2015\Projects\Sipca\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\Jaime\documents\visual studio 2015\Projects\Sipca\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll.config
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.pdb
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.dll
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.dll
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.xml
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.xml
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb

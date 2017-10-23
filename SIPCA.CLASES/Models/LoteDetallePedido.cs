@@ -19,7 +19,7 @@ namespace SIPCA.CLASES
 
         [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Lote")]
-        public int IdLote { get; set; }
+        public int LoteID { get; set; }
 
         [ForeignKey("LoteID")]
         public virtual Lote Lote { get; set; }
@@ -27,7 +27,7 @@ namespace SIPCA.CLASES
 
         [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Lote")]
-        public int IdDetallePedido { get; set; }
+        public int DetallePedidoId { get; set; }
 
         [ForeignKey("DetallePedidoId")]
         public virtual DetallePedido DetallePedido { get; set; }

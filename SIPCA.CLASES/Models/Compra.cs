@@ -29,7 +29,7 @@ namespace SIPCA.CLASES
 
         [Required(ErrorMessage = "Se requiere el {0} ")]
         [Display(Name = "Proveedor")]
-        public int IdProveedor { get; set; }
+        public int ProveedorId { get; set; }
 
         [ForeignKey("ProveedorId")]
         public virtual Proveedor Proveedor { get; set; }

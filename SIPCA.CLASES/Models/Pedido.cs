@@ -21,7 +21,7 @@ namespace SIPCA.CLASES
 
         [Required(ErrorMessage = "Se requiere el cliente")]
         [Display(Name = "Cliente")]
-        public int IdCliente { get; set; }
+        public int ClienteId { get; set; }
 
         [ForeignKey("ClienteId")]
         public virtual Cliente Cliente { get; set; }

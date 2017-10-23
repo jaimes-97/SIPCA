@@ -16,7 +16,7 @@ namespace SIPCA.CLASES
 
         [Required(ErrorMessage = "Se requiere la {0}")]
         [Display(Name = "Categoría")]
-        public int IdCategoria { get; set; }
+        public int CategoriaId { get; set; }
 
         [ForeignKey("CategoriaId")]
         public virtual Categoria Categoria { get; set; }
@@ -27,7 +27,7 @@ namespace SIPCA.CLASES
 
         [Required(ErrorMessage = "Se requiere la {0}")]
         [Display(Name = "Marca")]
-        public int IdMarca { get; set; }
+        public int MarcaId { get; set; }
 
         [ForeignKey("MarcaId")]
         public virtual Marca Marca { get; set; }

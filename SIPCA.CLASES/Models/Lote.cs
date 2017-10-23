@@ -24,23 +24,20 @@ namespace SIPCA.CLASES
 
         [Required]
         [ScaffoldColumn(false)]
-        public int IdCompra { get; set; }
+        public int CompraId { get; set; }
         
         [ForeignKey("CompraId")]
         public Compra Compra { get; set; }
 
         [Required (ErrorMessage ="Se requiere el {0}")]
         [Display (Name ="Producto")]
-        public int IdProducto { get; set; }
+        public int ProductoId { get; set; }
 
         [ForeignKey("ProductoId")]
         public Producto Producto { get; set; }
 
 
         public IEnumerable<LoteDetallePedido> LotesDetallesPedidos { get; set; }
-
-
-
 
     }
 }
