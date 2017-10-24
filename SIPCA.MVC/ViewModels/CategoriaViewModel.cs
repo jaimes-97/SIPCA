@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIPCA.CLASES
+namespace SIPCA.MVC.ViewModels
 {
    
     public class CategoriaViewModel
@@ -17,7 +17,7 @@ namespace SIPCA.CLASES
 
         [Required(ErrorMessage = "Se requiere el nombre de la categoría")]
         [Display(Name = "Nombre")]
-        public int Nombre { get; set; }
+        public string Nombre { get; set; }
 
         public IEnumerable<ProductoViewModel> Productos { get; set; }
 

@@ -17,7 +17,7 @@ namespace SIPCA.CLASES
 
         [Required(ErrorMessage = "Se requiere el nombre de la categoría")]
         [Display(Name = "Nombre")]
-        public int Nombre { get; set; }
+        public string Nombre { get; set; }
 
         public IEnumerable<Producto> Productos { get; set; }
 
