@@ -18,3 +18,15 @@ E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
+C:\Users\isi10\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll.config
+C:\Users\isi10\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll
+C:\Users\isi10\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.pdb
+C:\Users\isi10\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.dll
+C:\Users\isi10\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\isi10\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.xml
+C:\Users\isi10\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\isi10\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
+C:\Users\isi10\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Initial.resources
+C:\Users\isi10\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
+C:\Users\isi10\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
+C:\Users\isi10\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
