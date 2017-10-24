@@ -42,3 +42,15 @@ C:\Users\Carlos Tamariz\Desktop\CHARLS\III año\III cuatrimestre\sistemas distri
 C:\Users\Carlos Tamariz\Desktop\CHARLS\III año\III cuatrimestre\sistemas distribuidos\proyecto\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
 C:\Users\Carlos Tamariz\Desktop\CHARLS\III año\III cuatrimestre\sistemas distribuidos\proyecto\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\Carlos Tamariz\Desktop\CHARLS\III año\III cuatrimestre\sistemas distribuidos\proyecto\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Initial.resources
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll.config
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.pdb
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.dll
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.xml
+C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.xml

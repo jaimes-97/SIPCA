@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SIPCA.CLASES.Context
 {
-    class ModelContext : DbContext
+   public class ModelContext : DbContext
     {
         public ModelContext() : base("DefaultConnection"){
         }
@@ -62,5 +62,6 @@ namespace SIPCA.CLASES.Context
             return base.SaveChanges();
         }
 
+       
     }
 }
