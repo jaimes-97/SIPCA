@@ -1,5 +1,6 @@
 namespace SIPCA.CLASES.Migrations
 {
+    using Context;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,32 @@ namespace SIPCA.CLASES.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.TipoEntregas.AddOrUpdate(te => te.NombreTipoEntrega,
+                new TipoEntrega {NombreTipoEntrega = "Domicilio, Managua", Costo = 50 },
+                new TipoEntrega { NombreTipoEntrega = "Departamental", Costo = 150 },
+                new TipoEntrega { NombreTipoEntrega = "Retiro en tienda", Costo = 0 }
+
+
+
+                );
+          
+
+
+            context.Categorias.AddOrUpdate(c => c.Nombre,
+              new Categoria { Nombre = "Deportivo-Damas" },
+              new Categoria { Nombre = "Deportivo-Caballero" },
+              new Categoria { Nombre = "Deportivo-Infantil" },
+              new Categoria { Nombre = "Casual-Damas" },
+              new Categoria { Nombre = "Casual-Caballero" },
+              new Categoria { Nombre = "Casual-Infantil" },
+              new Categoria { Nombre = "Elegante-Damas" },
+              new Categoria { Nombre = "Elegante-Caballero" },
+              new Categoria { Nombre = "Elegante-Infantil" },
+               new Categoria { Nombre = "Varios" }
+              );
+
+            context.SaveChanges();
         }
     }
 }
