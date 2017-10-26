@@ -14,6 +14,9 @@ namespace SIPCA.CLASES
         [Key]
         public int IdTipoEntrega { get; set; }
 
+        [Required(ErrorMessage = "Se requiere el {0}")]
+        [Display(Name = "Tipo de Entrega")]
+        public string NombreTipoEntrega { get; set; }
 
         [Required(ErrorMessage ="Se requiere el costo")]
         [Display(Name ="Costo")]

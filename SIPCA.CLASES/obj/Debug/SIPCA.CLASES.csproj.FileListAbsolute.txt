@@ -54,3 +54,5 @@ C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework
 C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.xml
 C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.xml
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Initial.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache

@@ -199,6 +199,8 @@
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarcasController.cs" />
+    <Compile Include="Controllers\TipoEntregasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -294,6 +296,16 @@
     <Content Include="Views\Categorias\Details.cshtml" />
     <Content Include="Views\Categorias\Edit.cshtml" />
     <Content Include="Views\Categorias\Index.cshtml" />
+    <Content Include="Views\Marcas\Create.cshtml" />
+    <Content Include="Views\Marcas\Delete.cshtml" />
+    <Content Include="Views\Marcas\Details.cshtml" />
+    <Content Include="Views\Marcas\Edit.cshtml" />
+    <Content Include="Views\Marcas\Index.cshtml" />
+    <Content Include="Views\TipoEntregas\Create.cshtml" />
+    <Content Include="Views\TipoEntregas\Delete.cshtml" />
+    <Content Include="Views\TipoEntregas\Details.cshtml" />
+    <Content Include="Views\TipoEntregas\Edit.cshtml" />
+    <Content Include="Views\TipoEntregas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

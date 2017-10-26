@@ -1,0 +1,34 @@
+﻿@model SIPCA.CLASES.TipoEntrega
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TipoEntrega</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreTipoEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreTipoEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Costo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTipoEntrega }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -16,7 +16,7 @@ namespace SIPCA.CLASES
 
         [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Nombre de la marca")]
-        private string Nombre { get; set; }
+        public string Nombre { get; set; }
 
         public virtual IEnumerable<Producto> Productos { get; set; }
     }
