@@ -39,6 +39,9 @@ namespace SIPCA.MVC.ViewModels
 
         public IEnumerable<LoteDetallePedidoViewModel> LotesDetallesPedidos { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
 
 
 

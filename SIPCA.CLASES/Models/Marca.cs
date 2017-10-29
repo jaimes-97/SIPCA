@@ -19,5 +19,8 @@ namespace SIPCA.CLASES
         public string Nombre { get; set; }
 
         public virtual IEnumerable<Producto> Productos { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
     }
 }

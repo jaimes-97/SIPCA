@@ -23,6 +23,11 @@ namespace SIPCA.MVC.ViewModels
         [ScaffoldColumn(false)]
         public DateTime Fecha { get; set; }
 
+        [Required]
+        [DataType(DataType.DateTime)]
+        [ScaffoldColumn(false)]
+        public DateTime FechaEliminacion { get; set; }
+
         [Required(ErrorMessage = "Fallo en el {0} ")]
         [Display(Name = "Total")]
         public float Total { get; set; }
@@ -35,5 +40,10 @@ namespace SIPCA.MVC.ViewModels
         public virtual ProveedorViewModel Proveedor { get; set; }
 
         public virtual IEnumerable<LoteViewModel> Lote { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
+ 
     }
 }

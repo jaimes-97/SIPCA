@@ -37,6 +37,13 @@ namespace SIPCA.MVC.ViewModels
         public bool Eliminado { get; set; }
 
         public virtual IEnumerable<PedidoViewModel> Pedido { get; set; }
-      
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        [ScaffoldColumn(false)]
+        public DateTime FechaMod { get; set; }
+
+
+
     }
 }

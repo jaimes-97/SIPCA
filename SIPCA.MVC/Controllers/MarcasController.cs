@@ -18,7 +18,7 @@ namespace SIPCA.MVC.Controllers
         // GET: Marcas
         public ActionResult Index()
         {
-            return View(db.Marcas.ToList());
+            return View(db.Marcas.Where(m => m.Eliminado == false).ToList());
         }
 
         // GET: Marcas/Details/5
@@ -111,7 +111,7 @@ namespace SIPCA.MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Marca marca = db.Marcas.Find(id);
-            db.Marcas.Remove(marca);
+            marca.Eliminado = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

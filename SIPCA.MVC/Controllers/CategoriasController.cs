@@ -18,7 +18,7 @@ namespace SIPCA.MVC.Controllers
         // GET: Categorias
         public ActionResult Index()
         {
-            return View(db.Categorias.ToList());
+            return View(db.Categorias.Where(c => c.Eliminado == false).ToList());
         }
 
         // GET: Categorias/Details/5
@@ -110,10 +110,13 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Categoria categoria = db.Categorias.Find(id);
-            db.Categorias.Remove(categoria);
+           Categoria categoria = db.Categorias.Find(id);
+            categoria.Eliminado = true;
             db.SaveChanges();
+            
             return RedirectToAction("Index");
+
+
         }
 
         protected override void Dispose(bool disposing)

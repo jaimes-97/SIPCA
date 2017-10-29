@@ -32,5 +32,8 @@ namespace SIPCA.MVC.ViewModels
         [ForeignKey("DetallePedidoId")]
         public virtual DetallePedidoViewModel DetallePedido { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
     }
 }

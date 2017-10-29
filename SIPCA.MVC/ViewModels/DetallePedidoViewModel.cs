@@ -31,7 +31,14 @@ namespace SIPCA.MVC.ViewModels
         public float PrecioVendido { get; set; }
 
         public virtual IEnumerable<LoteDetallePedidoViewModel> LotesDetallesPedidos { get; set; }
-        
+
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
+
+
+
+
 
     }
 }

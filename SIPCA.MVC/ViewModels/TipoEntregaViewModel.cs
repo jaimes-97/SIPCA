@@ -19,6 +19,9 @@ namespace SIPCA.MVC.ViewModels
         [Display(Name ="Costo")]
         public float Costo { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
 
 
     }

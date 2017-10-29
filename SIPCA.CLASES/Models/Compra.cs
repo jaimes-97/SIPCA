@@ -35,5 +35,14 @@ namespace SIPCA.CLASES
         public virtual Proveedor Proveedor { get; set; }
 
         public virtual IEnumerable<Lote> Lote { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+       
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        [ScaffoldColumn(false)]
+        public DateTime FechaEliminacion { get; set; }
     }
 }

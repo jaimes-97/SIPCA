@@ -19,6 +19,11 @@ namespace SIPCA.MVC.ViewModels
         [Display(Name = "Nombre")]
         public string Nombre { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
+
+
         public IEnumerable<ProductoViewModel> Productos { get; set; }
 
     }

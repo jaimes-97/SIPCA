@@ -19,7 +19,7 @@ namespace SIPCA.MVC.Controllers
         public ActionResult Index()
         {
             var productos = db.Productos.Include(p => p.Categoria).Include(p => p.Marca);
-            return View(productos.ToList());
+            return View(db.Productos.Where(p => p.Eliminado == false).ToList());
         }
 
         // GET: Productos/Details/5
@@ -120,7 +120,8 @@ namespace SIPCA.MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Producto producto = db.Productos.Find(id);
-            db.Productos.Remove(producto);
+            producto.Eliminado = true;
+       
             db.SaveChanges();
             return RedirectToAction("Index");
         }

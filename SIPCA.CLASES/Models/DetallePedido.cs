@@ -34,7 +34,9 @@ namespace SIPCA.CLASES
         public bool Eliminado { get; set; }
 
         public virtual IEnumerable<LoteDetallePedido> LotesDetallesPedidos { get; set; }
+
         
+
 
     }
 }

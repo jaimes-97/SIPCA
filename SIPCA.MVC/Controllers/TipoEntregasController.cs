@@ -18,7 +18,7 @@ namespace SIPCA.MVC.Controllers
         // GET: TipoEntregas
         public ActionResult Index()
         {
-            return View(db.TipoEntregas.ToList());
+            return View(db.TipoEntregas.Where(t => t.Eliminado == false).ToList());
         }
 
         // GET: TipoEntregas/Details/5
@@ -111,7 +111,7 @@ namespace SIPCA.MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             TipoEntrega tipoEntrega = db.TipoEntregas.Find(id);
-            db.TipoEntregas.Remove(tipoEntrega);
+            tipoEntrega.Eliminado = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

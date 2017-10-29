@@ -21,5 +21,9 @@ namespace SIPCA.CLASES
 
         public IEnumerable<Producto> Productos { get; set; }
 
+
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
     }
 }

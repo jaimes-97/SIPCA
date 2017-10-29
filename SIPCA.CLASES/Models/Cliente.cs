@@ -37,6 +37,11 @@ namespace SIPCA.CLASES
         public bool Eliminado { get; set; }
 
         public virtual IEnumerable<Pedido> Pedido { get; set; }
-      
+
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        [ScaffoldColumn(false)]
+        public DateTime FechaMod { get; set; }
     }
 }

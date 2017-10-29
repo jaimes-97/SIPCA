@@ -32,5 +32,8 @@ namespace SIPCA.CLASES
         [ForeignKey("DetallePedidoId")]
         public virtual DetallePedido DetallePedido { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
     }
 }

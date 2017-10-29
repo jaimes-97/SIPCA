@@ -18,7 +18,7 @@ namespace SIPCA.MVC.Controllers
         // GET: Proveedors
         public ActionResult Index()
         {
-            return View(db.Proveedores.ToList());
+            return View(db.Proveedores.Where(p => p.Eliminado == false).ToList());
         }
 
         // GET: Proveedors/Details/5
@@ -111,7 +111,7 @@ namespace SIPCA.MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Proveedor proveedor = db.Proveedores.Find(id);
-            db.Proveedores.Remove(proveedor);
+            proveedor.Eliminado = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

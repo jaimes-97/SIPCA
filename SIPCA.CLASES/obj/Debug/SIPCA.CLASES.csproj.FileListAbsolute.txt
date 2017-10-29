@@ -83,3 +83,4 @@ C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.carrito.resources
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.camposControl.resources

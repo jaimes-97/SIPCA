@@ -18,7 +18,7 @@ namespace SIPCA.MVC.Controllers
         // GET: Clientes
         public ActionResult Index()
         {
-            return View(db.Clientes.ToList());
+            return View(db.Clientes.Where(c => c.Eliminado == false).ToList());
         }
 
         // GET: Clientes/Details/5
@@ -111,7 +111,7 @@ namespace SIPCA.MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Cliente cliente = db.Clientes.Find(id);
-            db.Clientes.Remove(cliente);
+            cliente.Eliminado = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
