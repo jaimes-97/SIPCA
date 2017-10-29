@@ -41,7 +41,7 @@ namespace SIPCA.CLASES.Migrations
             #endregion
 
             #region Cargando_Categoria
-            context.Categorias.AddOrUpdate(c => c.Nombre,
+            context.Categorias.AddOrUpdate(ca => ca.Nombre,
               new Categoria { Nombre = "Deportivo-Damas" },
               new Categoria { Nombre = "Deportivo-Caballero" },
               new Categoria { Nombre = "Deportivo-Infantil" },
@@ -113,7 +113,7 @@ namespace SIPCA.CLASES.Migrations
             #endregion
 
             #region Cargando_Cliente
-            context.Clientes.AddOrUpdate(c => c,
+            context.Clientes.AddOrUpdate(c => c.Nombre,
                 new Cliente { Nombre = "Carlos Daniel Robles", Cedula= "401-051099-1004D", Correo= "daniel0599@icloud.com", Direccion= "Ticuantepe - Cont.Parque Heroes y Martires del 6 de Junio Cost/Nort", IdUsuario=1},
                 new Cliente { Nombre = "Cesar Marin", Cedula = "222-2222-2222D", Correo = "tupapi@gmail.com", Direccion = "Cerca de aqui", IdUsuario = 2 }
 

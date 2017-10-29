@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIPCA.CLASES.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -24,6 +25,8 @@ namespace SIPCA.CLASES.Context
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Proveedor> Proveedores { get; set; }
         public DbSet<TipoEntrega> TipoEntregas { get; set; }
+        public DbSet<Carrito> Carritos { get; set; }
+        public DbSet<DetalleCarrito> DetallesCarritos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

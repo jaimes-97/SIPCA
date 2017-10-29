@@ -7,13 +7,13 @@ namespace SIPCA.CLASES.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initial11 : IMigrationMetadata
+    public sealed partial class carrito : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial11));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(carrito));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710262209336_initial11"; }
+            get { return "201710292001544_carrito"; }
         }
         
         string IMigrationMetadata.Source

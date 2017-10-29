@@ -71,3 +71,15 @@ C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\D
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Migration2.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Migration3.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Migration4.resources
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll.config
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.pdb
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.dll
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.xml
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.carrito.resources
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
