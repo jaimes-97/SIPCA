@@ -36,6 +36,8 @@ namespace SIPCA.CLASES
         [ForeignKey("ProductoId")]
         public Producto Producto { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
 
         public IEnumerable<LoteDetallePedido> LotesDetallesPedidos { get; set; }
 

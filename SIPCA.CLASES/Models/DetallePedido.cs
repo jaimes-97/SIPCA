@@ -30,6 +30,9 @@ namespace SIPCA.CLASES
         [Display(Name = "Precio")]
         public float PrecioVendido { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
         public virtual IEnumerable<LoteDetallePedido> LotesDetallesPedidos { get; set; }
         
 

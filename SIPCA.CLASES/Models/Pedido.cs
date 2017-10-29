@@ -41,6 +41,9 @@ namespace SIPCA.CLASES
         [Display(Name = "Total")]
         public float Total { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool Eliminado { get; set; }
+
         public virtual IEnumerable<DetallePedido> DetallePedidos { get; set; }
 
     }

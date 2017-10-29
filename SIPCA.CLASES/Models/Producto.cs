@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIPCA.CLASES.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -37,6 +38,11 @@ namespace SIPCA.CLASES
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
 
+        [Required(ErrorMessage = "Se requiere la {0}")]
+        [Display(Name = "Precio Venta")]
+        public float PrecioVenta { get; set; }
+
+        public IEnumerable<DetalleCarrito> DetalleCarritosId { get; set; }
 
 
 
