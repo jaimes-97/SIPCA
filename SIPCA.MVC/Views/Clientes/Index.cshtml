@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SIPCA.CLASES.Cliente>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Clientes";
 }
 
-<h2>Index</h2>
+<h2>Clientes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -22,9 +22,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Correo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdUsuario)
         </th>
         <th></th>
     </tr>
@@ -44,12 +41,9 @@
             @Html.DisplayFor(modelItem => item.Correo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdUsuario)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCliente }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCliente }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCliente })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdCliente }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.IdCliente }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.IdCliente })
         </td>
     </tr>
 }

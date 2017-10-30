@@ -47,7 +47,7 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Correo,IdUsuario,Eliminado")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Correo,Eliminado,FechaMod")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Correo,IdUsuario,Eliminado")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Correo,Eliminado,FechaMod")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +111,7 @@ namespace SIPCA.MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Cliente cliente = db.Clientes.Find(id);
-            cliente.Eliminado = true;
+            db.Clientes.Remove(cliente);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

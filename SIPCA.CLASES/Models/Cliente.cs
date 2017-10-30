@@ -30,9 +30,14 @@ namespace SIPCA.CLASES
         [Display(Name = "Correo")]
         public  string Correo { get; set; }
 
+        //[Required(ErrorMessage = "Se requiere la {0}")]
+        //[Display(Name = "Usuario")]
+        //public int UsuarioId { get; set; }
 
-        public int IdUsuario { get; set; }
-
+       /* [ForeignKey("UsuarioId")]
+        public virtual ApplicationUser Usuario { get; set; }
+      
+    */
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
 

@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201710292200428_camposControl.Designer.cs">
       <DependentUpon>201710292200428_camposControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710300548502_cambioCliente.cs" />
+    <Compile Include="Migrations\201710300548502_cambioCliente.Designer.cs">
+      <DependentUpon>201710300548502_cambioCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrito.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710292200428_camposControl.resx">
       <DependentUpon>201710292200428_camposControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710300548502_cambioCliente.resx">
+      <DependentUpon>201710300548502_cambioCliente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

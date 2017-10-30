@@ -41,6 +41,15 @@ namespace SIPCA.CLASES.Models
         public IEnumerable<DetalleCarrito> DetalleCarritos { get; set; }
 
 
+        [Required(ErrorMessage = "Se requiere la {0}")]
+        [Display(Name = "Cliente")]
+        public int ClienteId { get; set; }
+
+        [ForeignKey("ClienteId")]
+         public virtual Cliente Cliente { get; set; }
+
+     
+
 
 
 

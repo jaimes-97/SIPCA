@@ -113,9 +113,9 @@ namespace SIPCA.CLASES.Migrations
             #endregion
 
             #region Cargando_Cliente
-            context.Clientes.AddOrUpdate(c => c.Nombre,
-                new Cliente { Nombre = "Carlos Daniel Robles", Cedula= "401-051099-1004D", Correo= "daniel0599@icloud.com", Direccion= "Ticuantepe - Cont.Parque Heroes y Martires del 6 de Junio Cost/Nort", IdUsuario=1},
-                new Cliente { Nombre = "Cesar Marin", Cedula = "222-2222-2222D", Correo = "tupapi@gmail.com", Direccion = "Cerca de aqui", IdUsuario = 2 }
+            context.Clientes.AddOrUpdate(c => c.Nombre, 
+                new Cliente { Nombre = "Carlos Daniel Robles", Cedula= "401-051099-1004D", Correo= "daniel0599@icloud.com", Direccion= "Ticuantepe - Cont.Parque Heroes y Martires del 6 de Junio Cost/Nort", FechaMod=DateTime.Now},
+                new Cliente { Nombre = "Cesar Marin", Cedula = "222-2222-2222D", Correo = "tupapi@gmail.com", Direccion = "Cerca de aqui", FechaMod = DateTime.Now }
 
                 );
             context.SaveChanges();

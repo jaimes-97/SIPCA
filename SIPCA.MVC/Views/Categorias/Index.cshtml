@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SIPCA.CLASES.Categoria>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Categorías";
 }
 
-<h2>Index</h2>
+<h2>Categorías</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nueva", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCategoria }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCategoria }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCategoria })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdCategoria }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.IdCategoria }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.IdCategoria })
         </td>
     </tr>
 }
