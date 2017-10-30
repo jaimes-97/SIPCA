@@ -51,6 +51,7 @@ namespace SIPCA.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                cliente.FechaMod = System.DateTime.Now;
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,6 +84,7 @@ namespace SIPCA.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                cliente.FechaMod = System.DateTime.Now;
                 db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
