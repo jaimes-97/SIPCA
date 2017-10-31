@@ -52,7 +52,6 @@ C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework
 C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.xml
 C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.xml
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Initial.resources
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
 C:\Users\isi10\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.initial11.resources
 C:\Users\isi10\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
@@ -83,3 +82,6 @@ C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrat
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.carrito.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.camposControl.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.cambioCliente.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.carrito.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.camposControl.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.cambioCliente.resources
