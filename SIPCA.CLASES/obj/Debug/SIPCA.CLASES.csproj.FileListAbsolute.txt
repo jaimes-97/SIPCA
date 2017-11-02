@@ -76,12 +76,13 @@ C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.Sql
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
-C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.carrito.resources
-C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
-C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.camposControl.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.carrito.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.camposControl.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.cambioCliente.resources
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.carrito.resources
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.camposControl.resources
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.cambioCliente.resources
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.inicial.resources
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.configuracion.resources
+C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.dropColumnCarritoDetalle.resources

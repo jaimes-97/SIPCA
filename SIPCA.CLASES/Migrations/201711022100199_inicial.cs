@@ -3,7 +3,7 @@ namespace SIPCA.CLASES.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class carrito : DbMigration
+    public partial class inicial : DbMigration
     {
         public override void Up()
         {
@@ -13,24 +13,28 @@ namespace SIPCA.CLASES.Migrations
                     {
                         IdCarrito = c.Int(nullable: false, identity: true),
                         Fecha = c.DateTime(nullable: false),
-                     //   Total = c.Single(nullable: false),
+                     //   Total = c.Decimal(nullable: false, precision: 18, scale: 2),
                         estado = c.Boolean(nullable: false),
                         ApplicationUserId = c.String(nullable: false, maxLength: 250),
+                        ClienteId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdCarrito);
+                .PrimaryKey(t => t.IdCarrito)
+                .ForeignKey("dbo.Cliente", t => t.ClienteId)
+                .Index(t => t.ClienteId);
+
             Sql(@"create function dbo.GetSumDetalleCarrito(@carritoId int)
-                returns Decimal(18,2)
-                as
+                    returns Decimal(18,2)
+                    as
                     begin 
 
-                declare @carritoSum Decimal(18,2)
+                    declare @carritoSum Decimal(18,2)
 
-                select @carritoSum= SUM((p.precioventa*dc.cantidad)+ (p.precioventa*dc.cantidad)*0.15)
-                from Carrito c inner join DetalleCarrito dc on c.IdCarrito=dc.IdCarrito
-                inner join Producto p on dc.ProductoId=p.IdProducto
-                where c.IdCarrito=@carritoId 
-                return isnull(@carritoSum,0)
-                end
+                    select @carritoSum= SUM((p.precioventa*dc.cantidad))
+                    from Carrito c inner join DetalleCarrito dc on c.IdCarrito=dc.IdCarrito
+                    inner join Producto p on dc.ProductoId=p.IdProducto
+                    where c.IdCarrito=@carritoId 
+                    return isnull(@carritoSum,0)
+                    end
                 ");
 
             Sql(@"
@@ -38,17 +42,6 @@ namespace SIPCA.CLASES.Migrations
                 dbo.GetSumDetalleCarrito(idCarrito)
                 ");
 
-
-
-            CreateTable(
-                "dbo.Categoria",
-                c => new
-                    {
-                        IdCategoria = c.Int(nullable: false, identity: true),
-                        Nombre = c.String(nullable: false, maxLength: 250),
-                    })
-                .PrimaryKey(t => t.IdCategoria);
-            
             CreateTable(
                 "dbo.Cliente",
                 c => new
@@ -58,10 +51,20 @@ namespace SIPCA.CLASES.Migrations
                         Direccion = c.String(nullable: false, maxLength: 250),
                         Cedula = c.String(nullable: false, maxLength: 250),
                         Correo = c.String(nullable: false, maxLength: 250),
-                        IdUsuario = c.Int(nullable: false),
                         Eliminado = c.Boolean(nullable: false),
+                        FechaMod = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.IdCliente);
+            
+            CreateTable(
+                "dbo.Categoria",
+                c => new
+                    {
+                        IdCategoria = c.Int(nullable: false, identity: true),
+                        Nombre = c.String(nullable: false, maxLength: 250),
+                        Eliminado = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.IdCategoria);
             
             CreateTable(
                 "dbo.Compra",
@@ -70,8 +73,10 @@ namespace SIPCA.CLASES.Migrations
                         IdCompra = c.Int(nullable: false, identity: true),
                         NCompra = c.String(nullable: false, maxLength: 250),
                         Fecha = c.DateTime(nullable: false),
-                       // Total = c.Single(nullable: false),
+                       // Total = c.Decimal(nullable: false, precision: 18, scale: 2),
                         ProveedorId = c.Int(nullable: false),
+                        Eliminado = c.Boolean(nullable: false),
+                        FechaEliminacion = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.IdCompra)
                 .ForeignKey("dbo.Proveedor", t => t.ProveedorId)
@@ -84,7 +89,7 @@ namespace SIPCA.CLASES.Migrations
                 
                 DECLARE @compraSum Decimal(18,2)
                 
-                select @compraSum = sum((p.PrecioVenta * l.Cantidad)+((p.PrecioVenta * l.Cantidad)*0.15)) 
+                select @compraSum = sum((p.PrecioVenta * l.Cantidad)+((p.PrecioVenta * l.Cantidad)*(l.porcentajeIVA/100))) 
                 from lote l inner join producto p on p.IdProducto=l.ProductoId
 				inner join compra c on l.CompraId=c.IdCompra
 				
@@ -96,7 +101,7 @@ namespace SIPCA.CLASES.Migrations
                 ");
 
             Sql(@"
-                ALTER TABLE dbo.Compra add TotalCompra AS 
+                ALTER TABLE dbo.Compra add Total AS 
                 dbo.GetSumDetalleCompra(idCompra)
                 ");
 
@@ -120,6 +125,8 @@ namespace SIPCA.CLASES.Migrations
                         IdDetallePedido = c.Int(nullable: false, identity: true),
                         PedidoId = c.Int(nullable: false),
                         Cantidad = c.Int(nullable: false),
+                        aplicaIVA = c.Boolean(nullable: false),
+                        porcentajeIVA = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PrecioVendido = c.Single(nullable: false),
                         Eliminado = c.Boolean(nullable: false),
                     })
@@ -136,8 +143,9 @@ namespace SIPCA.CLASES.Migrations
                         ClienteId = c.Int(nullable: false),
                         TipoEntregaId = c.Int(nullable: false),
                         NPedido = c.String(nullable: false, maxLength: 250),
-                       // Total = c.Single(nullable: false),
+                       // Total = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Eliminado = c.Boolean(nullable: false),
+                        FechaEliminacion = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.IdPedido)
                 .ForeignKey("dbo.Cliente", t => t.ClienteId)
@@ -152,7 +160,7 @@ namespace SIPCA.CLASES.Migrations
                 
                 DECLARE @pedidoSum Decimal(18,2)
                 
-                select @pedidoSum = sum((p.PrecioVenta * dp.Cantidad)+((p.PrecioVenta * dp.Cantidad)*0.15)) 
+                select @pedidoSum = sum((p.PrecioVenta * dp.Cantidad)+((p.PrecioVenta * dp.Cantidad)*(dp.porcentajeIVA/100))) 
                 from DetallePedido dp 
 				inner join LoteDetallePedido ldp on dp.IdDetallePedido=ldp.DetallePedidoId
 				inner join lote l on l.IdLote=ldp.LoteID
@@ -166,10 +174,9 @@ namespace SIPCA.CLASES.Migrations
                 ");
 
             Sql(@"
-                ALTER TABLE dbo.Pedido add TotalPedido AS 
+                ALTER TABLE dbo.Pedido add Total AS 
                 dbo.GetSumDetallePedido(idPedido)
                 ");
-
 
             CreateTable(
                 "dbo.TipoEntrega",
@@ -178,6 +185,7 @@ namespace SIPCA.CLASES.Migrations
                         IdTipoEntrega = c.Int(nullable: false, identity: true),
                         NombreTipoEntrega = c.String(nullable: false, maxLength: 250),
                         Costo = c.Single(nullable: false),
+                        Eliminado = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.IdTipoEntrega);
             
@@ -191,6 +199,8 @@ namespace SIPCA.CLASES.Migrations
                         estado = c.Boolean(nullable: false),
                         Fecha = c.DateTime(nullable: false),
                         ProductoId = c.Int(nullable: false),
+                        aplicaIVA = c.Boolean(nullable: false),
+                        porcentajeIVA = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IdCarrito = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.IdDetalleCarrito)
@@ -222,6 +232,7 @@ namespace SIPCA.CLASES.Migrations
                     {
                         IdMarca = c.Int(nullable: false, identity: true),
                         Nombre = c.String(nullable: false, maxLength: 250),
+                        Eliminado = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.IdMarca);
             
@@ -233,6 +244,7 @@ namespace SIPCA.CLASES.Migrations
                         CantidadRestar = c.Int(nullable: false),
                         LoteID = c.Int(nullable: false),
                         DetallePedidoId = c.Int(nullable: false),
+                        Eliminado = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.IdLoteDetallePedido)
                 .ForeignKey("dbo.DetallePedido", t => t.DetallePedidoId)
@@ -249,6 +261,8 @@ namespace SIPCA.CLASES.Migrations
                         Cantidad = c.Int(nullable: false),
                         CompraId = c.Int(nullable: false),
                         ProductoId = c.Int(nullable: false),
+                        aplicaIVA = c.Boolean(nullable: false),
+                        porcentajeIVA = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Eliminado = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.IdLote)
@@ -273,6 +287,7 @@ namespace SIPCA.CLASES.Migrations
             DropForeignKey("dbo.Pedido", "TipoEntregaId", "dbo.TipoEntrega");
             DropForeignKey("dbo.Pedido", "ClienteId", "dbo.Cliente");
             DropForeignKey("dbo.Compra", "ProveedorId", "dbo.Proveedor");
+            DropForeignKey("dbo.Carrito", "ClienteId", "dbo.Cliente");
             DropIndex("dbo.Lote", new[] { "ProductoId" });
             DropIndex("dbo.Lote", new[] { "CompraId" });
             DropIndex("dbo.LoteDetallePedido", new[] { "DetallePedidoId" });
@@ -285,6 +300,7 @@ namespace SIPCA.CLASES.Migrations
             DropIndex("dbo.Pedido", new[] { "ClienteId" });
             DropIndex("dbo.DetallePedido", new[] { "PedidoId" });
             DropIndex("dbo.Compra", new[] { "ProveedorId" });
+            DropIndex("dbo.Carrito", new[] { "ClienteId" });
             DropTable("dbo.Lote");
             DropTable("dbo.LoteDetallePedido");
             DropTable("dbo.Marca");
@@ -295,8 +311,8 @@ namespace SIPCA.CLASES.Migrations
             DropTable("dbo.DetallePedido");
             DropTable("dbo.Proveedor");
             DropTable("dbo.Compra");
-            DropTable("dbo.Cliente");
             DropTable("dbo.Categoria");
+            DropTable("dbo.Cliente");
             DropTable("dbo.Carrito");
         }
     }

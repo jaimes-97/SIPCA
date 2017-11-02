@@ -50,23 +50,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ModelContext.cs" />
-    <Compile Include="Migrations\201710292001544_carrito.cs" />
-    <Compile Include="Migrations\201710292001544_carrito.Designer.cs">
-      <DependentUpon>201710292001544_carrito.cs</DependentUpon>
+    <Compile Include="Migrations\201711022100199_inicial.cs" />
+    <Compile Include="Migrations\201711022100199_inicial.Designer.cs">
+      <DependentUpon>201711022100199_inicial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710292200428_camposControl.cs" />
-    <Compile Include="Migrations\201710292200428_camposControl.Designer.cs">
-      <DependentUpon>201710292200428_camposControl.cs</DependentUpon>
+    <Compile Include="Migrations\201711022142264_configuracion.cs" />
+    <Compile Include="Migrations\201711022142264_configuracion.Designer.cs">
+      <DependentUpon>201711022142264_configuracion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710300548502_cambioCliente.cs" />
-    <Compile Include="Migrations\201710300548502_cambioCliente.Designer.cs">
-      <DependentUpon>201710300548502_cambioCliente.cs</DependentUpon>
+    <Compile Include="Migrations\201711022149539_dropColumnCarritoDetalle.cs" />
+    <Compile Include="Migrations\201711022149539_dropColumnCarritoDetalle.Designer.cs">
+      <DependentUpon>201711022149539_dropColumnCarritoDetalle.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrito.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Compra.cs" />
+    <Compile Include="Models\Configuracion.cs" />
     <Compile Include="Models\DetalleCarrito.cs" />
     <Compile Include="Models\DetallePedido.cs" />
     <Compile Include="Models\Lote.cs" />
@@ -83,14 +84,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710292001544_carrito.resx">
-      <DependentUpon>201710292001544_carrito.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711022100199_inicial.resx">
+      <DependentUpon>201711022100199_inicial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710292200428_camposControl.resx">
-      <DependentUpon>201710292200428_camposControl.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711022142264_configuracion.resx">
+      <DependentUpon>201711022142264_configuracion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710300548502_cambioCliente.resx">
-      <DependentUpon>201710300548502_cambioCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711022149539_dropColumnCarritoDetalle.resx">
+      <DependentUpon>201711022149539_dropColumnCarritoDetalle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

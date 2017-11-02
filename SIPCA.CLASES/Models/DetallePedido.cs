@@ -27,6 +27,14 @@ namespace SIPCA.CLASES
         public int Cantidad { get; set; }
 
         [Required(ErrorMessage = "Se requiere el {0}")]
+        [Display(Name = "Aplica IVA")]
+        public bool aplicaIVA { get; set; }
+
+        [Required(ErrorMessage = "Se requiere el {0}")]
+        [Display(Name = "porcentajeIVA")]
+        public decimal porcentajeIVA { get; set; }
+
+        [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Precio")]
         public float PrecioVendido { get; set; }
 

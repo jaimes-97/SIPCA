@@ -37,9 +37,10 @@ namespace SIPCA.CLASES
         [Display(Name = "Número de pedido")]
         public string NPedido { get; set;}
 
-        [Required(ErrorMessage = "Se requiere el total")]
-        [Display(Name = "Total")]
-        public float Total { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DisplayFormat(DataFormatString = "{0:0.####}", ApplyFormatInEditMode = true)]
+        [Display(Name = "TOTAL")]
+        public decimal Total { get; set; }
 
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }

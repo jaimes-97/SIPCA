@@ -23,9 +23,10 @@ namespace SIPCA.CLASES
         [ScaffoldColumn(false)]
         public DateTime Fecha { get; set; }
 
-        [Required(ErrorMessage = "Fallo en el {0} ")]
-        [Display(Name = "Total")]
-        public float Total { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DisplayFormat(DataFormatString = "{0:0.####}", ApplyFormatInEditMode = true)]
+        [Display(Name = "TOTAL")]
+        public decimal Total { get; set; }
 
         [Required(ErrorMessage = "Se requiere el {0} ")]
         [Display(Name = "Proveedor")]

@@ -36,6 +36,14 @@ namespace SIPCA.CLASES
         [ForeignKey("ProductoId")]
         public Producto Producto { get; set; }
 
+        [Required(ErrorMessage = "Se requiere el {0}")]
+        [Display(Name = "Aplica IVA")]
+        public bool aplicaIVA { get; set; }
+
+        [Required(ErrorMessage = "Se requiere el {0}")]
+        [Display(Name = "porcentajeIVA")]
+        public decimal porcentajeIVA { get; set; }
+
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
 

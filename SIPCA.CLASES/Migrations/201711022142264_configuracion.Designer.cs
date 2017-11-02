@@ -7,13 +7,13 @@ namespace SIPCA.CLASES.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class camposControl : IMigrationMetadata
+    public sealed partial class configuracion : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(camposControl));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(configuracion));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710292200428_camposControl"; }
+            get { return "201711022142264_configuracion"; }
         }
         
         string IMigrationMetadata.Source
