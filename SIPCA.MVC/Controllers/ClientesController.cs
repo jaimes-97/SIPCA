@@ -8,14 +8,17 @@ using System.Web;
 using System.Web.Mvc;
 using SIPCA.CLASES;
 using SIPCA.CLASES.Context;
+using Microsoft.AspNet.Identity;
 
 namespace SIPCA.MVC.Controllers
 {
+    [Authorize]
     public class ClientesController : Controller
     {
         private ModelContext db = new ModelContext();
 
         // GET: Clientes
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.Clientes.Where(c => c.Eliminado == false).ToList());
@@ -47,14 +50,24 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Correo,Eliminado,FechaMod")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Eliminado,FechaMod,UserId")] Cliente cliente)
         {
+            var userId = User.Identity.GetUserId();
+            Cliente cl = db.Clientes.Where(c => c.UserId == userId).Where(c => c.Eliminado == false).FirstOrDefault();
+            if(cl != null)
+            {
+                ViewBag.ErrorMesage = "¡Usted ya es un cliente activo!";
+                return View(cliente);
+            }
+            cliente.UserId = userId;
+            ModelState.Clear();
+            TryValidateModel(cliente);
             if (ModelState.IsValid)
             {
                 cliente.FechaMod = System.DateTime.Now;
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(cliente);
@@ -80,7 +93,7 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Correo,Eliminado,FechaMod")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Eliminado,FechaMod,UserId")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {

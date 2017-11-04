@@ -584,3 +584,5 @@ C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.Micr
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.csprojResolveAssemblyReference.cache
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.dll
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.pdb
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.Authentication.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.csproj.GenerateResource.Cache

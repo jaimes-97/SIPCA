@@ -33,7 +33,7 @@ namespace SIPCA.MVC.ViewModels
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Recordar en este Navegador?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -58,7 +58,7 @@ namespace SIPCA.MVC.ViewModels
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Recordarme?")]
         public bool RememberMe { get; set; }
     }
 
@@ -70,14 +70,19 @@ namespace SIPCA.MVC.ViewModels
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(25, ErrorMessage = "El {0} debe ser menor de 25 caracteres")]
+        [Display(Name = "Nombre de Usuario")]
+        public string NombreUsuario { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "El {0} debe tener como mínimo {2} caracteres.", MinimumLength = 4)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "El Password y la confirmación no son iguales.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -89,14 +94,14 @@ namespace SIPCA.MVC.ViewModels
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "El {0} debe tener como mínimo {2} caracteres.", MinimumLength = 4)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "El Password y la confirmación no son iguales.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

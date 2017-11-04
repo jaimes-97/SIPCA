@@ -22,5 +22,11 @@ namespace SIPCA.MVC.ViewModels
         {
             return new ApplicationDbContext();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

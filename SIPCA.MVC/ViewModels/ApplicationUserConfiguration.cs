@@ -12,9 +12,7 @@ namespace SIPCA.MVC.ViewModels
 
         public ApplicationUserConfiguration()
         {
-
-            Property(au => au.FirstName).HasMaxLength(20).IsRequired();
-            Property(au => au.LastName).HasMaxLength(20).IsOptional();
+            Property(au => au.NombreUsuario).HasMaxLength(25).IsOptional();
             Ignore(au => au.RoleList);
         }
     }

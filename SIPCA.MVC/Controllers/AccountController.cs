@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SIPCA.MVC.ViewModels;
@@ -79,7 +81,7 @@ namespace SIPCA.MVC.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("DefineHome", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -151,10 +153,32 @@ namespace SIPCA.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                ///////////////////////crear usuario+}
+                /*var userManager =
+                    new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));*/
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, NombreUsuario = model.NombreUsuario };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    ////////////////////////añadir rol si existe, sino crearlo
+                    var roleManager =
+                        new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                    string roleName = "Client";
+                    var role = roleManager.FindByName(roleName);
+                    if (role == null)
+                    {
+                        role = new IdentityRole(roleName);
+                        var roleResult = roleManager.Create(role);
+                    }
+                    //////////////////////////////dar rol a usuario
+                    //var u = userManager.FindByEmail(user.Email);
+
+                    var rolesForUser = await UserManager.GetRolesAsync(user.Id);
+                    if (!rolesForUser.Contains(role.Name))
+                    {
+                        var resultado = UserManager.AddToRole(user.Id, role.Name);
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -163,7 +187,7 @@ namespace SIPCA.MVC.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Create", "Clientes");
                 }
                 AddErrors(result);
             }
@@ -391,6 +415,8 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+
+
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

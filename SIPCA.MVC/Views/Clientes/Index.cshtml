@@ -20,9 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Cedula)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Correo)
-        </th>
         <th></th>
     </tr>
 
@@ -36,9 +33,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Cedula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Correo)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.IdCliente }) |

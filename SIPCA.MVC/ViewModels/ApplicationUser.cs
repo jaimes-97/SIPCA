@@ -22,18 +22,9 @@ namespace SIPCA.MVC.ViewModels
             return userIdentity;
         }
 
-
-
-        [Display(Name = "Nombre")]
-        public string FirstName { get; set; }
-
-        [Display(Name = "Apellido")]
-        public string LastName { get; set; }
-
-        [Display(Name = "Nombre completo")]
-        public string FullName {
-            get { return FirstName + " " + LastName; }
-        }
+        [Display(Name = "Nombre de Usuario")]
+        [StringLength(25, ErrorMessage = "El {0} debe ser menor de 25 caracteres")]
+        public string NombreUsuario { get; set; }
 
 
 

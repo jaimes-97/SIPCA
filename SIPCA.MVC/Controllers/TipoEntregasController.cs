@@ -11,6 +11,7 @@ using SIPCA.CLASES.Context;
 
 namespace SIPCA.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TipoEntregasController : Controller
     {
         private ModelContext db = new ModelContext();

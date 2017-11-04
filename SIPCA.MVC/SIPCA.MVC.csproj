@@ -207,6 +207,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711032336300_Authentication.cs" />
+    <Compile Include="Migrations\201711032336300_Authentication.Designer.cs">
+      <DependentUpon>201711032336300_Authentication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\ApplicationUser.cs" />
@@ -215,7 +219,7 @@
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\CompraViewModel.cs" />
     <Compile Include="ViewModels\DetallePedidoViewModel.cs" />
-    <Compile Include="ViewModels\IdentityModels.cs" />
+    <Compile Include="ViewModels\ApplicationDbContext.cs" />
     <Compile Include="ViewModels\LoteViewModel.cs" />
     <Compile Include="ViewModels\LoteDetallePedidoViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -344,6 +348,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711032336300_Authentication.resx">
+      <DependentUpon>201711032336300_Authentication.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

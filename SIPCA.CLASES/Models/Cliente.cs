@@ -26,18 +26,14 @@ namespace SIPCA.CLASES
         [Display(Name = "Cédula")]
         public string Cedula { get; set; }
 
-        [Required(ErrorMessage = "Se requiere el {0}")]
-        [Display(Name = "Correo")]
-        public  string Correo { get; set; }
+        [Required]
+        [ScaffoldColumn(false)]
+        [StringLength(128, ErrorMessage = "El id del usuario debe ser menor de 128 caracteres")]
+        public string UserId { get; set; }
 
-        //[Required(ErrorMessage = "Se requiere la {0}")]
-        //[Display(Name = "Usuario")]
-        //public int UsuarioId { get; set; }
+        /*[ForeignKey("UsuarioId")]
+        public virtual ApplicationUser Usuario { get; set; }*/
 
-       /* [ForeignKey("UsuarioId")]
-        public virtual ApplicationUser Usuario { get; set; }
-      
-    */
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
 
