@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SIPCA.CLASES;
 using SIPCA.CLASES.Context;
+using PagedList;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -17,10 +18,58 @@ namespace SIPCA.MVC.Controllers
         private ModelContext db = new ModelContext();
 
         // GET: Productos
-        public ActionResult Index()
+        public ActionResult Index(string sort, string search, int? page)
         {
-            var productos = db.Productos.Include(p => p.Categoria).Include(p => p.Marca);
-            return View(db.Productos.Where(p => p.Eliminado == false).ToList());
+            ViewBag.ProductoSort = sort == "Productos" ? "nombre" : "Productos";
+            ViewBag.MarcaSort = sort == "Productos" ? "categoria" : "Productos";
+            ViewBag.CategoriaSort = sort == "Productos" ? "marca" : "Productos";
+            ViewBag.PrecioSort = sort == "Productos" ? "precioventa" : "Productos";
+
+            ViewBag.CurrentSort = sort;
+            ViewBag.CurrentSearch = search;
+
+            //Lo utilizamos para evaluar la carga de datos de marcas
+            // solo seselecionan los que no se han eliminado
+            IQueryable<Producto> foundProductos = db.Productos.Where(p => p.Eliminado == false);
+
+            //Si el campo de busqueda no esta vacio validamos que la cadena de busqueda se encuentre entre las columnas 
+            // de categoria que queramos en este caso solo nombre.
+            //y si se encuentra se seleccionan las filas y las columnas que contengan la cadena y asi cambia el Viewbag
+            if (!string.IsNullOrEmpty(search)) foundProductos = foundProductos.Where(ma => ma.Nombre.Contains(search));
+
+
+            //Utilizamos un switch para las columnas que queramos ordenar
+            // en este caso decimos que al selecionar la columna nombre se
+            //mostraram sus registros en orden desendente
+            switch (sort)
+            {
+                case "nombre":
+                    foundProductos = foundProductos.OrderByDescending(ti => ti.Nombre);
+                    break;
+
+                case "categoria":
+                    foundProductos = foundProductos.OrderByDescending(ti => ti.Categoria);
+                    break;
+
+                case "marca":
+                    foundProductos = foundProductos.OrderByDescending(ti => ti.Marca);
+                    break;
+
+                case "precioventa":
+                    foundProductos = foundProductos.OrderByDescending(ti => ti.PrecioVenta);
+                    break;
+
+                default:
+                    foundProductos = foundProductos.OrderBy(ti => ti.Nombre);
+                    break;
+            }
+
+            int pageSize = 5;
+            int pageNumber = page ?? 1;
+
+            // retornamos la vista ya filtrada con los campos respectivos
+            //con un tamaño de 5 registros por pagina
+            return View(foundProductos.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Productos/Details/5

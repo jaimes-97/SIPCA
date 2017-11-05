@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pagination.Mvc</name>
+    </assembly>
+    <members>
+        <member name="T:Pagination.PaginatedUrl">
+            <summary>
+            Extension methods for instances of <see cref="T:UrlHelper"/> that
+            privide interaction with Pagination models.
+            </summary>
+        </member>
+        <member name="M:Pagination.PaginatedUrl.Page(System.Web.Mvc.UrlHelper,Pagination.Models.IPageLinkModel)">
+            <summary>
+            Creates a URL that can be used to access the page represented
+            by the instance of <see cref="T:IPageLinkModel"/>.
+            </summary>
+            <param name="urlHelper">
+            The <see cref="T:UrlHelper"/> instance that this method extends.
+            </param>
+            <param name="model">
+            The <see cref="T:IPageLinkModel"/> for which the URL is to be created.
+            </param>
+            <returns>
+            A URL that can be used to access the page represented by the given <paramref name="model"/>.
+            </returns>
+        </member>
+        <member name="T:Pagination.PaginatedRequestModel">
+            <summary>
+            MVC extension methods for objects that implement the <see cref="T:IPageRequestModel"/> interface.
+            </summary>
+        </member>
+        <member name="M:Pagination.PaginatedRequestModel.GetRouteValues(Pagination.Models.IPageRequestModel)">
+            <summary>
+            Creates an instance of <see cref="T:RouteValueDictionary"/> that contains the route information
+            necessary to duplicate the <paramref name="pageRequestModel"/>.
+            </summary>
+            <param name="pageRequestModel">The model for which the <see cref="T:RouteValueDictionary"/> is created.</param>
+            <returns>
+            A new instance of <see cref="T:RouteValueDictionary"/> with the route information necessary to
+            duplicate the <paramref name="pageRequestModel"/>.
+            </returns>
+        </member>
+        <member name="M:Pagination.PaginatedRequestModel.GetRouteValues(Pagination.Models.IPageRequestModel,System.Int32)">
+            <summary>
+            Creates an instance of <see cref="T:RouteValueDictionary"/> that contains the route information
+            necessary to duplicate the <paramref name="pageRequestModel"/> for the given <paramref name="requestedPage"/>.
+            </summary>
+            <param name="pageRequestModel">The model for which the <see cref="T:RouteValueDictionary"/> is created.</param>
+            <param name="requestedPage">The requested page for which the <see cref="T:RouteValueDictionary"/> is created.</param>
+            <returns>
+            A new instance of <see cref="T:RouteValueDictionary"/> with the route information necessary to
+            duplicate the <paramref name="pageRequestModel"/> for the given <paramref name="requestedPage"/>.
+            </returns>
+        </member>
+        <member name="T:Pagination.PaginatedHtml">
+            <summary>
+            Extension methods for instances of <see cref="T:HtmlHelper"/> that interact with Pagination models.
+            </summary>
+        </member>
+        <member name="M:Pagination.PaginatedHtml.PageLink(System.Web.Mvc.HtmlHelper,Pagination.Models.IPageLinkModel,System.Object)">
+            <summary>
+            Creates an HTML hyperlink that links to the page represented by the <paramref name="model"/>.
+            </summary>
+            <param name="htmlHelper">
+            The instance of <see cref="T:HtmlHelper"/> that creates the hyperlink.
+            </param>
+            <param name="model">
+            The <see cref="T:IPageLinkModel"/> that represents the page to be linked.
+            </param>
+            <param name="htmlAttributes">
+            An object that contains the HTML attributes for the hyperlink. The attributes
+            are retrieved through reflection by examining the properties of the object.
+            The object is typically created by using object initializer syntax.
+            </param>
+            <returns>
+            The HTML hyperlink.
+            </returns>
+        </member>
+        <member name="M:Pagination.PaginatedHtml.PageLink(System.Web.Mvc.HtmlHelper,Pagination.Models.IPageLinkModel,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates an HTML hyperlink that links to the page represented by the <paramref name="model"/>.
+            </summary>
+            <param name="htmlHelper">
+            The instance of <see cref="T:HtmlHelper"/> that creates the hyperlink.
+            </param>
+            <param name="model">
+            The <see cref="T:IPageLinkModel"/> that represents the page to be linked.
+            </param>
+            <param name="htmlAttributes">
+            An object that contains the HTML attributes to set for the hyperlink.
+            </param>
+            <returns>
+            The HTML hyperlink.
+            </returns>
+        </member>
+        <member name="M:Pagination.PaginatedHtml.PageLink(System.Web.Mvc.HtmlHelper,Pagination.Models.IPageLinkModel)">
+            <summary>
+            Creates an HTML hyperlink that links to the page represented by the <paramref name="model"/>.
+            </summary>
+            <param name="htmlHelper">
+            The instance of <see cref="T:HtmlHelper"/> that creates the hyperlink.
+            </param>
+            <param name="model">
+            The <see cref="T:IPageLinkModel"/> that represents the page to be linked.
+            </param>
+            <returns>
+            The HTML hyperlink.
+            </returns>
+        </member>
+    </members>
+</doc>

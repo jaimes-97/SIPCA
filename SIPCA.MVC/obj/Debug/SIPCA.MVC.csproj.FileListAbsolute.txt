@@ -586,3 +586,15 @@ C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.dll
 C:\Users\Carlos Tamariz\Desktop\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.pdb
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.Authentication.resources
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.csproj.GenerateResource.Cache
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\PagedList.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\PagedList.Mvc.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Pagination.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Pagination.Mvc.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\PagedList.xml
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\PagedList.Mvc.xml
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Pagination.pdb
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Pagination.xml
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Pagination.Mvc.pdb
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Pagination.Mvc.xml
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.Authentication.resources
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.csproj.GenerateResource.Cache

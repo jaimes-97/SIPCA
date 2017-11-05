@@ -8,19 +8,62 @@ using System.Web;
 using System.Web.Mvc;
 using SIPCA.CLASES;
 using SIPCA.CLASES.Context;
+using PagedList;
 
 namespace SIPCA.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class CategoriasController : Controller
     {
         private ModelContext db = new ModelContext();
 
         // GET: Categorias
-        public ActionResult Index()
+        public ActionResult Index(string sort, string search, int? page)
         {
-            return View(db.Categorias.Where(c => c.Eliminado == false).ToList());
+
+            ViewBag.CategoriaSort = sort == "Categorias" ? "Nombre" : "Categorias";
+
+
+            ViewBag.CurrentSort = sort;
+            ViewBag.CurrentSearch = search;
+
+            //Lo utilizamos para evaluar la carga de datos de categorias
+            // solo seselecionan los que no se han eliminado
+            IQueryable<Categoria> foundCategorias =
+                db.Categorias.Where(c => c.Eliminado == false);
+
+
+            //Si el campo de busqueda no esta vacio validamos que la cadena de busqueda se encuentre entre las columnas 
+            // de categoria que queramos en este caso solo nombre.
+            //y si se encuentra se seleccionan las filas y las columnas que contengan la cadena y asi cambia el Viewbag
+            if (!string.IsNullOrEmpty(search)) foundCategorias = foundCategorias.Where(ca => ca.Nombre.Contains(search));
+
+
+            //Utilizamos un switch para las columnas que queramos ordenar
+            // en este caso decimos que al selecionar la columna nombre se
+            //mostraram sus registros en orden desendente
+            switch (sort)
+            {
+                case "Nombre":
+                    foundCategorias = foundCategorias.OrderByDescending(ti => ti.Nombre);
+                    break;
+
+                default:
+                    foundCategorias = foundCategorias.OrderBy(ti => ti.Nombre);
+                    break;
+            }
+
+            int pageSize = 5;
+            int pageNumber = page ?? 1;
+
+            // retornamos la vista ya filtrada con los campos respectivos
+            //con un tamaño de 5 registros por pagina
+            return View(foundCategorias.ToPagedList(pageNumber, pageSize));
         }
+        // GET: Categorias
+        //public ActionResult Index()
+        //{
+        //    return View(db.Categorias.Where(c => c.Eliminado == false).ToList());
+        //}
 
         // GET: Categorias/Details/5
         public ActionResult Details(int? id)
@@ -111,10 +154,10 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-           Categoria categoria = db.Categorias.Find(id);
+            Categoria categoria = db.Categorias.Find(id);
             categoria.Eliminado = true;
             db.SaveChanges();
-            
+
             return RedirectToAction("Index");
 
 
