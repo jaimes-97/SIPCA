@@ -40,11 +40,13 @@
                     @* @Html.DisplayNameFor(model => model.Nombre)*@
                 </th>
                 <th>
-                    @Html.ActionLink("Categoria", "Index", new { sort = ViewBag.CategoriaSort, search = ViewBag.CurrentSearch })
+                    @Html.DisplayName("Categoria")
+                    @*@Html.ActionLink("Categoria", "Index", new { sort = ViewBag.CategoriaSort, search = ViewBag.CurrentSearch })*@
                     @* @Html.DisplayNameFor(model => model.Categoria.Nombre)*@
                 </th>
                 <th>
-                    @Html.ActionLink("Marca", "Index", new { sort = ViewBag.MarcaSort, search = ViewBag.CurrentSearch })
+                    @Html.DisplayName("Marca")
+                    @*@Html.ActionLink("Marca", "Index", new { sort = ViewBag.MarcaSort, search = ViewBag.CurrentSearch })*@
                     @*@Html.DisplayNameFor(model => model.Marca.Nombre)*@
                 </th>
                 <th>

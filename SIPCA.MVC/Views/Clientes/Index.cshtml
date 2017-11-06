@@ -1,4 +1,7 @@
-﻿@model IEnumerable<SIPCA.CLASES.Cliente>
+﻿@*@model IEnumerable<SIPCA.CLASES.Cliente>*@
+@using PagedList.Mvc
+@model PagedList.IPagedList<SIPCA.CLASES.Cliente>
+
 
 @{
     ViewBag.Title = "Clientes";
@@ -9,37 +12,82 @@
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cedula)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cedula)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IdCliente }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.IdCliente }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.IdCliente })
-        </td>
-    </tr>
-}
 
-</table>
+<div class="row">
+
+    @* utilizamos el siguinte codigo para crear un cuadro de busqueda*@
+    <div class="input-group">
+        @using (Html.BeginForm("Index", "Clientes", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            <div class="input-group">
+                @Html.TextBox("search", ViewBag.CurrentSearch as string, new { @class = "form-control", placeholder = "Escriba la busqueda", aria_discribedy = "basic-addon2" })
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </span>
+            </div>
+
+        }
+
+    </div>
+    @* ahora estructuramos la tabla de los datos*@
+
+    <table class="table table-hover">
+        @*Declaramos el encabezado*@
+        <thead>
+            <tr>
+                <th>
+                    @Html.ActionLink("Nombre", "Index", new { sort = ViewBag.ClienteSort, search = ViewBag.CurrentSearch })
+                    @*@Html.DisplayNameFor(model => model.Nombre)*@
+                </th>
+                <th>
+                    @Html.ActionLink("Direccion", "Index", new { sort = ViewBag.DireccionSort, search = ViewBag.CurrentSearch })
+                    @* @Html.DisplayNameFor(model => model.Direccion)*@
+                </th>
+                <th>
+                    @Html.ActionLink("Cedula", "Index", new { sort = ViewBag.CedulaSort, search = ViewBag.CurrentSearch })
+                    @* @Html.DisplayNameFor(model => model.Cedula)*@
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @* Ahora declaramos el cuerpo que es solo un foreach que recorre todo el modelo*@
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cedula)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdCliente }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IdCliente }) |
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.IdCliente })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@* Codigo para la paginacion*@
+
+Pagina @(Model.PageCount < Model.PageNumber ? 0
+        : Model.PageNumber) de @Model.PageCount
+
+        @Html.PagedListPager(Model, Page =>
+  Url.Action("Index", new
+  {
+      sort = ViewBag.CurrentSort,
+      search = ViewBag.CurrentSearch,
+      Page
+  }))
+
+
