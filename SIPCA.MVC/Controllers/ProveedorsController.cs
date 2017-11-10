@@ -9,10 +9,12 @@ using System.Web.Mvc;
 using SIPCA.CLASES;
 using SIPCA.CLASES.Context;
 using PagedList;
+using SIPCA.MVC.CustomFilters;
 
 namespace SIPCA.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
+    [AuthLogAttribute(Roles = "Admin")]
     public class ProveedorsController : Controller
     {
         private ModelContext db = new ModelContext();

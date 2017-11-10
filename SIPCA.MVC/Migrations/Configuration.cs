@@ -12,7 +12,7 @@ namespace SIPCA.MVC.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(SIPCA.MVC.ViewModels.ApplicationDbContext context)
@@ -26,9 +26,9 @@ namespace SIPCA.MVC.Migrations
             };
 
             var roleManager = 
-                new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new ApplicationDbContext()));
 
-            string email = "alexanderperalta54@gmail.com";
+            string email = "sistemacamina@gmail.com";
             string password = "Sipca123#";
             string nombreUsuario = "admon";
             string roleName = "Admin";
@@ -36,7 +36,7 @@ namespace SIPCA.MVC.Migrations
             var role = roleManager.FindByName(roleName);
             if(role == null)
             {
-                role = new IdentityRole(roleName);
+                role = new ApplicationRole(roleName);
                 var roleResult = roleManager.Create(role);
             }
             var user = userManager.FindByEmail(email);

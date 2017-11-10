@@ -8,10 +8,12 @@ using System.Web;
 using System.Web.Mvc;
 using SIPCA.CLASES;
 using SIPCA.CLASES.Context;
+using SIPCA.MVC.CustomFilters;
 
 namespace SIPCA.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
+    [AuthLogAttribute(Roles = "Admin")]
     public class TipoEntregasController : Controller
     {
         private ModelContext db = new ModelContext();

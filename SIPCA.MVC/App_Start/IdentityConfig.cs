@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -19,6 +16,43 @@ namespace SIPCA.MVC
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+            MailMessage mmsg = new MailMessage();
+
+            //Direccion de correo electronico a la que queremos enviar el mensaje
+            mmsg.To.Add(message.Destination);
+            //Nota: La propiedad To es una colección que permite enviar el mensaje a más de un destinatario
+
+            //Asunto
+            mmsg.Subject = message.Subject;
+            mmsg.SubjectEncoding = System.Text.Encoding.UTF8;
+
+            //Direccion de correo electronico que queremos que reciba una copia del mensaje
+            //mmsg.Bcc.Add("cursounimvc@gmail.com"); //Opcional
+
+            //Cuerpo del Mensaje
+            mmsg.Body = message.Body;
+            mmsg.BodyEncoding = System.Text.Encoding.UTF8;
+            mmsg.IsBodyHtml = true; //Si no queremos que se envíe como HTML
+
+            //Correo electronico desde la que enviamos el mensaje
+            mmsg.From = new System.Net.Mail.MailAddress("sistemacamina@gmail.com");
+
+
+            /*-------------------------CLIENTE DE CORREO----------------------*/
+            //Creamos un objeto de cliente de correo
+            SmtpClient cliente = new SmtpClient();
+
+            //Hay que crear las credenciales del correo emisor
+            cliente.Credentials = new System.Net.NetworkCredential("sistemacamina@gmail.com", "123qwe..");
+
+            //Lo siguiente es obligatorio si enviamos el mensaje desde Gmail
+            cliente.Port = 587;
+            cliente.EnableSsl = true;
+            cliente.Host = "smtp.gmail.com";
+
+
+            /*-------------------------ENVIO DE CORREO----------------------*/
+            cliente.Send(mmsg);
             return Task.FromResult(0);
         }
     }
@@ -61,19 +95,19 @@ namespace SIPCA.MVC
             };
 
             // Configure user lockout defaults
-            manager.UserLockoutEnabledByDefault = false;
-            manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            manager.MaxFailedAccessAttemptsBeforeLockout = 5;
+            manager.UserLockoutEnabledByDefault = true;
+            manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(2);
+            manager.MaxFailedAccessAttemptsBeforeLockout = 4;
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("Código del teléfono", new PhoneNumberTokenProvider<ApplicationUser>
             {
                 MessageFormat = "Tu código de seguridad es {0}"
             });
             manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<ApplicationUser>
             {
-                Subject = "Security Code",
+                Subject = "Código de seguridad",
                 BodyFormat = "Tu código de seguridad es {0}"
             });
             manager.EmailService = new EmailService();
@@ -104,6 +138,19 @@ namespace SIPCA.MVC
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+
+    //Configure el Role Manager usado en la aplicacion. RoleManager es definido en ASP.NET Identity Configuration
+    public class ApplicationRoleManager : RoleManager<ApplicationRole>
+    {
+        public ApplicationRoleManager(IRoleStore<ApplicationRole, string> roleStore)
+           : base(roleStore){
+        }
+        
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            return new ApplicationRoleManager(new RoleStore<ApplicationRole>(context.Get<ApplicationDbContext>()));
         }
     }
 }

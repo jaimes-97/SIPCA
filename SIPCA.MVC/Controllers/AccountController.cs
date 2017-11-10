@@ -24,7 +24,7 @@ namespace SIPCA.MVC.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -36,9 +36,9 @@ namespace SIPCA.MVC.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -75,9 +75,23 @@ namespace SIPCA.MVC.Controllers
                 return View(model);
             }
 
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (!UserManager.IsInRole(user.Id, "Admin"))
+            {
+                if (user != null)
+                {
+                    //var userLogins = await UserManager.GetLoginsAsync(user.Id);
+                    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                    {
+                        ViewBag.Email = user.Email;
+                        return View("UnconfimedAccount");
+                    }
+                }
+            }
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -88,7 +102,7 @@ namespace SIPCA.MVC.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Inicio de sesión inválida");
                     return View(model);
             }
         }
@@ -122,7 +136,7 @@ namespace SIPCA.MVC.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -131,7 +145,7 @@ namespace SIPCA.MVC.Controllers
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid code.");
+                    ModelState.AddModelError("", "Código invalido.");
                     return View(model);
             }
         }
@@ -162,16 +176,15 @@ namespace SIPCA.MVC.Controllers
                 {
                     ////////////////////////añadir rol si existe, sino crearlo
                     var roleManager =
-                        new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                        new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new ApplicationDbContext()));
                     string roleName = "Client";
                     var role = roleManager.FindByName(roleName);
                     if (role == null)
                     {
-                        role = new IdentityRole(roleName);
+                        role = new ApplicationRole(roleName);
                         var roleResult = roleManager.Create(role);
                     }
                     //////////////////////////////dar rol a usuario
-                    //var u = userManager.FindByEmail(user.Email);
 
                     var rolesForUser = await UserManager.GetRolesAsync(user.Id);
                     if (!rolesForUser.Contains(role.Name))
@@ -179,21 +192,48 @@ namespace SIPCA.MVC.Controllers
                         var resultado = UserManager.AddToRole(user.Id, role.Name);
                     }
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Create", "Clientes");
+                    return await GenerateEmailConfirmation(user);
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [AllowAnonymous]
+        public async Task<ActionResult> GenerateEmailConfirmation(ApplicationUser user)
+        {
+            //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+            // Send an email with this link
+
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+
+            var callbackUrl = Url.Action(
+                "ConfirmEmail",
+                "Account",
+                new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+            await UserManager.SendEmailAsync(
+                user.Id,
+                "Confirme su cuenta",
+                "Por favor confirmar su cuenta dando click <a href=\"" + callbackUrl + "\">aqui</a>");
+
+            return View("CheckYourEmail");
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<ActionResult> RegenerateEmailConfirmation(string email)
+        {
+            var user = await UserManager.FindByNameAsync(email);
+
+            if (user != null) {
+                return RedirectToAction("GenerateEmailConfirmation", user);
+            }
+            return View("Login");
         }
 
         //
@@ -235,10 +275,10 @@ namespace SIPCA.MVC.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                await UserManager.SendEmailAsync(user.Id, "Reiniciar Contraseña", "Por favor reinicia tu contraseña dando click <a href=\"" + callbackUrl + "\">Aquí</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -391,10 +431,32 @@ namespace SIPCA.MVC.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                string nombreU = info.ExternalIdentity.Claims.First(c => c.Type.Contains("givenname")).Value ??
+                                    string.Empty;
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, NombreUsuario = nombreU.Substring(0, Math.Min(nombreU.Length, 25)) };
                 var result = await UserManager.CreateAsync(user);
+                
                 if (result.Succeeded)
                 {
+                    ////////////////////////añadir rol si existe, sino crearlo
+                    var roleManager =
+                        new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new ApplicationDbContext()));
+                    string roleName = "Client";
+                    var role = roleManager.FindByName(roleName);
+                    if (role == null)
+                    {
+                        role = new ApplicationRole(roleName);
+                        var roleResult = roleManager.Create(role);
+                    }
+
+                    //////////////////////////////dar rol a usuario
+                    var rolesForUser = await UserManager.GetRolesAsync(user.Id);
+                    if (!rolesForUser.Contains(role.Name))
+                    {
+                        var resultado = UserManager.AddToRole(user.Id, role.Name);
+                    }
+
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {

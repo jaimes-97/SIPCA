@@ -14,6 +14,18 @@ namespace SIPCA.MVC.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["contador"] == null)
+                Session["contador"] = 0;
+            else
+                if (int.Parse(Session["contador"].ToString()) == 20)
+                    Session["contador"] = null;
+                else
+                    Session["contador"] = int.Parse(Session["contador"].ToString()) + 1;
+            return View();
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult Index2()
+        {
             return View();
         }
 
@@ -39,7 +51,7 @@ namespace SIPCA.MVC.Controllers
                 new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var result = userManager.IsInRole(userId, "Admin");
             if (result)
-                return RedirectToAction("Contact");
+                return RedirectToAction("Index2");
             else
                 return RedirectToAction("Index");
         }

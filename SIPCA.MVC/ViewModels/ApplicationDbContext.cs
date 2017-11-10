@@ -28,5 +28,7 @@ namespace SIPCA.MVC.ViewModels
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<SIPCA.MVC.ViewModels.ApplicationRole> IdentityRoles { get; set; }
     }
 }

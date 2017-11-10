@@ -10,6 +10,7 @@ using SIPCA.CLASES;
 using SIPCA.CLASES.Context;
 using Microsoft.AspNet.Identity;
 using PagedList;
+using SIPCA.MVC.CustomFilters;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -19,7 +20,8 @@ namespace SIPCA.MVC.Controllers
         private ModelContext db = new ModelContext();
 
         // GET: Clientes
-        [Authorize(Roles = "Admin")]
+        [Authorize]
+        [AuthLogAttribute(Roles = "Admin")]
         public ActionResult Index(string sort, string search, int? page)
         {
 
@@ -67,6 +69,8 @@ namespace SIPCA.MVC.Controllers
         }
 
         // GET: Clientes/Details/5
+        [Authorize]
+        [AuthLogAttribute(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -148,6 +152,8 @@ namespace SIPCA.MVC.Controllers
         }
 
         // GET: Clientes/Delete/5
+        [Authorize]
+        [AuthLogAttribute(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -29,7 +29,7 @@ namespace SIPCA.MVC.ViewModels
         public string Provider { get; set; }
 
         [Required]
-        [Display(Name = "Code")]
+        [Display(Name = "Código")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
@@ -55,7 +55,7 @@ namespace SIPCA.MVC.ViewModels
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
         [Display(Name = "Recordarme?")]
@@ -77,11 +77,11 @@ namespace SIPCA.MVC.ViewModels
         [Required]
         [StringLength(100, ErrorMessage = "El {0} debe tener como mínimo {2} caracteres.", MinimumLength = 4)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirmación de contraseña")]
         [Compare("Password", ErrorMessage = "El Password y la confirmación no son iguales.")]
         public string ConfirmPassword { get; set; }
     }
@@ -100,8 +100,8 @@ namespace SIPCA.MVC.ViewModels
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "El Password y la confirmación no son iguales.")]
+        [Display(Name = "Confirmación de Contraseña")]
+        [Compare("Password", ErrorMessage = "La contraseña y la confirmación no son iguales.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
