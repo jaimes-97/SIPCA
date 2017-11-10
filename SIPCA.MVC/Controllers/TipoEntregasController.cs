@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using SIPCA.CLASES;
+using SIPCA.CLASES.Models;
 using SIPCA.CLASES.Context;
 using SIPCA.MVC.CustomFilters;
 

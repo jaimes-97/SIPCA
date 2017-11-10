@@ -1,6 +1,6 @@
 ﻿@*@model IEnumerable<SIPCA.CLASES.Producto>*@
 @using PagedList.Mvc
-@model PagedList.IPagedList<SIPCA.CLASES.Producto>
+@model PagedList.IPagedList<SIPCA.CLASES.Models.Producto>
 @{
     ViewBag.Title = "Producto";
 }
@@ -40,13 +40,13 @@
                     @* @Html.DisplayNameFor(model => model.Nombre)*@
                 </th>
                 <th>
-                    @Html.DisplayName("Categoria")
-                    @*@Html.ActionLink("Categoria", "Index", new { sort = ViewBag.CategoriaSort, search = ViewBag.CurrentSearch })*@
+                    @*@Html.DisplayName("Categoria")*@
+                    @Html.ActionLink("Categoria", "Index", new { sort = ViewBag.CategoriaSort, search = ViewBag.CurrentSearch })
                     @* @Html.DisplayNameFor(model => model.Categoria.Nombre)*@
                 </th>
                 <th>
-                    @Html.DisplayName("Marca")
-                    @*@Html.ActionLink("Marca", "Index", new { sort = ViewBag.MarcaSort, search = ViewBag.CurrentSearch })*@
+                    @*@Html.DisplayName("Marca")*@
+                    @Html.ActionLink("Marca", "Index", new { sort = ViewBag.MarcaSort, search = ViewBag.CurrentSearch })
                     @*@Html.DisplayNameFor(model => model.Marca.Nombre)*@
                 </th>
                 <th>

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIPCA.CLASES
+namespace SIPCA.CLASES.Models
 {
     [Table("Marca")]
     public class Marca

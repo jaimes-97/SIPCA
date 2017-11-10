@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIPCA.CLASES
+namespace SIPCA.CLASES.Models
 {
     [Table("Pedido")]
    public class Pedido
@@ -56,6 +56,5 @@ namespace SIPCA.CLASES
         public DateTime FechaCorte { get; set; }
 
         public virtual IEnumerable<DetallePedido> DetallePedidos { get; set; }
-
     }
 }

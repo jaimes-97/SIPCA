@@ -35,27 +35,13 @@ namespace SIPCA.CLASES.Models
         [Display(Name = "Producto")]
         public int ProductoId { get; set; }
 
-        //[Required(ErrorMessage = "Se requiere el {0}")]
-        //[Display(Name = "Aplica IVA")]
-        //public bool aplicaIVA { get; set; }
-
-        //[Required(ErrorMessage = "Se requiere el {0}")]
-        //[Display(Name = "porcentajeIVA")]
-        //public decimal porcentajeIVA { get; set; }
-
         [ForeignKey("ProductoId")]
         public Producto Producto { get; set; }
-
-
-       
-
 
         public int IdCarrito { get; set; }
 
         [ForeignKey("IdCarrito")]
 
         public virtual Carrito Carritos { get; set; }
-
-
     }
 }

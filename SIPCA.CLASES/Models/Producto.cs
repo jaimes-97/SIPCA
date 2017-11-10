@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIPCA.CLASES
+namespace SIPCA.CLASES.Models
 {
     [Table ("Producto")]
     public class Producto
@@ -43,10 +43,5 @@ namespace SIPCA.CLASES
         public float PrecioVenta { get; set; }
 
         public IEnumerable<DetalleCarrito> DetalleCarritosId { get; set; }
-
-
-
-
-
     }
 }

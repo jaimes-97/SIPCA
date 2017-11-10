@@ -89,4 +89,3 @@ C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\D
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.dropColumnCarritoDetalle.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Cliente_Pedido_compuesto.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Properties.Resources.resources
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache

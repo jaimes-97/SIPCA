@@ -1,6 +1,6 @@
 namespace SIPCA.CLASES.Migrations
 {
-    using CLASES;
+    using CLASES.Models;
     using Context;
     using System;
     using System.Data.Entity;

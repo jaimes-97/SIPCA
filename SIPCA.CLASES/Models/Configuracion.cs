@@ -17,7 +17,5 @@ namespace SIPCA.CLASES.Models
         [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Porcentaje de IVA")]
         public decimal PorcentajeIVA { get; set; }
-
-
     }
 }

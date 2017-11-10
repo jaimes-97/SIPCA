@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIPCA.CLASES
+namespace SIPCA.CLASES.Models
 {
     [Table("Cliente")]
    public class Cliente
@@ -38,7 +38,6 @@ namespace SIPCA.CLASES
         public bool Eliminado { get; set; }
 
         public virtual IEnumerable<Pedido> Pedido { get; set; }
-
 
         [Required]
         [DataType(DataType.DateTime)]

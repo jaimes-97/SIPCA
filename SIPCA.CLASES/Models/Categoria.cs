@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIPCA.CLASES
+namespace SIPCA.CLASES.Models
 {
     [Table ("Categoria")]
     public class Categoria
     {
-
         [Key]
         public int IdCategoria { get; set; }
 
@@ -21,9 +20,7 @@ namespace SIPCA.CLASES
 
         public IEnumerable<Producto> Productos { get; set; }
 
-
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
-
     }
 }

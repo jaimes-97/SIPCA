@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIPCA.CLASES
+namespace SIPCA.CLASES.Models
 {
     [Table ("Compra")]
     public class Compra
@@ -40,7 +40,6 @@ namespace SIPCA.CLASES
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
        
-
         [Required]
         [DataType(DataType.DateTime)]
         [ScaffoldColumn(false)]

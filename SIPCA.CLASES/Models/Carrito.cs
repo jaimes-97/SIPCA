@@ -35,10 +35,6 @@ namespace SIPCA.CLASES.Models
         [Display(Name = "Usuario")]
         public string ApplicationUserId { get; set; }
 
-        //[ForeignKey("UserId")]
-        //public virtual ApplicationUser ApplicationUser { get; set; }
-
-
         public IEnumerable<DetalleCarrito> DetalleCarritos { get; set; }
 
 
@@ -48,12 +44,6 @@ namespace SIPCA.CLASES.Models
 
         [ForeignKey("ClienteId")]
          public virtual Cliente Cliente { get; set; }
-
-     
-
-
-
-
 
     }
 }

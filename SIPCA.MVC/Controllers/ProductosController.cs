@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using SIPCA.CLASES;
+using SIPCA.CLASES.Models;
 using SIPCA.CLASES.Context;
 using PagedList;
 using SIPCA.MVC.CustomFilters;
@@ -50,11 +50,11 @@ namespace SIPCA.MVC.Controllers
                     break;
 
                 case "categoria":
-                    foundProductos = foundProductos.OrderByDescending(ti => ti.Categoria);
+                    foundProductos = foundProductos.OrderByDescending(ti => ti.Categoria.Nombre);
                     break;
 
                 case "marca":
-                    foundProductos = foundProductos.OrderByDescending(ti => ti.Marca);
+                    foundProductos = foundProductos.OrderByDescending(ti => ti.Marca.Nombre);
                     break;
 
                 case "precioventa":

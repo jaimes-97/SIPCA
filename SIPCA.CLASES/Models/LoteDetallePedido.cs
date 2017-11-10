@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIPCA.CLASES
+namespace SIPCA.CLASES.Models
 {
     [Table("LoteDetallePedido")]
     public class LoteDetallePedido
@@ -24,7 +24,6 @@ namespace SIPCA.CLASES
         [ForeignKey("LoteID")]
         public virtual Lote Lote { get; set; }
 
-
         [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Lote")]
         public int DetallePedidoId { get; set; }
@@ -34,6 +33,5 @@ namespace SIPCA.CLASES
 
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
-
     }
 }
