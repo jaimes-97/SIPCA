@@ -7,11 +7,14 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SIPCA.MVC.ViewModels;
+using SIPCA.CLASES.Models;
 
 namespace SIPCA.MVC.Controllers
 {
     public class HomeController : Controller
     {
+        private SIPCA.CLASES.Context.ModelContext db = new SIPCA.CLASES.Context.ModelContext();
+
         public ActionResult Index()
         {
             if (Session["contador"] == null)
@@ -21,7 +24,23 @@ namespace SIPCA.MVC.Controllers
                     Session["contador"] = null;
                 else
                     Session["contador"] = int.Parse(Session["contador"].ToString()) + 1;
-            return View();
+
+            var productos = db.Productos.ToList();
+            var lotes = db.Lotes.ToList();
+            List<Producto> existentes = new List<Producto>();
+            foreach (Producto pro in productos)
+            {
+                foreach (Lote lo in lotes)
+                {
+                    if (pro.IdProducto == lo.ProductoId && lo.Existencia > 0)
+                    {
+                        existentes.Add(pro);
+                    }
+                }
+            }
+
+
+            return View(existentes);
         }
         [Authorize(Roles = "Admin")]
         public ActionResult Index2()

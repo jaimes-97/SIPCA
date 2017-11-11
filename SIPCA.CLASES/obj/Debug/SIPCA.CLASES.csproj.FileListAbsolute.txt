@@ -89,3 +89,19 @@ C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\D
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.dropColumnCarritoDetalle.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Cliente_Pedido_compuesto.resources
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Properties.Resources.resources
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll.config
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.pdb
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.dll
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.xml
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.inicial.resources
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.configuracion.resources
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.dropColumnCarritoDetalle.resources
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Cliente_Pedido_compuesto.resources
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Properties.Resources.resources
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb

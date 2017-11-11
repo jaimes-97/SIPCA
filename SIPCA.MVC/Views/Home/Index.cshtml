@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<SIPCA.CLASES.Models.Producto>
+@{
     ViewBag.Title = "Inicio";
 }
 <style type="text/css">
@@ -84,59 +85,23 @@
 </div>
 
 <div class="row" style="margin-top: 30px;">
-    <div class="col-sm-4">
-        <div class="card">
-            <img src="http://colgram.vteximg.com.br/arquivos/ids/317819-350-350/719501-01_1.jpg?v=636203702177370000" alt="1" class="img-responsive" style="height: 370px;">
-            <div class="content">
-                <h4><b>John Doe</b></h4>
-                <p>zapatos comodos</p>
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="http://colgram.vteximg.com.br/arquivos/ids/317819-350-350/719501-01_1.jpg?v=636203702177370000" alt="1" class="img-responsive" style="height: 370px;">
+                <div class="content">
+                    <h6><b>@Html.DisplayFor(modelItem => item.Nombre)</b></h6>
+                    <p>@Html.DisplayFor(modelItem => item.Categoria.Nombre)</p>
+					<h6>
+					 @Html.ActionLink("Añadir al carrito", "Create", "Productos", new { @class="actLink"},new {style="text-decoration:none;"})
+					 </h6>
+						 
+
+						 
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="card">
-            <img src="https://slimages.macysassets.com/is/image/MCY/products/2/optimized/733532_fpx.tif?op_sharpen=1" alt="2" class="img-responsive" style="height: 370px;">
-            <div class="content">
-                <h4><b>Scheckers</b></h4>
-                <p>Zapatos de campos</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="card">
-            <img alt="3" class="img-responsive" style="height: 370px;" src="http://quest.vteximg.com.br/arquivos/ids/226074-460-676/Zapatos116017041-16-1.jpg?v=636402384554230000">
-            <div class="content">
-                <h4><b>Sports</b></h4>
-                <p>Zapatos deportivos</p>
-            </div>
-        </div>
-    </div>
+    }
 </div>
-
-@*<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>*@
-
-@*<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>*@
+   
