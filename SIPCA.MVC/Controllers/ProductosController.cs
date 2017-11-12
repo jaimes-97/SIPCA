@@ -82,6 +82,11 @@ namespace SIPCA.MVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Producto producto = db.Productos.Find(id);
+            if(producto.ImagenId != null)
+            {
+                Imagen imagen =db.imagenes.Find(producto.ImagenId);
+                producto.Imagen = imagen;
+            }
             if (producto == null)
             {
                 return HttpNotFound();
@@ -102,10 +107,32 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProducto,CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta")] Producto producto)
+        public ActionResult Create([Bind(Include = "IdProducto,CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta")] Producto producto, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                SIPCA.CLASES.Models.Imagen imagen = new Imagen();
+                if (upload != null && upload.ContentLength > 0)
+                {
+
+                    string fileName = System.IO.Path.GetFileName(upload.FileName);
+                    imagen.ImageName = fileName;
+                    imagen.ImagePath = "~/Imagenes/" + fileName;
+
+                    fileName = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), fileName);
+                    //string path = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), pic);
+                    upload.SaveAs(fileName);
+                    producto.Imagen = imagen;
+
+                    //using (SIPCA.CLASES.Context.ModelContext db = new ModelContext())
+                    //{
+                    //    db.imagenes.Add(imagen);
+                    //    db.SaveChanges();
+                    //}
+
+
+                }
+
                 db.Productos.Add(producto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -138,13 +165,38 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProducto,CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta")] Producto producto)
+        public ActionResult Edit([Bind(Include = "IdProducto,CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta")] SIPCA.CLASES.Models.Producto producto, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(producto).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                
+                    SIPCA.CLASES.Models.Imagen imagen = new Imagen();
+                    if (upload != null && upload.ContentLength > 0)
+                    {
+
+                        string fileName = System.IO.Path.GetFileName(upload.FileName);
+                        imagen.ImageName = fileName;
+                        imagen.ImagePath = "~/Imagenes/" + fileName;
+
+                        fileName = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), fileName);
+                        //string path = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), pic);
+                        upload.SaveAs(fileName);
+                        producto.Imagen = imagen;
+
+                    using (SIPCA.CLASES.Context.ModelContext db = new ModelContext())
+                    {
+                        db.imagenes.Add(imagen);
+                        db.SaveChanges();
+                        producto.Imagen.IdImagen = imagen.IdImagen;
+                        producto.ImagenId = imagen.IdImagen;
+                    }
+
+
+                }
+
+                     db.Entry(producto).State = EntityState.Modified;
+                      db.SaveChanges();
+                      return RedirectToAction("Index");
             }
             ViewBag.CategoriaId = new SelectList(db.Categorias, "IdCategoria", "Nombre", producto.CategoriaId);
             ViewBag.MarcaId = new SelectList(db.Marcas, "IdMarca", "Nombre", producto.MarcaId);

@@ -105,3 +105,5 @@ C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CL
 C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
 C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Imagen.resources
+C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.cambioimagen.resources

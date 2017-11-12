@@ -28,6 +28,7 @@ namespace SIPCA.CLASES.Context
         public DbSet<Carrito> Carritos { get; set; }
         public DbSet<DetalleCarrito> DetallesCarritos { get; set; }
         public DbSet<Configuracion> configuraciones { get; set; }
+        public DbSet<Imagen> imagenes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
