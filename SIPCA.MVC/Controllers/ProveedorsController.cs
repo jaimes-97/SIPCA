@@ -37,7 +37,7 @@ namespace SIPCA.MVC.Controllers
             //Si el campo de busqueda no esta vacio validamos que la cadena de busqueda se encuentre entre las columnas 
             // de categoria que queramos en este caso solo nombre.
             //y si se encuentra se seleccionan las filas y las columnas que contengan la cadena y asi cambia el Viewbag
-            if (!string.IsNullOrEmpty(search)) foundProveedores = foundProveedores.Where(ma => ma.Nombre.Contains(search));
+            if (!string.IsNullOrEmpty(search)) foundProveedores = foundProveedores.Where(ma => ma.Nombre.Contains(search) || ma.Correo.Contains(search) || ma.Direccion.Contains(search) || ma.Telefono.Contains(search));
 
 
             //Utilizamos un switch para las columnas que queramos ordenar

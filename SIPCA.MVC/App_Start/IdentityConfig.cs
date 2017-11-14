@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using SIPCA.MVC.ViewModels;
+using System.Diagnostics;
 
 namespace SIPCA.MVC
 {
@@ -52,8 +53,17 @@ namespace SIPCA.MVC
 
 
             /*-------------------------ENVIO DE CORREO----------------------*/
-            cliente.Send(mmsg);
-            return Task.FromResult(0);
+            try
+            {
+                cliente.Send(mmsg);
+                return Task.FromResult(0);
+            }
+            catch (SmtpException e )
+            {
+                Debug.WriteLine("Error: " + e.Message);
+                return Task.FromResult(0);
+            }
+           
         }
     }
 
