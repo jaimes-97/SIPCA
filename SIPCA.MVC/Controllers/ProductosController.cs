@@ -10,6 +10,8 @@ using SIPCA.CLASES.Models;
 using SIPCA.CLASES.Context;
 using PagedList;
 using SIPCA.MVC.CustomFilters;
+using System.Diagnostics;
+using System.Data.Entity.Migrations;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -18,6 +20,7 @@ namespace SIPCA.MVC.Controllers
     public class ProductosController : Controller
     {
         private ModelContext db = new ModelContext();
+        private Producto productoGlobal = new Producto();
 
         // GET: Productos
         public ActionResult Index(string sort, string search, int? page)
@@ -154,6 +157,7 @@ namespace SIPCA.MVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Producto producto = db.Productos.Find(id);
+            productoGlobal = producto;
             if (producto == null)
             {
                 return HttpNotFound();
@@ -178,9 +182,24 @@ namespace SIPCA.MVC.Controllers
                     {
 
                     //eliminar imagen
-                    if (producto.Imagen == null)
+                    if (productoGlobal.Imagen == null)
                     {
                         var imagenes = db.imagenes.ToList();
+                        var productos = db.Productos.ToList();
+
+                        foreach(Producto p in productos)
+                        {
+                            Debug.WriteLine("p.id " + p.IdProducto + " productoglobal iid " + producto.IdProducto);
+                            if (p.IdProducto == producto.IdProducto)
+                            {
+                                Debug.WriteLine("Imagen del producto db " + p.Imagen.ImageName + " " + p.ImagenId);
+                                producto.Imagen = p.Imagen;
+                                producto.ImagenId = p.ImagenId;
+                                Debug.WriteLine("Imagen del producto local " + producto.ImagenId + " " + producto.Imagen.ImageName);
+                            }
+                        }
+
+                        Debug.WriteLine("entra al if del elimiando");
                         foreach (Imagen img in imagenes)
                         {
                             if (img.IdImagen == producto.ImagenId)
@@ -189,7 +208,8 @@ namespace SIPCA.MVC.Controllers
                             }
                         }
                     }
-                    Console.WriteLine("nombre imagen " + producto.Imagen.ImageName);
+                    Debug.WriteLine("id imagen " + producto.ImagenId);
+                    Debug.WriteLine("nombre imagen " + producto.Imagen.ImageName);
                     string file = System.IO.Path.Combine(HttpContext.Server.MapPath("~/Imagenes"),producto.Imagen.ImageName);
                     if (System.IO.File.Exists(file))
                     {
@@ -221,8 +241,9 @@ namespace SIPCA.MVC.Controllers
 
                 }
 
-                     db.Entry(producto).State = EntityState.Modified;
-                      db.SaveChanges();
+                // db.Entry(producto).State = EntityState.Modified;
+                db.Set<Producto>().AddOrUpdate(producto);
+                db.SaveChanges();
                       return RedirectToAction("Index");
             }
             ViewBag.CategoriaId = new SelectList(db.Categorias, "IdCategoria", "Nombre", producto.CategoriaId);
