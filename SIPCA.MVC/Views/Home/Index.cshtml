@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SIPCA.CLASES.Models.Producto>
+
 @{
     ViewBag.Title = "Inicio";
 }
@@ -89,7 +90,10 @@
     {
         <div class="col-sm-4">
             <div class="card">
-                <img src="http://colgram.vteximg.com.br/arquivos/ids/317819-350-350/719501-01_1.jpg?v=636203702177370000" alt="1" class="img-responsive" style="height: 370px;">
+					@if(item.Imagen!=null){
+					 <img src="@Url.Content(item.Imagen.ImagePath)" alt="1" class="img-responsive" style="height: 370px;">
+					}
+					
                 <div class="content">
                     <h6><b>@Html.DisplayFor(modelItem => item.Nombre)</b></h6>
                     <p>@Html.DisplayFor(modelItem => item.Categoria.Nombre)</p>

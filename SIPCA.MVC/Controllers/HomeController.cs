@@ -27,6 +27,7 @@ namespace SIPCA.MVC.Controllers
 
             var productos = db.Productos.ToList();
             var lotes = db.Lotes.ToList();
+            var imagenes = db.imagenes.ToList();
             List<Producto> existentes = new List<Producto>();
             foreach (Producto pro in productos)
             {
@@ -34,6 +35,18 @@ namespace SIPCA.MVC.Controllers
                 {
                     if (pro.IdProducto == lo.ProductoId && lo.Existencia > 0)
                     {
+                        if (pro.Imagen == null && pro.ImagenId!=null)
+                        {
+                            foreach(Imagen img in imagenes)
+                            {
+                                if (pro.ImagenId == img.IdImagen)
+                                {
+                                    pro.Imagen = img;
+                                }
+                                
+                            }
+                           
+                        }
                         existentes.Add(pro);
                     }
                 }
