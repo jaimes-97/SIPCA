@@ -177,11 +177,35 @@ namespace SIPCA.MVC.Controllers
                     if (upload != null && upload.ContentLength > 0)
                     {
 
-                        string fileName = System.IO.Path.GetFileName(upload.FileName);
+                    //eliminar imagen
+                    if (producto.Imagen == null)
+                    {
+                        var imagenes = db.imagenes.ToList();
+                        foreach (Imagen img in imagenes)
+                        {
+                            if (img.IdImagen == producto.ImagenId)
+                            {
+                                producto.Imagen = img;
+                            }
+                        }
+                    }
+                    Console.WriteLine("nombre imagen " + producto.Imagen.ImageName);
+                    string file = System.IO.Path.Combine(HttpContext.Server.MapPath("~/Imagenes"),producto.Imagen.ImageName);
+                    if (System.IO.File.Exists(file))
+                    {
+                        System.IO.File.Delete(file);
+                    }
+                     
+
+                    //fin eliminar imagen
+
+                    string fileName = System.IO.Path.GetFileName(upload.FileName);
                         imagen.ImageName = fileName;
                         imagen.ImagePath = "~/Imagenes/" + fileName;
 
                         fileName = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), fileName);
+
+
                         //string path = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), pic);
                         upload.SaveAs(fileName);
                         producto.Imagen = imagen;
