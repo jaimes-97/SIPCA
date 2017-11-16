@@ -126,7 +126,7 @@ namespace SIPCA.MVC.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCategoria,Nombre")] Categoria categoria)
+        public ActionResult Edit([Bind(Include = "IdCategoria,Nombre, Control")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {

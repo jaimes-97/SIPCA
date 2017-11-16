@@ -43,5 +43,9 @@ namespace SIPCA.CLASES.Models
         [DataType(DataType.DateTime)]
         [ScaffoldColumn(false)]
         public DateTime FechaMod { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Timestamp]
+        public byte[] Control { get; set; }
     }
 }

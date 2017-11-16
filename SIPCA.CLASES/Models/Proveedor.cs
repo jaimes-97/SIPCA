@@ -32,5 +32,9 @@ namespace SIPCA.CLASES.Models
 
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Timestamp]
+        public byte[] Control { get; set; }
     }
 }

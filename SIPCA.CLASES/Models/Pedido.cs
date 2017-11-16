@@ -56,5 +56,9 @@ namespace SIPCA.CLASES.Models
         public DateTime FechaCorte { get; set; }
 
         public virtual IEnumerable<DetallePedido> DetallePedidos { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Timestamp]
+        public byte[] Control { get; set; }
     }
 }

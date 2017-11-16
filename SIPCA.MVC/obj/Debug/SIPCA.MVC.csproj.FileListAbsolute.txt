@@ -706,18 +706,6 @@ C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.c
 C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.dll
 C:\Users\Carlos Tamariz\Desktop\sipcaTuani\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.pdb
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\ApplicationInsights.config
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\csc.exe
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\vbc.exe
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\VBCSCompiler.exe
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\SIPCA.MVC.dll.config
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\SIPCA.MVC.dll
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\SIPCA.MVC.pdb
@@ -734,7 +722,6 @@ C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.Appli
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.dll
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.Cookies.dll
@@ -766,7 +753,6 @@ C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.AI.Se
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.AI.Web.xml
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.ApplicationInsights.xml
-C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\PagedList.xml
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\PagedList.Mvc.xml
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.MVC\bin\Pagination.pdb

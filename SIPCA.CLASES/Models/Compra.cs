@@ -44,5 +44,9 @@ namespace SIPCA.CLASES.Models
         [DataType(DataType.DateTime)]
         [ScaffoldColumn(false)]
         public DateTime FechaEliminacion { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Timestamp]
+        public byte[] Control { get; set; }
     }
 }

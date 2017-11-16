@@ -21,6 +21,10 @@ namespace SIPCA.CLASES.Models
         public virtual IEnumerable<Producto> Productos { get; set; }
 
         [ScaffoldColumn(false)]
+        [Timestamp]
+        public byte[] Control { get; set; }
+
+        [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
     }
 }

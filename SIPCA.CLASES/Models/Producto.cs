@@ -47,5 +47,9 @@ namespace SIPCA.CLASES.Models
         public int? ImagenId { get; set; }
       
         public virtual Imagen Imagen { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Timestamp]
+        public byte[] Control { get; set; }
     }
 }
