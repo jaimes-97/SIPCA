@@ -15,8 +15,11 @@ namespace SIPCA.MVC.Controllers
     {
         private SIPCA.CLASES.Context.ModelContext db = new SIPCA.CLASES.Context.ModelContext();
 
+
         public ActionResult Index()
         {
+           
+
             if (Session["contador"] == null)
                 Session["contador"] = 0;
             else
@@ -28,7 +31,12 @@ namespace SIPCA.MVC.Controllers
             var productos = db.Productos.ToList();
             var lotes = db.Lotes.ToList();
             var imagenes = db.imagenes.ToList();
+            var categorias = from cat in db.Categorias where cat.Eliminado== false select cat;
+
+            ModeloIndex modelo_index = new ModeloIndex();
             List<Producto> existentes = new List<Producto>();
+            
+
             foreach (Producto pro in productos)
             {
                 foreach (Lote lo in lotes)
@@ -51,10 +59,27 @@ namespace SIPCA.MVC.Controllers
                     }
                 }
             }
+                modelo_index.Productos = existentes;
+            modelo_index.categorias = categorias.ToList();
+        
 
 
-            return View(existentes);
+
+            return View(modelo_index);
         }
+
+
+        [HttpPost]
+        public ActionResult Index(int idCategoria)
+        {
+  
+           var id_categoria = idCategoria;
+            Debug.WriteLine("llega la mierda " + id_categoria);
+
+            return View();
+        }
+
+
         [Authorize(Roles = "Admin")]
         public ActionResult Index2()
         {

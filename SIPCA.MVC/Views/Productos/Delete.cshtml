@@ -11,6 +11,8 @@
     <h4>Producto</h4>
     <hr />
     <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.Imagen)
+        @Html.HiddenFor(model => model.ImagenId)
         <dt>
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
