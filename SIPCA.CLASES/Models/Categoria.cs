@@ -19,6 +19,8 @@ namespace SIPCA.CLASES.Models
         [MaxLength (60, ErrorMessage ="MAximo el {0} debe contener {1} caracteres")]
         [Required(ErrorMessage = "Se requiere el nombre de la categoría")]
         [Display(Name = "Nombre")]
+        [Unique("Categoria","Nombre")]
+      
         public string Nombre { get; set; }
          
         //Este campo es para manejar la concurrencia

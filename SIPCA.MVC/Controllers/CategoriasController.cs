@@ -10,6 +10,7 @@ using SIPCA.CLASES.Models;
 using SIPCA.CLASES.Context;
 using PagedList;
 using SIPCA.MVC.CustomFilters;
+using System.Diagnostics;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -98,8 +99,19 @@ namespace SIPCA.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Categorias.Add(categoria);
-                db.SaveChanges();
+                try
+                {
+                    db.Categorias.Add(categoria);
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("Hay un error cheleeee : '{0}'", e);
+                    ViewBag.Message = "El registro ya existe";
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Hello this is an Alert')</SCRIPT>");
+                    return RedirectToAction("Create");
+                }
+               
                 return RedirectToAction("Index");
             }
 

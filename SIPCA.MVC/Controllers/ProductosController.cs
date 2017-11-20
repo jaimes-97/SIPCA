@@ -139,6 +139,7 @@ namespace SIPCA.MVC.Controllers
 
                 }
 
+
                 db.Productos.Add(producto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
