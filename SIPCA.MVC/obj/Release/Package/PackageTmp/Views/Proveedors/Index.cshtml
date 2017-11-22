@@ -1,0 +1,100 @@
+﻿@*@model IEnumerable<SIPCA.CLASES.Proveedor>*@
+@*utilizamos una lista de paginas*@
+@using PagedList.Mvc
+@model PagedList.IPagedList<SIPCA.CLASES.Models.Proveedor>
+@{
+    ViewBag.Title = "Proveedor";
+}
+
+<h2>Proveedores</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+
+<div class="row">
+
+    @* utilizamos el siguinte codigo para crear un cuadro de busqueda*@
+    <div class="input-group">
+        @using (Html.BeginForm("Index", "Proveedors", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            <div class="input-group">
+                @Html.TextBox("search", ViewBag.CurrentSearch as string, new { @class = "form-control", placeholder = "Escriba la busqueda", aria_discribedy = "basic-addon2" })
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </span>
+            </div>
+
+        }
+
+    </div>
+
+    @* ahora estructuramos la tabla de los datos*@
+
+    <table class="table table-hover">
+        @*Declaramos el encabezado*@
+        <thead>
+            <tr>
+                <th>
+                    @Html.ActionLink("Nombre", "Index", new { sort = ViewBag.ProveedorSort, search = ViewBag.CurrentSearch })
+                    @* @Html.DisplayNameFor(model => model.Nombre)*@
+                </th>
+                <th>
+                    @Html.ActionLink("Correo", "Index", new { sort = ViewBag.CorreoSort, search = ViewBag.CurrentSearch })
+                    @*@Html.DisplayNameFor(model => model.Correo)*@
+                </th>
+                <th>
+                    @Html.ActionLink("Direccion", "Index", new { sort = ViewBag.DireccionSort, search = ViewBag.CurrentSearch })
+                    @* @Html.DisplayNameFor(model => model.Direccion)*@
+                </th>
+                <th>
+                    @Html.ActionLink("Telefono", "Index", new { sort = ViewBag.TelefonoSort, search = ViewBag.CurrentSearch })
+                    @* @Html.DisplayNameFor(model => model.Telefono)*@
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @* Ahora declaramos el cuerpo que es solo un foreach que recorre todo el modelo*@
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Correo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdProveedor }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IdProveedor }) |
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.IdProveedor })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@* Codigo para la paginacion*@
+
+Pagina @(Model.PageCount < Model.PageNumber ? 0
+        : Model.PageNumber) de @Model.PageCount
+
+        @Html.PagedListPager(Model, Page =>
+  Url.Action("Index", new
+  {
+      sort = ViewBag.CurrentSort,
+      search = ViewBag.CurrentSearch,
+      Page
+  }))
+
+

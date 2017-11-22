@@ -63,12 +63,12 @@ namespace ClienteSistemaFacturacion.Controllers
         //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ApplicationUsers
-        public async Task<ActionResult> Index(String sort, string search, int? page)
+        public ActionResult Index(String sort, string search, int? page)
         {
             ViewBag.nombreUsuario = String.IsNullOrEmpty(sort) ? "nombreU_desc" : string.Empty;
             ViewBag.emailSort = sort == "email" ? "email_desc" : "email";
             ViewBag.accessFailedSort = sort == "accessFailed" ? "accessFailed_desc" : "accessFailed";
-            ViewBag.userNameSort = sort == "userName" ? "userName_desc" : "userName";   
+            ViewBag.userNameSort = sort == "userName" ? "userName_desc" : "userName";
 
             ViewBag.CurrentSort = sort;
             ViewBag.CurrentSearch = search;

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL7001.site4now.net;Initial Catalog=DB_A2E024_SIPCADB;User Id=DB_A2E024_SIPCADB_admin;Password=sipca2017;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\domestic\\Documents\\Visual\ Studio\ 2015\\Projects\\SIPCA\\SIPCA\.MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

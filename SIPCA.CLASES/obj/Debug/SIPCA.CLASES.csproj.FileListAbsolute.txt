@@ -125,3 +125,5 @@ C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\isi10\Desktop\Proyecto Distribuidos\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Imagen.resources
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.cambioimagen.resources

@@ -1,0 +1,32 @@
+﻿@model SIPCA.CLASES.Models.Categoria
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar Categoría</h2>
+
+<h3>Estas seguro de borrar esta categoría?</h3>
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a la Lista", "Index")
+        </div>
+    }
+</div>

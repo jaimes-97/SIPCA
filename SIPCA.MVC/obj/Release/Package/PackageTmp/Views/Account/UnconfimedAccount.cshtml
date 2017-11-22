@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Cuenta sin confirmar";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p style="margin-left: 10px;">Si no has recibido en tu correo un mensage de confirmación de tu cuenta después de 10 minutos de registrarte,
+    O si accidentalmente borrastes el mensage enviado, has click en en botón para volver a resibir el mensage de confirmación en tu correo</p>
+
+@using (Html.BeginForm("RegenerateEmailConfirmation", "Account", FormMethod.Post, 
+    new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.Hidden("Email", (string)ViewBag.Email)
+    <input type="submit" value="Reenviar correo de confirmación" class="btn btn-primary"/>
+}
+
