@@ -123,7 +123,7 @@ namespace SIPCA.MVC.Controllers
 
                     string fileName = System.IO.Path.GetFileName(upload.FileName);
                     imagen.ImageName = fileName;
-                    imagen.ImagePath = "~/Imagenes/" + fileName;
+                    imagen.ImagePath = "~/Imagenes/" +fileName;
 
                     fileName = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), fileName);
                     //string path = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), pic);
@@ -138,6 +138,7 @@ namespace SIPCA.MVC.Controllers
 
 
                 }
+
 
                 db.Productos.Add(producto);
                 db.SaveChanges();
@@ -172,30 +173,35 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProducto,CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta")] SIPCA.CLASES.Models.Producto producto, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "IdProducto,CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta,ImagenId,Imagen")] SIPCA.CLASES.Models.Producto producto, HttpPostedFileBase upload)
         {
+
             if (ModelState.IsValid)
             {
-                
-                    SIPCA.CLASES.Models.Imagen imagen = new Imagen();
-                    if (upload != null && upload.ContentLength > 0)
-                    {
-
+                Debug.WriteLine("Entra el if del model state ");
+                SIPCA.CLASES.Models.Imagen imagen = new Imagen();
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    Debug.WriteLine("Entra el if del upload ");
                     //eliminar imagen
-                    if (productoGlobal.Imagen == null)
+                    if (producto.Imagen == null)
                     {
                         var imagenes = db.imagenes.ToList();
                         var productos = db.Productos.ToList();
 
-                        foreach(Producto p in productos)
+                        foreach (Producto p in productos)
                         {
                             Debug.WriteLine("p.id " + p.IdProducto + " productoglobal iid " + producto.IdProducto);
                             if (p.IdProducto == producto.IdProducto)
                             {
-                                Debug.WriteLine("Imagen del producto db " + p.Imagen.ImageName + " " + p.ImagenId);
-                                producto.Imagen = p.Imagen;
-                                producto.ImagenId = p.ImagenId;
-                                Debug.WriteLine("Imagen del producto local " + producto.ImagenId + " " + producto.Imagen.ImageName);
+                                if(p.Imagen != null && p.ImagenId !=null)
+                                {
+                                    Debug.WriteLine("Imagen del producto db " + p.Imagen.ImageName + " " + p.ImagenId);
+                                    producto.Imagen = p.Imagen;
+                                    producto.ImagenId = p.ImagenId;
+                                    Debug.WriteLine("Imagen del producto local " + producto.ImagenId + " " + producto.Imagen.ImageName);
+                                }
+                              
                             }
                         }
 
@@ -208,27 +214,35 @@ namespace SIPCA.MVC.Controllers
                             }
                         }
                     }
-                    Debug.WriteLine("id imagen " + producto.ImagenId);
-                    Debug.WriteLine("nombre imagen " + producto.Imagen.ImageName);
-                    string file = System.IO.Path.Combine(HttpContext.Server.MapPath("~/Imagenes"),producto.Imagen.ImageName);
-                    if (System.IO.File.Exists(file))
+
+                    if(producto.Imagen != null)
                     {
-                        System.IO.File.Delete(file);
+                        Debug.WriteLine("id imagen " + producto.ImagenId);
+                        Debug.WriteLine("nombre imagen " + producto.Imagen.ImageName);
+                        string file = System.IO.Path.Combine(HttpContext.Server.MapPath("~/Imagenes"), producto.Imagen.ImageName);
+                        if (System.IO.File.Exists(file))
+                        {
+                            System.IO.File.Delete(file);
+                        }
                     }
-                     
+                   
+
 
                     //fin eliminar imagen
 
                     string fileName = System.IO.Path.GetFileName(upload.FileName);
-                        imagen.ImageName = fileName;
-                        imagen.ImagePath = "~/Imagenes/" + fileName;
+                    imagen.ImageName = fileName;
+                    imagen.ImagePath = "~/Imagenes/" + fileName;
+                    
+                    fileName = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), fileName);
 
-                        fileName = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), fileName);
 
-
-                        //string path = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), pic);
-                        upload.SaveAs(fileName);
-                        producto.Imagen = imagen;
+                    //string path = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), pic);
+                    Debug.WriteLine("file name " + fileName);
+                    Debug.WriteLine("nombre imagen " + imagen.ImageName);
+                    Debug.WriteLine("ruta imagen " + imagen.ImagePath);
+                    upload.SaveAs(fileName);
+                    producto.Imagen = imagen;
 
                     using (SIPCA.CLASES.Context.ModelContext db = new ModelContext())
                     {
@@ -244,7 +258,7 @@ namespace SIPCA.MVC.Controllers
                 // db.Entry(producto).State = EntityState.Modified;
                 db.Set<Producto>().AddOrUpdate(producto);
                 db.SaveChanges();
-                      return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             ViewBag.CategoriaId = new SelectList(db.Categorias, "IdCategoria", "Nombre", producto.CategoriaId);
             ViewBag.MarcaId = new SelectList(db.Marcas, "IdMarca", "Nombre", producto.MarcaId);
@@ -273,6 +287,34 @@ namespace SIPCA.MVC.Controllers
         {
             Producto producto = db.Productos.Find(id);
             producto.Eliminado = true;
+
+            if (producto.Imagen == null)
+            {
+                Debug.WriteLine("iimagennn " + producto.ImagenId);
+                var imagenes = db.imagenes.ToList();
+                foreach (Imagen img in imagenes)
+                {
+                    if (img.IdImagen == producto.ImagenId)
+                    {
+                        producto.Imagen = img;
+                    }
+                }
+                Debug.WriteLine("imgenn buena " + producto.Imagen.ImageName);
+                string file = System.IO.Path.Combine(HttpContext.Server.MapPath("~/Imagenes"), producto.Imagen.ImageName);
+                if (System.IO.File.Exists(file))
+                {
+                    System.IO.File.Delete(file);
+                }
+            }
+            if(producto.Imagen != null)
+            {
+                string file = System.IO.Path.Combine(HttpContext.Server.MapPath("~/Imagenes"), producto.Imagen.ImageName);
+                if (System.IO.File.Exists(file))
+                {
+                    System.IO.File.Delete(file);
+                }
+            }
+          
        
             db.SaveChanges();
             return RedirectToAction("Index");
