@@ -11,6 +11,7 @@ using SIPCA.CLASES.Context;
 using PagedList;
 using SIPCA.MVC.CustomFilters;
 using System.Diagnostics;
+using System.Data.SqlClient;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -95,27 +96,40 @@ namespace SIPCA.MVC.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCategoria,Nombre")] Categoria categoria)
+        public ActionResult Create([Bind(Include = "Nombre,Eliminado")] Categoria categoria)
         {
-            if (ModelState.IsValid)
-            {
+            
                 try
+                    {
+                         if (ModelState.IsValid)
+                             {
+                                 db.Categorias.Add(categoria);
+                                   db.SaveChanges();
+                                return RedirectToAction("Index");
+                                 }
+                    }
+                catch (Exception ex)
                 {
-                    db.Categorias.Add(categoria);
-                    db.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine("Hay un error cheleeee : '{0}'", e);
-                    ViewBag.Message = "El registro ya existe";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Hello this is an Alert')</SCRIPT>");
-                    return RedirectToAction("Create");
-                }
-               
-                return RedirectToAction("Index");
-            }
+                    var e = ex.GetBaseException() as SqlException;
+                    if (e != null)
+                        switch (e.Number)
+                        {
+                            case 2601:
+                                TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
+                                break;
 
-            return View(categoria);
+                            default:
+                                TempData["MsgErrorClassAgrups"] = "Error al guardar registro.";
+                                break;
+                        }
+                }
+                ViewBag.ClassDanger = "alert alert-danger";
+                return View(categoria);
+
+
+            
+
+           
         }
 
         // GET: Categorias/Edit/5
@@ -140,13 +154,33 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdCategoria,Nombre, Control")] Categoria categoria)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(categoria).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(categoria).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch(Exception ex)
+            {
+                var e = ex.GetBaseException() as SqlException;
+                if (e != null)
+                    switch (e.Number)
+                    {
+                        case 2601:
+                            TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
+                            break;
+
+                        default:
+                            TempData["MsgErrorClassAgrups"] = "Error al guardar registro.";
+                            break;
+                    }
+            }
+            ViewBag.ClassDanger = "alert alert-danger";
             return View(categoria);
+           
         }
 
         // GET: Categorias/Delete/5

@@ -143,3 +143,21 @@ C:\Users\Green Buckett\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Propert
 C:\Users\Green Buckett\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
 C:\Users\Green Buckett\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\Green Buckett\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll.config
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.dll
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\SIPCA.CLASES.pdb
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.dll
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.xml
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.inicial.resources
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.configuracion.resources
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.dropColumnCarritoDetalle.resources
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Cliente_Pedido_compuesto.resources
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Imagen.resources
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.cambioimagen.resources
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Properties.Resources.resources
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb

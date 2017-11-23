@@ -67,6 +67,6 @@ namespace SIPCA.CLASES.Context
             return base.SaveChanges();
         }
 
-       
+
     }
 }
