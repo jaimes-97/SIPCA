@@ -307,15 +307,15 @@ table {
 
 html {
   font-size: 62.5%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: #4c1a4c;
 }
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+  color: #4c1a28;
+  background-color: #9b3150;
 }
 
 input,
@@ -1701,19 +1701,19 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .form-control:-moz-placeholder {
-  color: #999999;
+  color: #4c1a2c;
 }
 
 .form-control::-moz-placeholder {
-  color: #999999;
+  color: #4c1a2c;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #999999;
+  color: #4c1a2c;
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #999999;
+  color: #4c1a2c;
 }
 
 .form-control {
@@ -1723,9 +1723,9 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #555555;
+  color: #73264d;
   vertical-align: middle;
-  background-color: #ffffff;
+  background-color: #4c1a2c;
   border: 1px solid #cccccc;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);

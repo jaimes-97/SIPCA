@@ -8,9 +8,18 @@
 
 
 @using (Html.BeginForm())
+
 {
+    <div class="alert-dismissible @ViewBag.ClassDanger" style="@(ViewBag.ClassDanger == null ? "display:none" : "")">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="alert alert-danger">
+            @Html.ValidationSummary("")
+            @TempData["MsgErrorClassAgrups"]
+        </div>
+    </div>
+
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Proveedor</h4>
         <hr />

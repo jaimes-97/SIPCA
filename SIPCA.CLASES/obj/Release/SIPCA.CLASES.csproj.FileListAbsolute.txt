@@ -16,3 +16,4 @@ C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\R
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Release\SIPCA.CLASES.csproj.GenerateResource.Cache
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Release\SIPCA.CLASES.dll
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Release\SIPCA.CLASES.pdb
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Release\SIPCA.CLASES.Migrations.INDICES.resources

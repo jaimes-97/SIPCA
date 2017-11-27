@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SIPCA.CLASES.Models.Producto>
+﻿@model SIPCA.MVC.ViewModels.ModeloIndex
+
 
 @{
     ViewBag.Title = "Inicio";
@@ -25,6 +26,30 @@
 <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 <br/>
+<br />
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+   
+    <div class="col-md-4">
+
+       
+       <form  method="POST">
+           
+          <select class="form-control" id="categorias" name="categorias">
+               @foreach (var item in Model.categorias)
+                 {
+                   <option value="@item.IdCategoria">@item.Nombre</option>
+                  
+                 }
+           </select>
+           <input type="submit" value="Guardar" />
+       </form>
+         
+    </div>
+    
+</div>
+<br />
 <br />
 <div class="row text-center">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -86,7 +111,8 @@
 </div>
 
 <div class="row" style="margin-top: 30px;">
-    @foreach (var item in Model)
+
+    @foreach (var item in Model.Productos)
     {
         <div class="col-sm-4">
             <div class="card">
