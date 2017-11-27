@@ -418,18 +418,6 @@ C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.
 C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\isi10\Desktop\Confidencial\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\ApplicationInsights.config
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\csc.exe
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\vbc.exe
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\VBCSCompiler.exe
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\SIPCA.MVC.dll.config
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\SIPCA.MVC.dll
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\SIPCA.MVC.pdb
@@ -446,7 +434,6 @@ C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Micr
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.dll
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.Cookies.dll
@@ -474,7 +461,6 @@ C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Micr
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.AI.Web.xml
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.ApplicationInsights.xml
-C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\System.Web.Helpers.xml
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\System.Web.Mvc.xml
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\System.Web.Optimization.xml
@@ -954,3 +940,4 @@ C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.role_config.resources

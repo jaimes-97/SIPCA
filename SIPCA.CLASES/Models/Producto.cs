@@ -22,6 +22,7 @@ namespace SIPCA.CLASES.Models
         [ForeignKey("CategoriaId")]
         public virtual Categoria Categoria { get; set; }
 
+        [Index("INDEX_PRODUCTO_NOMBRE", IsUnique = true)]
         [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Nombre del producto")]
         public string Nombre { get; set; }

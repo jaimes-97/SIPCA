@@ -12,6 +12,7 @@ using PagedList;
 using SIPCA.MVC.CustomFilters;
 using System.Diagnostics;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -113,9 +114,11 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProducto,CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta")] Producto producto, HttpPostedFileBase upload)
+        public ActionResult Create([Bind(Include = "CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta")] Producto producto, HttpPostedFileBase upload)
         {
-            if (ModelState.IsValid)
+            try
+            {
+                if (ModelState.IsValid)
             {
                 SIPCA.CLASES.Models.Imagen imagen = new Imagen();
                 if (upload != null && upload.ContentLength > 0)
@@ -144,6 +147,22 @@ namespace SIPCA.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            }
+            catch (Exception ex)
+            {
+                var e = ex.GetBaseException() as SqlException;
+                if (e != null)
+                    switch (e.Number)
+                    {
+                        case 2601:
+                            TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
+                            break;
+                        default:
+                            TempData["MsgErrorClassAgrups"] = "Error al guardar registro.";
+                            break;
+                    }
+            }
+            ViewBag.ClassDanger = "alert alert-danger";
 
             ViewBag.CategoriaId = new SelectList(db.Categorias, "IdCategoria", "Nombre", producto.CategoriaId);
             ViewBag.MarcaId = new SelectList(db.Marcas, "IdMarca", "Nombre", producto.MarcaId);
@@ -173,11 +192,13 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProducto,CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta,ImagenId,Imagen")] SIPCA.CLASES.Models.Producto producto, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta,ImagenId,Imagen")] SIPCA.CLASES.Models.Producto producto, HttpPostedFileBase upload)
         {
-
-            if (ModelState.IsValid)
+            try
             {
+                if (ModelState.IsValid)
+            {
+                #region Editar imagen
                 Debug.WriteLine("Entra el if del model state ");
                 SIPCA.CLASES.Models.Imagen imagen = new Imagen();
                 if (upload != null && upload.ContentLength > 0)
@@ -254,12 +275,28 @@ namespace SIPCA.MVC.Controllers
 
 
                 }
-
+                #endregion
                 // db.Entry(producto).State = EntityState.Modified;
                 db.Set<Producto>().AddOrUpdate(producto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            }
+            catch (Exception ex)
+            {
+                var e = ex.GetBaseException() as SqlException;
+                if (e != null)
+                    switch (e.Number)
+                    {
+                        case 2601:
+                            TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
+                            break;
+                        default:
+                            TempData["MsgErrorClassAgrups"] = "Error al guardar registro.";
+                            break;
+                    }
+            }
+            ViewBag.ClassDanger = "alert alert-danger";
             ViewBag.CategoriaId = new SelectList(db.Categorias, "IdCategoria", "Nombre", producto.CategoriaId);
             ViewBag.MarcaId = new SelectList(db.Marcas, "IdMarca", "Nombre", producto.MarcaId);
             return View(producto);

@@ -14,6 +14,7 @@ namespace SIPCA.CLASES.Models
         [Key]
         public int IdCliente { get; set; }
 
+        [Index("INDEX_CLIENTE_NOMBRE", IsUnique = true)]
         [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; }

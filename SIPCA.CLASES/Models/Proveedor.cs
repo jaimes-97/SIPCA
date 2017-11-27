@@ -14,6 +14,7 @@ namespace SIPCA.CLASES.Models
         [Key]
         public int IdProveedor { get; set;  }
 
+        [Index("INDEX_PROVEEDOR_NOMBRE", IsUnique = true)]
         [Required(ErrorMessage ="Se requiere el nombre del proveedor ")]
         [Display(Name =" Nombre del proveedor")]
         public string Nombre { get; set; }

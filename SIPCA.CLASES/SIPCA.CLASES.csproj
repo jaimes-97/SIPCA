@@ -75,6 +75,10 @@
     <Compile Include="Migrations\201711120144393_cambioimagen.Designer.cs">
       <DependentUpon>201711120144393_cambioimagen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711271430282_INDICES.cs" />
+    <Compile Include="Migrations\201711271430282_INDICES.Designer.cs">
+      <DependentUpon>201711271430282_INDICES.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrito.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -122,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711120144393_cambioimagen.resx">
       <DependentUpon>201711120144393_cambioimagen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271430282_INDICES.resx">
+      <DependentUpon>201711271430282_INDICES.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -11,6 +11,7 @@ using SIPCA.CLASES.Context;
 using Microsoft.AspNet.Identity;
 using PagedList;
 using SIPCA.MVC.CustomFilters;
+using System.Data.SqlClient;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -98,7 +99,9 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Eliminado,FechaMod,UserId")] Cliente cliente)
         {
-            var userId = User.Identity.GetUserId();
+            try
+            {
+                var userId = User.Identity.GetUserId();
             Cliente cl = db.Clientes.Where(c => c.UserId == userId).Where(c => c.Eliminado == false).FirstOrDefault();
             if(cl != null)
             {
@@ -115,6 +118,22 @@ namespace SIPCA.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
+            }
+            catch (Exception ex)
+            {
+                var e = ex.GetBaseException() as SqlException;
+                if (e != null)
+                    switch (e.Number)
+                    {
+                        case 2601:
+                            TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
+                            break;
+                        default:
+                            TempData["MsgErrorClassAgrups"] = "Error al guardar registro.";
+                            break;
+                    }
+            }
+            ViewBag.ClassDanger = "alert alert-danger";
 
             return View(cliente);
         }
@@ -141,13 +160,32 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Eliminado,FechaMod,UserId")] Cliente cliente)
         {
-            if (ModelState.IsValid)
+            try
+            {
+                if (ModelState.IsValid)
             {
                 cliente.FechaMod = System.DateTime.Now;
                 db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            }
+            catch (Exception ex)
+            {
+                var e = ex.GetBaseException() as SqlException;
+                if (e != null)
+                    switch (e.Number)
+                    {
+                        case 2601:
+                            TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
+                            break;
+                        default:
+                            TempData["MsgErrorClassAgrups"] = "Error al guardar registro.";
+                            break;
+                    }
+            }
+            ViewBag.ClassDanger = "alert alert-danger";
+
             return View(cliente);
         }
 

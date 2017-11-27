@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SIPCA.CLASES.Models;
 using SIPCA.CLASES.Context;
 using SIPCA.MVC.CustomFilters;
+using System.Data.SqlClient;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -52,13 +53,30 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdTipoEntrega,NombreTipoEntrega,Costo")] TipoEntrega tipoEntrega)
         {
-            if (ModelState.IsValid)
+            try
             {
+                if (ModelState.IsValid)
+                 {
                 db.TipoEntregas.Add(tipoEntrega);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                  }
             }
-
+            catch (Exception ex)
+            {
+                var e = ex.GetBaseException() as SqlException;
+                if (e != null)
+                    switch (e.Number)
+                    {
+                        case 2601:
+                            TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
+                            break;
+                        default:
+                            TempData["MsgErrorClassAgrups"] = "Error al guardar registro.";
+                            break;
+                    }
+            }
+            ViewBag.ClassDanger = "alert alert-danger";
             return View(tipoEntrega);
         }
 
@@ -84,12 +102,28 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdTipoEntrega,NombreTipoEntrega,Costo")] TipoEntrega tipoEntrega)
         {
+            try { 
             if (ModelState.IsValid)
             {
                 db.Entry(tipoEntrega).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+             }
+            catch(Exception ex){
+                var e = ex.GetBaseException() as SqlException;
+                if (e != null)
+                    switch (e.Number)
+                    {
+                        case 2601:
+                            TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
+                            break;
+                        default:
+                            TempData["MsgErrorClassAgrups"] = "Error al guardar registro.";
+                            break;
+                    }
+            }
+            ViewBag.ClassDanger = "alert alert-danger";
             return View(tipoEntrega);
         }
 

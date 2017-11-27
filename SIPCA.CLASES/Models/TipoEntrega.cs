@@ -14,6 +14,7 @@ namespace SIPCA.CLASES.Models
         [Key]
         public int IdTipoEntrega { get; set; }
 
+        [Index("INDEX_TIPO_ENTREGA_NOMBRE", IsUnique = true)]
         [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Tipo de Entrega")]
         public string NombreTipoEntrega { get; set; }

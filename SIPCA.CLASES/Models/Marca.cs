@@ -14,6 +14,7 @@ namespace SIPCA.CLASES.Models
         [Key]
         public int IdMarca { get; set; }
 
+        [Index("INDEX_MARCA_NOMBRE", IsUnique = true)]
         [Required(ErrorMessage = "Se requiere el {0}")]
         [Display(Name = "Nombre de la marca")]
         public string Nombre { get; set; }

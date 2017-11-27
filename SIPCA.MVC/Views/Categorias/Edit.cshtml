@@ -11,7 +11,7 @@
 {
     <div class="alert-dismissible @ViewBag.ClassDanger" style="@(ViewBag.ClassDanger == null ? "display:none" : "")">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <div class="">
+        <div class="alert alert-danger">
             @Html.ValidationSummary("")
             @TempData["MsgErrorClassAgrups"]
         </div>

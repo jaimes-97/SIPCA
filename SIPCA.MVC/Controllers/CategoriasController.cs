@@ -98,18 +98,14 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Nombre,Eliminado")] Categoria categoria)
         {
-            
-                try
-                    {
-                         if (ModelState.IsValid)
-                             {
-                                 db.Categorias.Add(categoria);
-                                   db.SaveChanges();
-                                return RedirectToAction("Index");
-                                 }
+                try{
+                    if (ModelState.IsValid){
+                        db.Categorias.Add(categoria);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                       }
                     }
-                catch (Exception ex)
-                {
+                catch (Exception ex){
                     var e = ex.GetBaseException() as SqlException;
                     if (e != null)
                         switch (e.Number)
@@ -125,11 +121,6 @@ namespace SIPCA.MVC.Controllers
                 }
                 ViewBag.ClassDanger = "alert alert-danger";
                 return View(categoria);
-
-
-            
-
-           
         }
 
         // GET: Categorias/Edit/5
@@ -154,17 +145,14 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdCategoria,Nombre, Control")] Categoria categoria)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
+            try{
+                if (ModelState.IsValid){
                     db.Entry(categoria).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
-            catch(Exception ex)
-            {
+            catch(Exception ex){
                 var e = ex.GetBaseException() as SqlException;
                 if (e != null)
                     switch (e.Number)
@@ -172,7 +160,6 @@ namespace SIPCA.MVC.Controllers
                         case 2601:
                             TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
                             break;
-
                         default:
                             TempData["MsgErrorClassAgrups"] = "Error al guardar registro.";
                             break;
@@ -180,7 +167,6 @@ namespace SIPCA.MVC.Controllers
             }
             ViewBag.ClassDanger = "alert alert-danger";
             return View(categoria);
-           
         }
 
         // GET: Categorias/Delete/5
