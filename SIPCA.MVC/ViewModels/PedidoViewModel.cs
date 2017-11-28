@@ -45,7 +45,7 @@ namespace SIPCA.MVC.ViewModels
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
 
-        [Required]
+    
         [DataType(DataType.DateTime)]
         [ScaffoldColumn(false)]
         public DateTime FechaEliminacion { get; set; }

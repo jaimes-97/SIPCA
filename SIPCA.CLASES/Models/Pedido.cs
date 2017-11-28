@@ -60,5 +60,11 @@ namespace SIPCA.CLASES.Models
         [ScaffoldColumn(false)]
         [Timestamp]
         public byte[] Control { get; set; }
+
+        [Display(Name = "Estado")]
+        public int Estado { get; set; }
+        //0 cancelado indica que el pedido se entregó.
+        //1 anulado indica que el pedido no se canceló en el transcurso de un día y se deben regresar los productos al inventario
+        //2 activo
     }
 }

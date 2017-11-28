@@ -46,6 +46,8 @@ namespace SIPCA.CLASES.Context
             //modelBuilder.Configurations.Add(new BancoConfig());
             //modelBuilder.Configurations.Add(new TipoBancoConfig());
             #endregion
+
+          
         }
 
         public override int SaveChanges()

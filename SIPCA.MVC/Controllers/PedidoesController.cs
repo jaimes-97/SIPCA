@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SIPCA.CLASES.Context;
 using SIPCA.CLASES.Models;
+using System.Diagnostics;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -44,7 +45,9 @@ namespace SIPCA.MVC.Controllers
         {
             ViewBag.ClienteId = new SelectList(db.Clientes, "IdCliente", "Nombre");
             ViewBag.TipoEntregaId = new SelectList(db.TipoEntregas, "IdTipoEntrega", "NombreTipoEntrega");
-            return View();
+            Pedido p = new Pedido();
+            p.NPedido = obtenerUltimoConsecutivo();
+            return View(p);
         }
 
         // POST: Pedidoes/Create
@@ -52,17 +55,28 @@ namespace SIPCA.MVC.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdPedido,Fecha,ClienteId,TipoEntregaId,NPedido,Total,Eliminado,FechaEliminacion,FechaCorte,Control")] Pedido pedido)
+        public ActionResult Create([Bind(Include = "IdPedido,Fecha,ClienteId,TipoEntregaId,NPedido,Total,Eliminado,FechaEliminacion,FechaCorte,Control,Estado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
+                Debug.WriteLine("valor de estado "+ pedido.Estado);
+                Debug.WriteLine("valor de tipoEntrega " + pedido.TipoEntregaId);
+
                 pedido.Eliminado = false;
                 pedido.FechaEliminacion = System.DateTime.Now;
                 pedido.Fecha = System.DateTime.Now;
                 pedido.FechaCorte = pedido.Fecha.AddDays(1);
                 db.Pedidos.Add(pedido);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }catch(Exception e)
+                {
+                    Debug.WriteLine("EXCEPTION " + e);
+                }
+                
 
+               
                 return RedirectToAction("Edit", new { controller = "Pedidoes", action = "Edit", Id = pedido.IdPedido });
             }
 
@@ -75,6 +89,8 @@ namespace SIPCA.MVC.Controllers
             public string obtenerUltimoConsecutivo()
                  {
                     int ult= db.Pedidos.Count();
+                     ult += 1;
+                     Debug.WriteLine("conteo de registros " + ult);
                      string ultimo2=null;
                      
                      if (ult <= 9)
@@ -129,7 +145,7 @@ namespace SIPCA.MVC.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdPedido,Fecha,ClienteId,TipoEntregaId,NPedido,Total,Eliminado,FechaEliminacion,FechaCorte,Control")] Pedido pedido)
+        public ActionResult Edit([Bind(Include = "IdPedido,Fecha,ClienteId,TipoEntregaId,NPedido,Total,Eliminado,FechaEliminacion,FechaCorte,Control,Estado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {

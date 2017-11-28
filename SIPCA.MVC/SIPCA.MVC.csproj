@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ApplicationUsersController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\DetallePedidoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
@@ -234,6 +235,10 @@
     <Compile Include="Migrations\201711272339349_eliminarfechaElimRequerido.cs" />
     <Compile Include="Migrations\201711272339349_eliminarfechaElimRequerido.Designer.cs">
       <DependentUpon>201711272339349_eliminarfechaElimRequerido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711280411573_alli.cs" />
+    <Compile Include="Migrations\201711280411573_alli.Designer.cs">
+      <DependentUpon>201711280411573_alli.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -283,6 +288,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Pedido.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -368,6 +374,13 @@
     <Content Include="Views\Pedidoes\Details.cshtml" />
     <Content Include="Views\Pedidoes\Edit.cshtml" />
     <Content Include="Views\Pedidoes\Index.cshtml" />
+    <Content Include="Views\DetallePedidoes\Create.cshtml" />
+    <Content Include="Views\DetallePedidoes\Delete.cshtml" />
+    <Content Include="Views\DetallePedidoes\Details.cshtml" />
+    <Content Include="Views\DetallePedidoes\Edit.cshtml" />
+    <Content Include="Views\DetallePedidoes\Index.cshtml" />
+    <Content Include="Views\DetallePedidoes\_Index.cshtml" />
+    <Content Include="Views\DetallePedidoes\_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -399,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711272339349_eliminarfechaElimRequerido.resx">
       <DependentUpon>201711272339349_eliminarfechaElimRequerido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711280411573_alli.resx">
+      <DependentUpon>201711280411573_alli.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
