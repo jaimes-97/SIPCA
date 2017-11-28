@@ -45,12 +45,12 @@ namespace SIPCA.CLASES.Models
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
 
-        [Required]
+      
         [DataType(DataType.DateTime)]
         [ScaffoldColumn(false)]
         public DateTime FechaEliminacion { get; set; }
 
-        [Required]
+       
         [DataType(DataType.DateTime)]
         [ScaffoldColumn(false)]
         public DateTime FechaCorte { get; set; }

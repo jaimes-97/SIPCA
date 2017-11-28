@@ -941,3 +941,4 @@ C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.role_config.resources
+C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.eliminarfechaElimRequerido.resources

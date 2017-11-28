@@ -215,6 +215,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
+    <Compile Include="Controllers\PedidoesController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ProveedorsController.cs" />
     <Compile Include="Controllers\TipoEntregasController.cs" />
@@ -229,6 +230,10 @@
     <Compile Include="Migrations\201711081721252_role_config.cs" />
     <Compile Include="Migrations\201711081721252_role_config.Designer.cs">
       <DependentUpon>201711081721252_role_config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711272339349_eliminarfechaElimRequerido.cs" />
+    <Compile Include="Migrations\201711272339349_eliminarfechaElimRequerido.Designer.cs">
+      <DependentUpon>201711272339349_eliminarfechaElimRequerido.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -358,6 +363,11 @@
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\Shared\AuthorizeFailed.cshtml" />
+    <Content Include="Views\Pedidoes\Create.cshtml" />
+    <Content Include="Views\Pedidoes\Delete.cshtml" />
+    <Content Include="Views\Pedidoes\Details.cshtml" />
+    <Content Include="Views\Pedidoes\Edit.cshtml" />
+    <Content Include="Views\Pedidoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -386,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711081721252_role_config.resx">
       <DependentUpon>201711081721252_role_config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711272339349_eliminarfechaElimRequerido.resx">
+      <DependentUpon>201711272339349_eliminarfechaElimRequerido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
