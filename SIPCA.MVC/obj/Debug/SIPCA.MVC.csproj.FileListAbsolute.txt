@@ -83,18 +83,6 @@ C:\Users\Jaime\documents\visual studio 2015\Projects\Sipca\SIPCA.MVC\obj\Debug\S
 C:\Users\Jaime\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\SIPCA.CLASES.dll
 C:\Users\Jaime\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\SIPCA.CLASES.pdb
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\ApplicationInsights.config
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\csc.exe
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\System.Collections.Immutable.dll
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\System.Reflection.Metadata.dll
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\vbc.exe
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\VBCSCompiler.exe
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\roslyn\VBCSCompiler.exe.config
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\SIPCA.MVC.dll.config
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\SIPCA.MVC.dll
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\SIPCA.MVC.pdb
@@ -111,7 +99,6 @@ E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.ApplicationInsights.dll
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.AspNet.Identity.Core.dll
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.AspNet.Identity.Owin.dll
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.dll
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.Owin.Security.Cookies.dll
@@ -139,7 +126,6 @@ E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.AI.ServerTelemetryChanne
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.AI.Web.xml
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.AI.WindowsServer.xml
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.ApplicationInsights.xml
-E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\System.Web.Helpers.xml
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\System.Web.Mvc.xml
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\bin\System.Web.Optimization.xml
@@ -1028,3 +1014,5 @@ C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.dll
 C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.pdb
 C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.alli.resources
 C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.alli.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.eliminarfechaElimRequerido.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.alli.resources

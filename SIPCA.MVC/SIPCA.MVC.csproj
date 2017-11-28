@@ -381,6 +381,7 @@
     <Content Include="Views\DetallePedidoes\Index.cshtml" />
     <Content Include="Views\DetallePedidoes\_Index.cshtml" />
     <Content Include="Views\DetallePedidoes\_Create.cshtml" />
+    <Content Include="Views\Productos\DetailsCarProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

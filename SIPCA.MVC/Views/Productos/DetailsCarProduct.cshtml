@@ -1,0 +1,48 @@
+﻿@model SIPCA.CLASES.Models.Producto
+
+@{
+    ViewBag.Title = "Detalles del Producto";
+}
+<h2 style="font-size: 3em; color: aliceblue;">@ViewBag.Title</h2>
+
+<div class="row">
+    <hr />
+    <div class="col-md-5">
+        @if (Model.Imagen != null)
+        {
+            <img style="margin: 15px auto;" src="@Url.Content(Model.Imagen.ImagePath)" alt="1" class="img-responsive img-rounded">
+        }
+        else
+        {
+            <div>
+                <h3 style="color: whitesmoke; height: 370px; text-align: center; padding-top: 185px;">No hay imagen</h3>
+            </div>
+
+        }
+    </div>
+    <div class="col-md-7">
+        <div class="container">
+
+            <h2 style="font-weight: 500; color: #ace6d4; letter-spacing: 2px;">@Html.DisplayFor(model => model.Nombre)</h2>
+
+            <h3 style="font-size: 2.5em; color: #20ceab; text-align: left !important;">C$ @Html.DisplayFor(model => model.PrecioVenta)</h3>
+
+            <p style="font-size: 1.5em; color: thistle;">@Html.DisplayNameFor(model => model.Marca.Nombre)<p/>
+            <h3 style="text-indent: 30px;color: floralwhite;">@Html.DisplayFor(model => model.Marca.Nombre)</h3>
+
+            <p style="font-size: 1.5em; color: thistle;">@Html.DisplayNameFor(model => model.Categoria)<p />
+            <h3 style="text-indent: 30px;color: floralwhite;">@Html.DisplayFor(model => model.Categoria.Nombre)</h3>
+
+            <form>
+                <div style="margin-top: 15px;" class="input-group">
+                    <span class="input-group-addon text-info" style="font-weight: 600;">Cantidad</span>
+                    <input id="msg" type="number" class="form-control" name="cantidad" style="color: white;" min="1">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Añadir al carrito", "create","Carritos", new { id = Model.IdProducto }) |
+    @Html.ActionLink("Ir a Inicio", "Index", "Home")
+</p>

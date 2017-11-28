@@ -100,6 +100,26 @@ namespace SIPCA.MVC.Controllers
             }
             return View(producto);
         }
+        // GET: Productos/DetailsCarProduct/1
+        [AllowAnonymous]
+        public ActionResult DetailsCarProduct(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Producto producto = db.Productos.Find(id);
+            if (producto.ImagenId != null)
+            {
+                Imagen imagen = db.imagenes.Find(producto.ImagenId);
+                producto.Imagen = imagen;
+            }
+            if (producto == null)
+            {
+                return HttpNotFound();
+            }
+            return View(producto);
+        }
 
         // GET: Productos/Create
         public ActionResult Create()
@@ -192,102 +212,91 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta,ImagenId,Imagen")] SIPCA.CLASES.Models.Producto producto, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "IdProducto,CategoriaId,Nombre,MarcaId,Eliminado,PrecioVenta,ImagenId,Imagen,Control")] SIPCA.CLASES.Models.Producto producto, HttpPostedFileBase upload)
         {
-            try
-            {
-                if (ModelState.IsValid)
-            {
-                #region Editar imagen
-                Debug.WriteLine("Entra el if del model state ");
-                SIPCA.CLASES.Models.Imagen imagen = new Imagen();
-                if (upload != null && upload.ContentLength > 0)
-                {
-                    Debug.WriteLine("Entra el if del upload ");
-                    //eliminar imagen
-                    if (producto.Imagen == null)
-                    {
-                        var imagenes = db.imagenes.ToList();
-                        var productos = db.Productos.ToList();
+            try{
+                if (ModelState.IsValid){
 
-                        foreach (Producto p in productos)
+                    #region Editar imagen
+                    Debug.WriteLine("Entra el if del model state ");
+                    SIPCA.CLASES.Models.Imagen imagen = new Imagen();
+                    if (upload != null && upload.ContentLength > 0)
+                    {
+                        Debug.WriteLine("Entra el if del upload ");
+                        //eliminar imagen
+                        if (producto.Imagen == null)
                         {
-                            Debug.WriteLine("p.id " + p.IdProducto + " productoglobal iid " + producto.IdProducto);
-                            if (p.IdProducto == producto.IdProducto)
+                            var imagenes = db.imagenes.ToList();
+                            var productos = db.Productos.ToList();
+
+                            foreach (Producto p in productos)
                             {
-                                if(p.Imagen != null && p.ImagenId !=null)
+                                Debug.WriteLine("p.id " + p.IdProducto + " productoglobal iid " + producto.IdProducto);
+                                if (p.IdProducto == producto.IdProducto)
                                 {
-                                    Debug.WriteLine("Imagen del producto db " + p.Imagen.ImageName + " " + p.ImagenId);
-                                    producto.Imagen = p.Imagen;
-                                    producto.ImagenId = p.ImagenId;
-                                    Debug.WriteLine("Imagen del producto local " + producto.ImagenId + " " + producto.Imagen.ImageName);
-                                }
+                                    if(p.Imagen != null && p.ImagenId !=null)
+                                    {
+                                        Debug.WriteLine("Imagen del producto db " + p.Imagen.ImageName + " " + p.ImagenId);
+                                        producto.Imagen = p.Imagen;
+                                        producto.ImagenId = p.ImagenId;
+                                        Debug.WriteLine("Imagen del producto local " + producto.ImagenId + " " + producto.Imagen.ImageName);
+                                    }
                               
+                                }
                             }
-                        }
 
-                        Debug.WriteLine("entra al if del elimiando");
-                        foreach (Imagen img in imagenes)
-                        {
-                            if (img.IdImagen == producto.ImagenId)
+                            Debug.WriteLine("entra al if del elimiando");
+                            foreach (Imagen img in imagenes)
                             {
-                                producto.Imagen = img;
+                                if (img.IdImagen == producto.ImagenId)
+                                {
+                                    producto.Imagen = img;
+                                }
                             }
                         }
-                    }
 
-                    if(producto.Imagen != null)
-                    {
-                        Debug.WriteLine("id imagen " + producto.ImagenId);
-                        Debug.WriteLine("nombre imagen " + producto.Imagen.ImageName);
-                        string file = System.IO.Path.Combine(HttpContext.Server.MapPath("~/Imagenes"), producto.Imagen.ImageName);
-                        if (System.IO.File.Exists(file))
+                        if(producto.Imagen != null)
                         {
-                            System.IO.File.Delete(file);
+                            Debug.WriteLine("id imagen " + producto.ImagenId);
+                            Debug.WriteLine("nombre imagen " + producto.Imagen.ImageName);
+                            string file = System.IO.Path.Combine(HttpContext.Server.MapPath("~/Imagenes"), producto.Imagen.ImageName);
+                            if (System.IO.File.Exists(file))
+                            {
+                                System.IO.File.Delete(file);
+                            }
+                        }
+                        //fin eliminar imagen
+
+                        string fileName = System.IO.Path.GetFileName(upload.FileName);
+                        imagen.ImageName = fileName;
+                        imagen.ImagePath = "~/Imagenes/" + fileName;
+                        fileName = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), fileName);
+
+                        //string path = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), pic);
+                        Debug.WriteLine("file name " + fileName);
+                        Debug.WriteLine("nombre imagen " + imagen.ImageName);
+                        Debug.WriteLine("ruta imagen " + imagen.ImagePath);
+                        upload.SaveAs(fileName);
+                        producto.Imagen = imagen;
+
+                        using (SIPCA.CLASES.Context.ModelContext db = new ModelContext())
+                        {
+                            db.imagenes.Add(imagen);
+                            db.SaveChanges();
+                            producto.Imagen.IdImagen = imagen.IdImagen;
+                            producto.ImagenId = imagen.IdImagen;
                         }
                     }
-                   
-
-
-                    //fin eliminar imagen
-
-                    string fileName = System.IO.Path.GetFileName(upload.FileName);
-                    imagen.ImageName = fileName;
-                    imagen.ImagePath = "~/Imagenes/" + fileName;
-                    
-                    fileName = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), fileName);
-
-
-                    //string path = System.IO.Path.Combine(Server.MapPath("~/Imagenes"), pic);
-                    Debug.WriteLine("file name " + fileName);
-                    Debug.WriteLine("nombre imagen " + imagen.ImageName);
-                    Debug.WriteLine("ruta imagen " + imagen.ImagePath);
-                    upload.SaveAs(fileName);
-                    producto.Imagen = imagen;
-
-                    using (SIPCA.CLASES.Context.ModelContext db = new ModelContext())
-                    {
-                        db.imagenes.Add(imagen);
+                        #endregion
+                        //db.Entry(producto).State = EntityState.Modified;
+                        db.Set<Producto>().AddOrUpdate(producto);
                         db.SaveChanges();
-                        producto.Imagen.IdImagen = imagen.IdImagen;
-                        producto.ImagenId = imagen.IdImagen;
-                    }
-
-
+                    return RedirectToAction("Index");   
                 }
-                #endregion
-                // db.Entry(producto).State = EntityState.Modified;
-                db.Set<Producto>().AddOrUpdate(producto);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 var e = ex.GetBaseException() as SqlException;
                 if (e != null)
-                    switch (e.Number)
-                    {
+                    switch (e.Number){
                         case 2601:
                             TempData["MsgErrorClassAgrups"] = "El registro ya existe.";
                             break;
@@ -299,6 +308,7 @@ namespace SIPCA.MVC.Controllers
             ViewBag.ClassDanger = "alert alert-danger";
             ViewBag.CategoriaId = new SelectList(db.Categorias, "IdCategoria", "Nombre", producto.CategoriaId);
             ViewBag.MarcaId = new SelectList(db.Marcas, "IdMarca", "Nombre", producto.MarcaId);
+
             return View(producto);
         }
 

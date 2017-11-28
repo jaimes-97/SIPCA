@@ -9,12 +9,19 @@
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
         transition: 0.3s;
         width: auto;
-        height: 450px;
+        height: 455px;
         margin: 8px;
         background-color: #bec1c3;
+        border-radius: 15px;
     }
     .card:hover { box-shadow: 0 10px 18px 0 rgba(0,0,0,0.3); }
-    .content { padding: 4px 16px; height: 80px; background: lavender; }
+    .content { 
+        padding: 4px 16px; 
+        height: 85px; 
+        background: lavender; 
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
     .card img{ margin: 0 auto; width: 85%;}
     #myCarousel{ width:80%; margin:0 auto; height: 400px; }
     img.icar { margin: 0 auto; }
@@ -26,30 +33,6 @@
 <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 <br/>
-<br />
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-1"></div>
-   
-    <div class="col-md-4">
-
-       
-       <form  method="POST">
-           
-          <select class="form-control" id="categorias" name="categorias">
-               @foreach (var item in Model.categorias)
-                 {
-                   <option value="@item.IdCategoria">@item.Nombre</option>
-                  
-                 }
-           </select>
-           <input type="submit" value="Guardar" />
-       </form>
-         
-    </div>
-    
-</div>
-<br />
 <br />
 <div class="row text-center">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -63,7 +46,7 @@
         </ol>
 
         <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" role="listbox" style="background-color: white;">
 
             <div class="item active">
                 <img style="max-height:400px;" class="img-responsive icar" src="https://static.vix.com/es/sites/default/files/styles/large/public/imj/imujer/P/Pantuflas-de-invierno-para-mujeres3.jpg?itok=n8_9Qf0J" alt="Chania">
@@ -109,6 +92,27 @@
         </a>
     </div>
 </div>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="input-group" style="margin: 0 auto;">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <select class="form-control" id="categoria" name="categoria" style="color: white;">
+                        @foreach (var item in Model.categorias){
+                            <option value="@item.IdCategoria">@item.Nombre</option>
+                        }
+                    </select>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info">Buscar por</button>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
 <div class="row" style="margin-top: 30px;">
 
@@ -116,22 +120,40 @@
     {
         <div class="col-sm-4">
             <div class="card">
-					@if(item.Imagen!=null){
-					 <img src="@Url.Content(item.Imagen.ImagePath)" alt="1" class="img-responsive" style="height: 370px;">
-					}
-					
+				@if (item.Imagen != null)
+                {
+					<a href="@Url.Action("DetailsCarProduct", "Productos", new { id = item.IdProducto })" 
+                       data-toggle="tooltip" data-placement="bottom" title="Ver detalles">
+                        <img src="@Url.Content(item.Imagen.ImagePath)" alt="1" class="img-responsive" style="height: 370px;">
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("DetailsCarProduct", "Productos", new { id = item.IdProducto })"
+                       data-toggle="tooltip" data-placement="bottom" title="Ver detalles" style="text-decoration: none;">
+                        <h3 style="color: whitesmoke; height: 370px; text-align: center; padding-top: 185px;">No hay imagen</h3>
+                    </a>
+                    
+                }
                 <div class="content">
-                    <h6><b>@Html.DisplayFor(modelItem => item.Nombre)</b></h6>
-                    <p>@Html.DisplayFor(modelItem => item.Categoria.Nombre)</p>
-					<h6>
-					 @Html.ActionLink("Añadir al carrito", "Create", "Productos", new { @class="actLink"},new {style="text-decoration:none;"})
-					 </h6>
-						 
+                    <p><b><span class="badge badge-primary">Producto:</span></b> @Html.DisplayFor(modelItem => item.Nombre)</p>
 
-						 
+                    <p><b><span class="badge badge-primary">Categoría:</span></b> @Html.DisplayFor(modelItem => item.Categoria.Nombre)</p>
+
+                    <p style="display: inline-block;"><b><span class="badge badge-primary">Precio:</span></b> C$@Html.DisplayFor(modelItem => item.PrecioVenta)</p>
+
+					<div class="text-right" style="display: inline-block; float: right; margin-top: -10px;">
+                        @Html.ActionLink("Añadir al carrito", "Create", "Carritos", new { id = item.IdProducto }, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+					</div> 
                 </div>
             </div>
         </div>
     }
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //add tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
    

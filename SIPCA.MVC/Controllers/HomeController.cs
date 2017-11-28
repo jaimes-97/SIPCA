@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SIPCA.MVC.ViewModels;
 using SIPCA.CLASES.Models;
+using PagedList;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -16,10 +17,8 @@ namespace SIPCA.MVC.Controllers
         private SIPCA.CLASES.Context.ModelContext db = new SIPCA.CLASES.Context.ModelContext();
 
 
-        public ActionResult Index()
+        public ActionResult Index(int? categoria)
         {
-           
-
             if (Session["contador"] == null)
                 Session["contador"] = 0;
             else
@@ -51,34 +50,33 @@ namespace SIPCA.MVC.Controllers
                                 {
                                     pro.Imagen = img;
                                 }
-                                
                             }
-                           
                         }
-                        existentes.Add(pro);
+                        if (categoria == null)
+                            existentes.Add(pro);
+                        else {
+                            if (pro.CategoriaId == categoria)
+                                existentes.Add(pro);
+                        }
                     }
                 }
             }
-                modelo_index.Productos = existentes;
+            modelo_index.Productos = existentes;
             modelo_index.categorias = categorias.ToList();
-        
-
-
 
             return View(modelo_index);
         }
 
 
-        [HttpPost]
-        public ActionResult Index(int idCategoria)
-        {
+        //[HttpPost]
+        //public ActionResult Index(int idCategoria)
+        //{
   
-           var id_categoria = idCategoria;
-            Debug.WriteLine("llega la mierda " + id_categoria);
+        //   var id_categoria = idCategoria;
+        //    Debug.WriteLine("llega la mierda " + id_categoria);
 
-            return View();
-        }
-
+        //    return View();
+        //}
 
         [Authorize(Roles = "Admin")]
         public ActionResult Index2()

@@ -185,3 +185,8 @@ C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.
 C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
 C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.prodEnDetallePedido.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csprojResolveAssemblyReference.cache
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.Imagen.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.cambioimagen.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.INDICES.resources
+E:\Usuario\checho\dsd\git\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.prodEnDetallePedido.resources
