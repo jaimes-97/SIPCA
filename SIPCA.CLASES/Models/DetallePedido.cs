@@ -41,5 +41,12 @@ namespace SIPCA.CLASES.Models
         public bool Eliminado { get; set; }
 
         public virtual IEnumerable<LoteDetallePedido> LotesDetallesPedidos { get; set; }
+
+         [Required(ErrorMessage = "Se requiere el {0}")]
+        [Display(Name = "Producto")]
+        public int ProductoId { get; set; }
+
+        [ForeignKey("ProductoId")]
+        public Producto Producto { get; set; }
     }
 }

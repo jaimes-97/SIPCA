@@ -44,6 +44,7 @@ namespace SIPCA.CLASES.Models
         public float PrecioVenta { get; set; }
 
         public IEnumerable<DetalleCarrito> DetalleCarritosId { get; set; }
+        public IEnumerable<DetallePedido> DetallePedidoId { get; set; }
 
         public int? ImagenId { get; set; }
       

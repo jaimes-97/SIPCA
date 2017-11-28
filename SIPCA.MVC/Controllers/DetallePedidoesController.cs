@@ -44,7 +44,7 @@ namespace SIPCA.MVC.Controllers
         public ActionResult Create(int pedidoId)
         {
             ViewBag.PedidoId = pedidoId;
-            ViewBag.ProductoId = new SelectList(db.Productos, "Id", "Name");
+            ViewBag.ProductoId = new SelectList(db.Productos, "IdProducto", "Nombre");
             DetallePedido nuevoDetallePedido = new DetallePedido();
             nuevoDetallePedido.PedidoId = pedidoId;
 
@@ -58,13 +58,15 @@ namespace SIPCA.MVC.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdDetallePedido,PedidoId,Cantidad,aplicaIVA,porcentajeIVA,PrecioVendido,Eliminado")] DetallePedido detallePedido)
+        public ActionResult Create([Bind(Include = "IdDetallePedido,PedidoId,Cantidad,aplicaIVA,porcentajeIVA,PrecioVendido,Eliminado,ProductoId")] DetallePedido detallePedido)
         {
+            detallePedido.Eliminado = false;
+            System.Diagnostics.Debug.WriteLine("valor de producto obtenido " + detallePedido.ProductoId);
             if (ModelState.IsValid)
             {
                 db.DetallePedidos.Add(detallePedido);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
 
             ViewBag.PedidoId = new SelectList(db.Pedidos, "IdPedido", "NPedido", detallePedido.PedidoId);
@@ -128,6 +130,15 @@ namespace SIPCA.MVC.Controllers
             db.DetallePedidos.Remove(detallePedido);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+        public float GetProductInfo(int productId)
+        {
+            float price = 0;
+            Producto productInfo = db.Productos.FirstOrDefault(p => p.IdProducto == productId && p.Eliminado == false);
+            if (productInfo != null) price = productInfo.PrecioVenta;
+            return price;
         }
 
         protected override void Dispose(bool disposing)

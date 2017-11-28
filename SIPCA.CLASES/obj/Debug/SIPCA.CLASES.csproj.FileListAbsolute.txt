@@ -184,3 +184,4 @@ C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.
 C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.csproj.GenerateResource.Cache
 C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
+C:\Users\isi10\Desktop\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.prodEnDetallePedido.resources
