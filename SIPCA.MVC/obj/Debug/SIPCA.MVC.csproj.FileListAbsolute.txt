@@ -1016,3 +1016,21 @@ C:\Users\Green Buckett\Desktop\charls\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrat
 C:\Users\isi10\Desktop\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.alli.resources
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.eliminarfechaElimRequerido.resources
 E:\Usuario\checho\dsd\git\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.alli.resources
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportSource.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.Shared.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\bin\stdole.dll
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.eliminarfechaElimRequerido.resources
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.MVC\obj\Debug\SIPCA.MVC.Migrations.alli.resources

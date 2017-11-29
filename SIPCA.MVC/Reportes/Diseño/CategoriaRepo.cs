@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SIPCA.CLASES.Reportes.Diseño {
+namespace SIPCA.MVC.Reportes.Diseño {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace SIPCA.CLASES.Reportes.Diseño {
         
         public override string FullResourceName {
             get {
-                return "SIPCA.CLASES.Reportes.Diseño.CategoriaRepo.rpt";
+                return "SIPCA.MVC.Reportes.Diseño.CategoriaRepo.rpt";
             }
             set {
                 // Do nothing

@@ -12,6 +12,7 @@ using PagedList;
 using SIPCA.MVC.CustomFilters;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using SIPCA.MVC.Reportes.Diseño;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -205,6 +206,156 @@ namespace SIPCA.MVC.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private string ConvertirUrlRelativaToUrlAbsoluta(string relativeUrl)
+        {
+            string strUrl = "";
+            if (Request.IsSecureConnection)
+                strUrl = string.Format("https://{0}{1}{2}", Request.Url.Host, Request.Url.Port == 80 ? "" : ":" + Request.Url.Port.ToString(), "/");
+            else
+                strUrl = string.Format("http://{0}{1}{2}", Request.Url.Host, Request.Url.Port == 80 ? "" : ":" + Request.Url.Port.ToString(), "/");
+            strUrl = strUrl + relativeUrl;
+            return strUrl;
+        }
+
+        public ActionResult DescargarPDF(string sort, string search)
+        {
+            GenerarReporte(Server.MapPath("~/Reportes/Generado/"), ConvertirUrlRelativaToUrlAbsoluta("Reportes/"), "PDF", sort, search);
+
+            return File("~/Reportes/Generado/Categorias.pdf", "application/pdf", "Categorias.pdf");
+        }
+
+        public ActionResult DescargarXLS(string sort, string search)
+        {
+            GenerarReporte(Server.MapPath("~/Reportes/Generado/"), ConvertirUrlRelativaToUrlAbsoluta("Reportes/"), "XLS", sort, search);
+
+            return File("~/Reportes/Generado/Categorias.xls", "application/vnd.ms-excel", "Categorias.xls");
+        }
+
+
+
+        public string GenerarReporte(string urlAbs, string urlRel, string Report, string sort, string search)
+        {
+            urlAbs = (urlAbs == null ? "" : urlAbs);
+
+            string urlDir = "";
+
+            IQueryable<Categoria> Categorias = db.Categorias.Where(t => t.Eliminado == false);
+
+            if (!string.IsNullOrEmpty(search)) Categorias = Categorias.Where(ti => ti.Nombre.Contains(search));
+
+            switch (sort)
+            {
+                case "Categorias_desc":
+                    Categorias = Categorias.OrderByDescending(ti => ti.Nombre);
+                    break;
+
+                default:
+                    Categorias = Categorias.OrderBy(ti => ti.Nombre);
+                    break;
+            }
+
+            List<Categoria> ListaCategorias = Categorias.ToList();
+
+            System.Data.DataTable tTemp = new System.Data.DataTable();
+            tTemp.Columns.Add("IdCategoria", System.Type.GetType("System.Int32"));
+            tTemp.Columns.Add("Nombre", System.Type.GetType("System.String"));
+            //tTemp.Columns.Add("Active", System.Type.GetType("System.Boolean"));
+
+            foreach (Categoria item in ListaCategorias)
+            {
+                System.Data.DataRow r = tTemp.NewRow();
+
+                r["IdCategoria"] = item.IdCategoria;
+                r["Nombre"] = item.Nombre;
+               // r["Active"] = item.Active;
+
+                tTemp.Rows.Add(r);
+            }
+
+            CrystalDecisions.CrystalReports.Engine.ReportDocument rpt = new CategoriaRepo();
+
+            #region PDF
+            if (Report == "PDF")
+            {
+                
+                if (!System.IO.File.Exists(urlAbs + "Categorias.pdf"))
+                {
+                    rpt.SetDataSource(tTemp);
+                    rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat,
+                        urlAbs + "Categorias.pdf");
+                    urlDir = urlRel + "Categorias.pdf";
+
+                    //this.DownloadPDF();
+                    rpt.Close();
+                    rpt.Dispose();
+                }
+                else
+                {
+                    try
+                    {
+                        System.IO.File.Delete(@urlAbs + "Categorias.pdf");
+
+                        rpt.SetDataSource(tTemp);
+                        rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat,
+                            urlAbs + "Categorias.pdf");
+                        urlDir = urlRel + "Categorias.pdf";
+
+                        //DownloadPDF();
+                        rpt.Close();
+                        rpt.Dispose();
+                    }
+                    catch (System.IO.IOException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        return "";
+                    }
+                }
+            }
+            #endregion
+
+            #region XLS
+            else
+            {
+
+                //
+                if (!System.IO.File.Exists(urlAbs + "Categorias.xls"))
+                {
+                    rpt.SetDataSource(tTemp);
+                    rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.Excel,
+                        urlAbs + "Categorias.xls");
+                    urlDir = urlRel + "Categorias.xls";
+
+                    //this.DownloadXLS();
+                    rpt.Close();
+                    rpt.Dispose();
+                }
+                else
+                {
+                    try
+                    {
+                        System.IO.File.Delete(@urlAbs + "Categorias.xls");
+
+                        rpt.SetDataSource(tTemp);
+                        rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.Excel,
+                            urlAbs + "Categorias.xls");
+                        urlDir = urlRel + "Categorias.xls";
+
+                        //DownloadXLS();
+                        rpt.Close();
+                        rpt.Dispose();
+                    }
+                    catch (System.IO.IOException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        return "";
+                    }
+                }
+            }
+            #endregion
+
+            return urlDir;
         }
     }
 }

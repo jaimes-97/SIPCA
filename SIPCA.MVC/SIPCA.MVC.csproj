@@ -224,6 +224,12 @@
     <Compile Include="Controllers\ProveedorsController.cs" />
     <Compile Include="Controllers\TipoEntregasController.cs" />
     <Compile Include="CustomFilters\AuthLogAttribute.cs" />
+    <Compile Include="Reportes\Diseño\CategoriaRepo.cs">
+      <DependentUpon>CategoriaRepo.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -389,7 +395,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\" />
-    <Folder Include="Reportes\Diseño\" />
     <Folder Include="Reportes\Generado\" />
   </ItemGroup>
   <ItemGroup>
@@ -410,6 +415,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reportes\Diseño\CategoriaRepo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CategoriaRepo.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711032336300_Authentication.resx">
       <DependentUpon>201711032336300_Authentication.cs</DependentUpon>
     </EmbeddedResource>
