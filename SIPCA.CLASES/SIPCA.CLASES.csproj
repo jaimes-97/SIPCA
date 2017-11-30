@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201711271430282_INDICES.Designer.cs">
       <DependentUpon>201711271430282_INDICES.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711280630090_dw.cs" />
+    <Compile Include="Migrations\201711280630090_dw.Designer.cs">
+      <DependentUpon>201711280630090_dw.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201711281814378_prodEnDetallePedido.cs" />
     <Compile Include="Migrations\201711281814378_prodEnDetallePedido.Designer.cs">
       <DependentUpon>201711281814378_prodEnDetallePedido.cs</DependentUpon>
@@ -90,6 +94,26 @@
     <Compile Include="Migrations\201711282228388_removeComputed.cs" />
     <Compile Include="Migrations\201711282228388_removeComputed.Designer.cs">
       <DependentUpon>201711282228388_removeComputed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711300317513_fechaE.cs" />
+    <Compile Include="Migrations\201711300317513_fechaE.Designer.cs">
+      <DependentUpon>201711300317513_fechaE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711300318460_fechaElimin.cs" />
+    <Compile Include="Migrations\201711300318460_fechaElimin.Designer.cs">
+      <DependentUpon>201711300318460_fechaElimin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711300702060_costoLote.cs" />
+    <Compile Include="Migrations\201711300702060_costoLote.Designer.cs">
+      <DependentUpon>201711300702060_costoLote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711301603162_prueba.cs" />
+    <Compile Include="Migrations\201711301603162_prueba.Designer.cs">
+      <DependentUpon>201711301603162_prueba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711301618482_addSubTotal.cs" />
+    <Compile Include="Migrations\201711301618482_addSubTotal.Designer.cs">
+      <DependentUpon>201711301618482_addSubTotal.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrito.cs" />
@@ -142,11 +166,29 @@
     <EmbeddedResource Include="Migrations\201711271430282_INDICES.resx">
       <DependentUpon>201711271430282_INDICES.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711280630090_dw.resx">
+      <DependentUpon>201711280630090_dw.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711281814378_prodEnDetallePedido.resx">
       <DependentUpon>201711281814378_prodEnDetallePedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711282228388_removeComputed.resx">
       <DependentUpon>201711282228388_removeComputed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711300317513_fechaE.resx">
+      <DependentUpon>201711300317513_fechaE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711300318460_fechaElimin.resx">
+      <DependentUpon>201711300318460_fechaElimin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711300702060_costoLote.resx">
+      <DependentUpon>201711300702060_costoLote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711301603162_prueba.resx">
+      <DependentUpon>201711301603162_prueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711301618482_addSubTotal.resx">
+      <DependentUpon>201711301618482_addSubTotal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

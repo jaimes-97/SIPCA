@@ -47,5 +47,7 @@ namespace SIPCA.CLASES.Models
         [ScaffoldColumn(false)]
         public bool Eliminado { get; set; }
         public IEnumerable<LoteDetallePedido> LotesDetallesPedidos { get; set; }
+        public decimal Costo { get; set; }
+        public decimal Subtotal { get; set; }
     }
 }

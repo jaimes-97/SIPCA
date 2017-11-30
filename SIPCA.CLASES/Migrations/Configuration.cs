@@ -11,7 +11,7 @@ namespace SIPCA.CLASES.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(SIPCA.CLASES.Context.ModelContext context)

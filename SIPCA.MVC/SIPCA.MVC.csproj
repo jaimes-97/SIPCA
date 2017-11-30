@@ -215,9 +215,11 @@
     <Compile Include="Controllers\ApplicationUsersController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\DetalleCarritoesController.cs" />
     <Compile Include="Controllers\DetallePedidoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LotesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\PedidoesController.cs" />
@@ -296,6 +298,8 @@
     </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Compra.js" />
+    <Content Include="Scripts\CreateLote.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -406,6 +410,18 @@
     <Content Include="Views\Pedidoes\IndexTotal.cshtml" />
     <Content Include="Views\Pedidoes\DetailPedido.cshtml" />
     <Content Include="Views\DetallePedidoes\_Index2.cshtml" />
+    <Content Include="Views\Compras\Create.cshtml" />
+    <Content Include="Views\Compras\Delete.cshtml" />
+    <Content Include="Views\Compras\Details.cshtml" />
+    <Content Include="Views\Compras\Edit.cshtml" />
+    <Content Include="Views\Compras\Edit2.cshtml" />
+    <Content Include="Views\Compras\Index.cshtml" />
+    <Content Include="Views\Lotes\Delete.cshtml" />
+    <Content Include="Views\Lotes\Details.cshtml" />
+    <Content Include="Views\Lotes\Edit.cshtml" />
+    <Content Include="Views\Lotes\_Create.cshtml" />
+    <Content Include="Views\Lotes\_Index.cshtml" />
+    <Content Include="Views\Lotes\_Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -55,7 +55,7 @@ namespace SIPCA.MVC.Controllers
                     }
                 }
             }
-            ViewBag.slider = crearSlider(SliderProductos);
+           ViewBag.slider = crearSlider(SliderProductos);
             modelo_index.Productos = existentes;
             modelo_index.categorias = categorias.ToList();
 
@@ -82,6 +82,7 @@ namespace SIPCA.MVC.Controllers
                         slider.Add(p);
                         estaEnLista = false;
                     }
+                    estaEnLista = false;//ojo aca
                 }
             }
             return slider;

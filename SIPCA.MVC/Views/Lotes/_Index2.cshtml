@@ -1,0 +1,79 @@
+﻿@model IEnumerable<SIPCA.CLASES.Models.Lote>
+
+@{
+    ViewBag.Title = "_Index2";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>Detalle de Productos</strong>
+    </div>
+
+
+    <table class="table">
+        <tr>
+            <th>
+               
+
+                @*@Html.ActionLink("Nuevo", "Create", "DetalleFacturas",
+                    new { facturaId = ViewBag.FacturaId },
+                    new { @class = "btn btn-primary btn-rounded", data_modal = "facturaDeta" })*@
+            </th>
+
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Producto.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aplicaIVA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.porcentajeIVA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Costo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subtotal)
+            </th>
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    -
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.aplicaIVA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.porcentajeIVA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Costo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subtotal)
+                </td>
+              
+            </tr>
+        }
+
+    </table>
+</div>

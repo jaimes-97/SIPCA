@@ -29,7 +29,15 @@ namespace SIPCA.MVC.Controllers
             }
             Carrito carrito = db.Carritos.Where(c => c.ClienteId == cl.IdCliente).FirstOrDefault();
             var detallesCarritos = db.DetallesCarritos.Include(d => d.Producto).Where(d => d.IdCarrito == carrito.IdCarrito);
-            Session["contador"] = db.DetallesCarritos.Where(d => d.IdCarrito == carrito.IdCarrito).Count();
+            try
+            {
+                Session["contador"] = db.DetallesCarritos.Where(d => d.IdCarrito == carrito.IdCarrito).Count();
+            }catch(Exception e)
+            {
+                Session["contador"] = 0;
+              Debug.WriteLine("Exception" + e);
+            }
+           
             return View(detallesCarritos.ToList());
         }
 

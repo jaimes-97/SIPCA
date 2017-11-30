@@ -1,0 +1,58 @@
+﻿@model SIPCA.CLASES.Models.Lote
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lote</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Compra.NCompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Compra.NCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aplicaIVA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aplicaIVA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeIVA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeIVA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdLote }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
