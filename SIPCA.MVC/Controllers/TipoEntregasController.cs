@@ -100,7 +100,7 @@ namespace SIPCA.MVC.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdTipoEntrega,NombreTipoEntrega,Costo")] TipoEntrega tipoEntrega)
+        public ActionResult Edit([Bind(Include = "IdTipoEntrega,NombreTipoEntrega,Costo, Control")] TipoEntrega tipoEntrega)
         {
             try { 
             if (ModelState.IsValid)

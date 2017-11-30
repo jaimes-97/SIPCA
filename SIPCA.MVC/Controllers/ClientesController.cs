@@ -158,7 +158,7 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Eliminado,FechaMod,UserId")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "IdCliente,Nombre,Direccion,Cedula,Eliminado,FechaMod,UserId, control")] Cliente cliente)
         {
             try
             {

@@ -150,7 +150,7 @@ namespace SIPCA.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProveedor,Nombre,Correo,Direccion,Telefono,Eliminado")] Proveedor proveedor)
+        public ActionResult Edit([Bind(Include = "IdProveedor,Nombre,Correo,Direccion,Telefono,Eliminado, Control")] Proveedor proveedor)
         {
             try { 
             if (ModelState.IsValid)
