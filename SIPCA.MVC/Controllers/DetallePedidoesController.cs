@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SIPCA.CLASES.Context;
 using SIPCA.CLASES.Models;
 using System.Diagnostics;
+using Microsoft.AspNet.Identity;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -61,6 +62,72 @@ namespace SIPCA.MVC.Controllers
            
             
         }
+
+
+
+
+
+
+        
+        public ActionResult CreateCarritoPedido(int Id)
+        {
+           
+            var userId = User.Identity.GetUserId();
+            Cliente cl = db.Clientes.Where(c => c.UserId == userId).Where(c => c.Eliminado == false).FirstOrDefault();
+            if (cl == null)
+            {
+                return RedirectToAction("Create", "Clientes");
+            }
+            Carrito carrito = db.Carritos.Where(c => c.ClienteId == cl.IdCliente).FirstOrDefault();
+            var detallesCarritos = db.DetallesCarritos.Include(d => d.Producto).Where(d => d.IdCarrito == carrito.IdCarrito).ToList();
+
+            foreach (var dc in detallesCarritos)
+            {
+                DetallePedido dp = new DetallePedido();
+                dc.Producto.Lotes = db.Lotes.Where(l => l.ProductoId == dc.Producto.IdProducto && l.Eliminado == false && l.Existencia > 0).ToList();
+                dp.PedidoId = Id;
+                
+                dp.ProductoId = dc.Producto.IdProducto;
+                dp.Cantidad = dc.cantidad;
+                dp.PrecioVendido = dc.Producto.PrecioVenta;
+                dp.Eliminado = false;
+                foreach (var l in dc.Producto.Lotes)
+                {
+                    dp.aplicaIVA = l.aplicaIVA;
+                    dp.porcentajeIVA = l.porcentajeIVA;
+                    break;
+                }
+
+                db.DetallePedidos.Add(dp);
+                try
+                {
+                    db.SaveChanges();
+                    float total = calcularTotal(dp.Cantidad, dp.ProductoId, dp.aplicaIVA, dp.porcentajeIVA);
+                    int resultado = actualizarTotalPedido(total, dp.PedidoId, 1);
+                    Debug.WriteLine("RESULTADO DE LA ACTUA DEL TOTAL PEDIDO " + resultado);
+                    seleccionarLotes(dp.Cantidad, dp.ProductoId, dp.IdDetallePedido);
+
+                  
+                }
+                catch (Exception e)
+                {
+                    System.Diagnostics.Debug.WriteLine("EXCEPTION " + e);
+                }
+            
+            //
+
+
+
+        }
+
+
+            return RedirectToAction("Details", new { controller = "Pedidoes", action = "Details", Id = Id });
+
+        }
+
+
+
+
 
         public void anularPedidoDeta(int idDetalle)
         {

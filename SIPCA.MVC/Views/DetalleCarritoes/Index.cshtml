@@ -48,11 +48,11 @@
     var db = new ModelContext();
     var tipoEntregas = db.TipoEntregas.ToList();
 }
-@using (Html.BeginForm("Create", "Pedidos", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "margin-left:15px;" }))
+@using (Html.BeginForm("CreatePedidoCarrito", "Pedidoes", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "margin-left:15px;" }))
 {
     <div class="form-group">
-        <label for="TipoEntrega">Seleccione el tipo de entrega:</label>
-        <select class="form-control" id="TipoEntrega" name="TipoEntrega" style="color: sienna;" required>
+        <label for="TipoEntregaId">Seleccione el tipo de entrega:</label>
+        <select class="form-control" id="TipoEntregaId" name="TipoEntregaId" style="color: sienna;" required>
             @foreach (var item in tipoEntregas)
             {
                 <option value="@item.IdTipoEntrega">@item.NombreTipoEntrega</option>

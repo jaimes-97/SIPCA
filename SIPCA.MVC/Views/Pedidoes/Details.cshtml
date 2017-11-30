@@ -4,13 +4,31 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Pedido realizado</h2>
 
 <div>
-    <h4>Pedido</h4>
+    <h4>Datos de confirmación</h4>
     <hr />
     <dl class="dl-horizontal">
+       
         <dt>
+            @Html.DisplayNameFor(model => model.NPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NPedido)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+
+         <dt>
             @Html.DisplayNameFor(model => model.Cliente.Nombre)
         </dt>
 
@@ -24,6 +42,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.TipoEntrega.NombreTipoEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Direccion)
         </dd>
 
         <dt>
@@ -43,8 +69,10 @@
         </dd>
 
     </dl>
+    <p>El pedido debe ser cancelado antes de @Html.DisplayFor(model => model.FechaCorte) </p> 
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPedido }) |
-    @Html.ActionLink("Back to List", "Index")
+   
+   <a href="@Url.Action("Index","Home")"><span class="btn btn-default btn-lg active">Inicio</span></a>
+  
 </p>

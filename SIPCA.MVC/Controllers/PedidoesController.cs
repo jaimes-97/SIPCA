@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SIPCA.CLASES.Context;
 using SIPCA.CLASES.Models;
 using System.Diagnostics;
+using Microsoft.AspNet.Identity;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -65,6 +66,9 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdPedido,Fecha,ClienteId,TipoEntregaId,NPedido,Total,Eliminado,FechaEliminacion,FechaCorte,Control,Estado")] Pedido pedido)
         {
+
+             Debug.WriteLine("valor de tipoEntrega " + pedido.TipoEntregaId);
+
             if (ModelState.IsValid)
             {
                 Debug.WriteLine("valor de estado "+ pedido.Estado);
@@ -93,9 +97,57 @@ namespace SIPCA.MVC.Controllers
             ViewBag.TipoEntregaId = new SelectList(db.TipoEntregas, "IdTipoEntrega", "NombreTipoEntrega", pedido.TipoEntregaId);
             return View(pedido);
         }
+
+
+
+
+        //crear pedido de carrito
+        [HttpPost]
+     
+        public ActionResult CreatePedidoCarrito([Bind(Include = "TipoEntregaId,Total")] Pedido pedido)
+        {
+
+            Debug.WriteLine("valor de tipoEntrega " + pedido.TipoEntregaId);
+
+            var userId = User.Identity.GetUserId();
+            Cliente cl = db.Clientes.Where(c => c.UserId == userId).Where(c => c.Eliminado == false).FirstOrDefault();
+            if (cl == null)
+            {
+                return RedirectToAction("Create", "Clientes");
+            }
+
+                pedido.Eliminado = false;
+                pedido.FechaEliminacion = System.DateTime.Now;
+                pedido.Fecha = System.DateTime.Now;
+                pedido.FechaCorte = pedido.Fecha.AddDays(2);
+                pedido.Total = 0;
+                pedido.NPedido = obtenerUltimoConsecutivo();
+               pedido.ClienteId = cl.IdCliente;
+                db.Pedidos.Add(pedido);
+                try
+                {
+                    db.SaveChanges();
+                Debug.WriteLine("ID DEL PEDIDO GENERADO " + pedido.IdPedido);
+                return RedirectToAction("CreateCarritoPedido", new { controller = "DetallePedidoes", action = "CreateCarritoPedido", Id = pedido.IdPedido });
+            }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("EXCEPTION " + e);
+                }
+
+
+
+                return RedirectToAction("Edit", new { controller = "Pedidoes", action = "Edit", Id = pedido.IdPedido });
             
-       
-            public string obtenerUltimoConsecutivo()
+
+            ViewBag.ClienteId = new SelectList(db.Clientes, "IdCliente", "Nombre", pedido.ClienteId);
+            ViewBag.TipoEntregaId = new SelectList(db.TipoEntregas, "IdTipoEntrega", "NombreTipoEntrega", pedido.TipoEntregaId);
+            return View(pedido);
+        }
+
+        //
+
+        public string obtenerUltimoConsecutivo()
                  {
                     int ult= db.Pedidos.Count();
                      ult += 1;
