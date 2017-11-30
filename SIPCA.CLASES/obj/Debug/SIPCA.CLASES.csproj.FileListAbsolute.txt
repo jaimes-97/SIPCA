@@ -244,3 +244,4 @@ C:\Users\Green Buckett\Desktop\lonuevo\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES
 C:\Users\Green Buckett\Desktop\lonuevo\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.dll
 C:\Users\Green Buckett\Desktop\lonuevo\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.pdb
 C:\Users\Green Buckett\Desktop\lonuevo\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.removeComputed.resources
+C:\Users\domestic\Documents\Visual Studio 2015\Projects\SIPCA\SIPCA.CLASES\obj\Debug\SIPCA.CLASES.Migrations.removeComputed.resources
