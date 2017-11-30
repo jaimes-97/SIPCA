@@ -11,6 +11,7 @@ using SIPCA.CLASES.Context;
 using PagedList;
 using SIPCA.MVC.CustomFilters;
 using System.Data.SqlClient;
+using SIPCA.MVC.Reportes.Diseño;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -201,6 +202,157 @@ namespace SIPCA.MVC.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private string ConvertirUrlRelativaToUrlAbsoluta(string relativeUrl)
+        {
+            string strUrl = "";
+            if (Request.IsSecureConnection)
+                strUrl = string.Format("https://{0}{1}{2}", Request.Url.Host, Request.Url.Port == 80 ? "" : ":" + Request.Url.Port.ToString(), "/");
+            else
+                strUrl = string.Format("http://{0}{1}{2}", Request.Url.Host, Request.Url.Port == 80 ? "" : ":" + Request.Url.Port.ToString(), "/");
+            strUrl = strUrl + relativeUrl;
+            return strUrl;
+        }
+
+        public ActionResult DescargarPDF(string sort, string search)
+        {
+            GenerarReporte(Server.MapPath("~/Reportes/Generado/"), ConvertirUrlRelativaToUrlAbsoluta("Reportes/"), "PDF", sort, search);
+
+            return File("~/Reportes/Generado/Marcas.pdf", "application/pdf", "Marcas.pdf");
+        }
+
+        public ActionResult DescargarXLS(string sort, string search)
+        {
+            GenerarReporte(Server.MapPath("~/Reportes/Generado/"), ConvertirUrlRelativaToUrlAbsoluta("Reportes/"), "XLS", sort, search);
+
+            return File("~/Reportes/Generado/Marcas.xls", "application/vnd.ms-excel", "Marcas.xls");
+        }
+
+
+
+        public string GenerarReporte(string urlAbs, string urlRel, string Report, string sort, string search)
+        {
+            urlAbs = (urlAbs == null ? "" : urlAbs);
+
+            ViewBag.CategoriaSort = sort == "Marcas" ? "Nombre" : "Marcas";
+            string urlDir = "";
+
+            IQueryable<Marca> Marcas = db.Marcas.Where(t => t.Eliminado == false);
+
+            if (!string.IsNullOrEmpty(search)) Marcas = Marcas.Where(ti => ti.Nombre.Contains(search));
+
+            switch (sort)
+            {
+                case "Nombre":
+                    Marcas = Marcas.OrderByDescending(ti => ti.Nombre);
+                    break;
+
+                default:
+                    Marcas = Marcas.OrderBy(ti => ti.Nombre);
+                    break;
+            }
+
+            List<Marca> ListaMarcas = Marcas.ToList();
+
+            System.Data.DataTable tTemp = new System.Data.DataTable();
+            tTemp.Columns.Add("IdMarca", System.Type.GetType("System.Int32"));
+            tTemp.Columns.Add("Nombre", System.Type.GetType("System.String"));
+            //tTemp.Columns.Add("Active", System.Type.GetType("System.Boolean"));
+
+            foreach (Marca item in ListaMarcas)
+            {
+                System.Data.DataRow r = tTemp.NewRow();
+
+                r["IdMarca"] = item.IdMarca;
+                r["Nombre"] = item.Nombre;
+                // r["Active"] = item.Active;
+
+                tTemp.Rows.Add(r);
+            }
+
+            CrystalDecisions.CrystalReports.Engine.ReportDocument rpt = new MarcaRepo();
+
+            #region PDF
+            if (Report == "PDF")
+            {
+
+                if (!System.IO.File.Exists(urlAbs + "Marcas.pdf"))
+                {
+                    rpt.SetDataSource(tTemp);
+                    rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat,
+                        urlAbs + "Marcas.pdf");
+                    urlDir = urlRel + "Marcas.pdf";
+
+                    //this.DownloadPDF();
+                    rpt.Close();
+                    rpt.Dispose();
+                }
+                else
+                {
+                    try
+                    {
+                        System.IO.File.Delete(@urlAbs + "Marcas.pdf");
+
+                        rpt.SetDataSource(tTemp);
+                        rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat,
+                            urlAbs + "Marcas.pdf");
+                        urlDir = urlRel + "Marcas.pdf";
+
+                        //DownloadPDF();
+                        rpt.Close();
+                        rpt.Dispose();
+                    }
+                    catch (System.IO.IOException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        return "";
+                    }
+                }
+            }
+            #endregion
+
+            #region XLS
+            else
+            {
+
+                //
+                if (!System.IO.File.Exists(urlAbs + "Marcas.xls"))
+                {
+                    rpt.SetDataSource(tTemp);
+                    rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.Excel,
+                        urlAbs + "Marcas.xls");
+                    urlDir = urlRel + "Marcas.xls";
+
+                    //this.DownloadXLS();
+                    rpt.Close();
+                    rpt.Dispose();
+                }
+                else
+                {
+                    try
+                    {
+                        System.IO.File.Delete(@urlAbs + "Marcas.xls");
+
+                        rpt.SetDataSource(tTemp);
+                        rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.Excel,
+                            urlAbs + "Marcas.xls");
+                        urlDir = urlRel + "Marcas.xls";
+
+                        //DownloadXLS();
+                        rpt.Close();
+                        rpt.Dispose();
+                    }
+                    catch (System.IO.IOException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        return "";
+                    }
+                }
+            }
+            #endregion
+
+            return urlDir;
         }
     }
 }
