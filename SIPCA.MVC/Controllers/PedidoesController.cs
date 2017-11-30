@@ -22,7 +22,15 @@ namespace SIPCA.MVC.Controllers
             System.Diagnostics.Debug.WriteLine("el número de pedido es " + obtenerUltimoConsecutivo());
 
             var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega);
-            return View(pedidos.ToList());
+            List<Pedido> pedidosNoEliminados = new List<Pedido>();
+            foreach (Pedido p in pedidos)
+            {
+                if (p.Eliminado == false)
+                {
+                    pedidosNoEliminados.Add(p);
+                }
+            }
+            return View(pedidosNoEliminados);
         }
 
         // GET: Pedidoes/Details/5
@@ -66,6 +74,7 @@ namespace SIPCA.MVC.Controllers
                 pedido.FechaEliminacion = System.DateTime.Now;
                 pedido.Fecha = System.DateTime.Now;
                 pedido.FechaCorte = pedido.Fecha.AddDays(1);
+                pedido.Total = 0;
                 db.Pedidos.Add(pedido);
                 try
                 {
@@ -85,7 +94,7 @@ namespace SIPCA.MVC.Controllers
             return View(pedido);
         }
             
-
+       
             public string obtenerUltimoConsecutivo()
                  {
                     int ult= db.Pedidos.Count();
@@ -147,11 +156,21 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdPedido,Fecha,ClienteId,TipoEntregaId,NPedido,Total,Eliminado,FechaEliminacion,FechaCorte,Control,Estado")] Pedido pedido)
         {
+            pedido.Eliminado = false;
             if (ModelState.IsValid)
             {
+                pedido.Fecha = System.DateTime.Now;
+                pedido.FechaCorte = pedido.Fecha.AddDays(2);
+                pedido.FechaEliminacion = System.DateTime.Now;
                 db.Entry(pedido).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                } catch (Exception e)
+            {
+                Debug.WriteLine("EXCEPTION " + e);
+             }
             }
             ViewBag.ClienteId = new SelectList(db.Clientes, "IdCliente", "Nombre", pedido.ClienteId);
             ViewBag.TipoEntregaId = new SelectList(db.TipoEntregas, "IdTipoEntrega", "NombreTipoEntrega", pedido.TipoEntregaId);
@@ -178,10 +197,108 @@ namespace SIPCA.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pedido pedido = db.Pedidos.Find(id);
-            db.Pedidos.Remove(pedido);
-            db.SaveChanges();
+
+            eliminarPedido(id);
+            //Pedido pedido = db.Pedidos.Find(id);
+            //db.Pedidos.Remove(pedido);
+           // db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+        public void actualizarLote(Lote l)
+        {
+
+            Lote lote = db.Lotes.Find(l.IdLote);
+            lote = l;
+
+
+
+            db.Entry(l).State = EntityState.Modified;
+            db.SaveChanges();
+
+        }
+
+        public void anularPedidoDeta(int idDetalle)
+        {
+            var lotesDetalles = db.LoteDetallePedidos.ToList();
+            var lotes = db.Lotes.ToList();
+            foreach (LoteDetallePedido ldp in lotesDetalles)
+            {
+                if (ldp.DetallePedidoId == idDetalle)
+                {
+                    
+                    foreach (Lote l in lotes)
+                    {
+                        if (l.IdLote == ldp.LoteID && ldp.Eliminado==false)
+                        {
+                            l.Existencia += ldp.CantidadRestar;
+                            actualizarLote(l);
+
+
+
+                        }
+                    }
+                    ldp.Eliminado = true;
+
+                    db.Entry(ldp).State = EntityState.Modified;
+                    db.SaveChanges();
+
+
+                }
+            }
+        }
+
+        public void eliminarDetallePedido(int pedidoId)
+        {
+            var detallesPedidos = db.DetallePedidos.ToList();
+            foreach(DetallePedido dp in detallesPedidos)
+            {
+                if (dp.PedidoId == pedidoId)
+                {
+                    dp.Eliminado = true;
+                    db.Entry(dp).State = EntityState.Modified;
+                    try
+                    {
+                        db.SaveChanges();
+                        anularPedidoDeta(dp.IdDetallePedido);
+                       // return 1;// no se retorna para que recorra todos los registros eliminando los respectivos
+
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine("EXCEPTION " + e);
+                    }
+
+                }
+            }
+        }
+
+        public int eliminarPedido(int pedidoId)
+        {
+            var pedidos = db.Pedidos.ToList();
+           
+            foreach(Pedido p in pedidos)
+            {
+                if (p.IdPedido == pedidoId)
+                {
+                        p.Eliminado = true;
+                        db.Entry(p).State = EntityState.Modified;
+                        try
+                        {
+                            db.SaveChanges();
+                            eliminarDetallePedido(p.IdPedido);
+                           return  1;// indica que elimino logicamente
+                           
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine("EXCEPTION " + e);
+                        }
+                    
+                }
+            }
+            return 0;
         }
 
         protected override void Dispose(bool disposing)

@@ -11,6 +11,7 @@
     <h4>DetallePedido</h4>
     <hr />
     <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.PedidoId)
         <dt>
             @Html.DisplayNameFor(model => model.Pedido.NPedido)
         </dt>

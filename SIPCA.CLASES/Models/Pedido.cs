@@ -37,7 +37,7 @@ namespace SIPCA.CLASES.Models
         [Display(Name = "Número de pedido")]
         public string NPedido { get; set;}
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        
         [DisplayFormat(DataFormatString = "{0:0.####}", ApplyFormatInEditMode = true)]
         [Display(Name = "TOTAL")]
         public decimal Total { get; set; }

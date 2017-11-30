@@ -87,6 +87,10 @@
     <Compile Include="Migrations\201711281814378_prodEnDetallePedido.Designer.cs">
       <DependentUpon>201711281814378_prodEnDetallePedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711282228388_removeComputed.cs" />
+    <Compile Include="Migrations\201711282228388_removeComputed.Designer.cs">
+      <DependentUpon>201711282228388_removeComputed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrito.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -140,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711281814378_prodEnDetallePedido.resx">
       <DependentUpon>201711281814378_prodEnDetallePedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282228388_removeComputed.resx">
+      <DependentUpon>201711282228388_removeComputed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

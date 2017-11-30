@@ -143,7 +143,7 @@ namespace SIPCA.CLASES.Migrations
                         ClienteId = c.Int(nullable: false),
                         TipoEntregaId = c.Int(nullable: false),
                         NPedido = c.String(nullable: false, maxLength: 250),
-                       // Total = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Total = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Eliminado = c.Boolean(nullable: false),
                         FechaEliminacion = c.DateTime(nullable: false),
                     })
@@ -153,30 +153,9 @@ namespace SIPCA.CLASES.Migrations
                 .Index(t => t.ClienteId)
                 .Index(t => t.TipoEntregaId);
 
-            Sql(@"Create FUNCTION dbo.GetSumDetallePedido(@pedidoId INT)
-                   Returns Decimal(18,2)
-                AS
-                Begin
-                
-                DECLARE @pedidoSum Decimal(18,2)
-                
-                select @pedidoSum = sum((p.PrecioVenta * dp.Cantidad)+((p.PrecioVenta * dp.Cantidad)*(dp.porcentajeIVA/100))) 
-                from DetallePedido dp 
-				inner join LoteDetallePedido ldp on dp.IdDetallePedido=ldp.DetallePedidoId
-				inner join lote l on l.IdLote=ldp.LoteID
-				inner join producto p on p.IdProducto=l.ProductoId 
-				inner join Pedido pe on pe.IdPedido=dp.PedidoId
-                where pe.IdPedido = @pedidoId
-                and dp.eliminado=0
+           
 
-                return ISNULL(@pedidoSum,0)
-                END
-                ");
-
-            Sql(@"
-                ALTER TABLE dbo.Pedido add Total AS 
-                dbo.GetSumDetallePedido(idPedido)
-                ");
+           
 
             CreateTable(
                 "dbo.TipoEntrega",

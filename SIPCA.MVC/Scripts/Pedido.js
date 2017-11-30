@@ -34,6 +34,57 @@
 
 });
 
+
+
+
+
+
+
+
+
+$(function () {
+
+    $("a[data-modal=pedidoDetaElim]").on("click", function () {
+        $("#pedidoDetaModalContentElim").load(this.href, function () {
+            $("#pedidoDetaModalElim").modal({ keyboard: true }, "show");
+
+            $(document).on("submit", "#pedidoDetachoiceElim", function () {
+
+
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        if (result.success) {
+                            $("#pedidoDetaModalElim").modal("hide");
+                            location.reload();
+                        } else {
+                            $("#MessageToClient").text("No se pudo actualizar el registro.");
+                        }
+                    },
+                    error: function () {
+                        $("#MessageToClient").text("Información inconsistente, no se pudo actualizar el registro .");
+                    }
+                });
+                return false;
+            });
+        });
+        return false;
+    });
+
+
+
+
+});
+
+
+
+
+
+
+
+
 function numberWithCommas(yourNumber) {
     //Seperates the components of the number
     var n = yourNumber.toString().split(".");
@@ -58,7 +109,7 @@ function recalculatePart() {
     document.getElementById("Cantidad").value = quantity;
     document.getElementById("PrecioVenta").value = unitPrice;
 
-    document.getElementById("total").value = numberWithCommas((quantity * unitPrice).toFixed(4));
+    document.getElementById("Total").value = numberWithCommas((quantity * unitPrice).toFixed(4));
 }
 
 $(document).ready(function () {

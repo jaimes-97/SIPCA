@@ -1,0 +1,78 @@
+﻿@model SIPCA.CLASES.Models.DetallePedido
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "pedidoDetachoiceElim" }))
+{
+
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal" aria-hidden="True">&times;</a>
+        <h4 class="modal-title">Eliminar Producto</h4>
+    </div>
+
+    <div class="modal-body">
+        <p id="MessageToClient" class="text-danger"></p>
+        @Html.AntiForgeryToken()
+        <h3>Are you sure you want to delete this?</h3>
+
+        <div>
+            <h4>DetallePedido</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Pedido.NPedido)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Pedido.NPedido)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Producto.Nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Producto.Nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cantidad)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cantidad)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.aplicaIVA)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.aplicaIVA)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.porcentajeIVA)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.porcentajeIVA)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PrecioVendido)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PrecioVendido)
+                </dd>
+
+            </dl>
+
+
+
+        </div>
+    </div>
+            <div class="modal-footer">
+                <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
+                <input class="btn btn-primary btnSave" type="submit" value="Guardar" />
+            </div>
+            }
+      
