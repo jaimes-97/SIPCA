@@ -22,16 +22,16 @@ namespace SIPCA.MVC.Controllers
         {
             System.Diagnostics.Debug.WriteLine("el número de pedido es " + obtenerUltimoConsecutivo());
 
-            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega);
-            List<Pedido> pedidosNoEliminados = new List<Pedido>();
-            foreach (Pedido p in pedidos)
-            {
-                if (p.Eliminado == false)
-                {
-                    pedidosNoEliminados.Add(p);
-                }
-            }
-            return View(pedidosNoEliminados);
+            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega).Where(p => p.Eliminado == false).ToList();
+            return View(pedidos);
+        }
+
+        public ActionResult IndexVencidos()
+        {
+            System.Diagnostics.Debug.WriteLine("el número de pedido es " + obtenerUltimoConsecutivo());
+
+            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega).Where(p => p.Eliminado == false && p.FechaCorte < DateTime.Now).ToList();
+            return View(pedidos);
         }
 
         // GET: Pedidoes/Details/5

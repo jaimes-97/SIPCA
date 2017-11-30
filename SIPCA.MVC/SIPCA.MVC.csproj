@@ -402,6 +402,7 @@
     <Content Include="Views\DetalleCarritoes\Delete.cshtml" />
     <Content Include="Views\DetalleCarritoes\Edit.cshtml" />
     <Content Include="Views\DetalleCarritoes\Index.cshtml" />
+    <Content Include="Views\Pedidoes\IndexVencidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
