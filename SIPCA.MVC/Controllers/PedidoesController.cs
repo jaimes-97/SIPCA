@@ -22,7 +22,7 @@ namespace SIPCA.MVC.Controllers
         {
             System.Diagnostics.Debug.WriteLine("el número de pedido es " + obtenerUltimoConsecutivo());
 
-            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega).Where(p => p.Eliminado == false).Where(p=>p.Estado !=0).ToList();
+            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega).Where(p => p.Eliminado == false && p.FechaCorte >= DateTime.Now && p.Estado == 2).ToList();
             return View(pedidos);
         }
 
@@ -30,7 +30,7 @@ namespace SIPCA.MVC.Controllers
         {
             System.Diagnostics.Debug.WriteLine("el número de pedido es " + obtenerUltimoConsecutivo());
 
-            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega).Where(p => p.Eliminado == false && p.FechaCorte < DateTime.Now).ToList();
+            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega).Where(p => p.Eliminado == false && p.FechaCorte < DateTime.Now && p.Estado == 2).ToList();
             return View(pedidos);
         }
 
@@ -98,6 +98,15 @@ namespace SIPCA.MVC.Controllers
             return View(pedido);
         }
 
+
+        //anular pedido
+        public ActionResult AnularPedido(int id)
+        {
+            eliminarPedido(id);
+            return RedirectToAction("IndexVencidos");
+        }
+
+        //
 
 
         // cancelar pedido
@@ -357,6 +366,7 @@ namespace SIPCA.MVC.Controllers
                 if (p.IdPedido == pedidoId)
                 {
                         p.Eliminado = true;
+                        p.Estado = 3;//anulado
                         db.Entry(p).State = EntityState.Modified;
                         try
                         {
