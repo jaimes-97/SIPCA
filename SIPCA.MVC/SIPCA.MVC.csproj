@@ -250,6 +250,12 @@
       <DependentUpon>201711280411573_alli.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Reportes\Diseño\MarcaRepo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MarcaRepo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\ApplicationRole.cs" />
     <Compile Include="ViewModels\ApplicationRoleViewModel.cs" />
@@ -430,6 +436,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711280411573_alli.resx">
       <DependentUpon>201711280411573_alli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Diseño\MarcaRepo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MarcaRepo.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -239,6 +239,7 @@ namespace SIPCA.MVC.Controllers
         {
             urlAbs = (urlAbs == null ? "" : urlAbs);
 
+            ViewBag.CategoriaSort = sort == "Categorias" ? "Nombre" : "Categorias";
             string urlDir = "";
 
             IQueryable<Categoria> Categorias = db.Categorias.Where(t => t.Eliminado == false);
@@ -247,7 +248,7 @@ namespace SIPCA.MVC.Controllers
 
             switch (sort)
             {
-                case "Categorias_desc":
+                case "Nombre":
                     Categorias = Categorias.OrderByDescending(ti => ti.Nombre);
                     break;
 
