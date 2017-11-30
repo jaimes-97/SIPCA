@@ -128,7 +128,14 @@ namespace SIPCA.MVC.Controllers
                 if (cl != null)
                 {
                     Carrito carrito = db.Carritos.Where(c => c.ClienteId == cl.IdCliente).FirstOrDefault();
-                    Session["contador"] = db.DetallesCarritos.Where(d => d.IdCarrito == carrito.IdCarrito).Count();
+                    try {
+
+                        Session["contador"] = db.DetallesCarritos.Where(d => d.IdCarrito == carrito.IdCarrito).Count();
+                    }catch(Exception e)
+                    {
+                        Session["contador"] = 0;
+                    }
+                       
                 }
                 var userManager =
                     new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));

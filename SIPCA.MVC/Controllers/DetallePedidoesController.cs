@@ -119,15 +119,56 @@ namespace SIPCA.MVC.Controllers
 
 
         }
-
+            //aca se limpia carrito, luego que se genera todo el pedido
+            limpiarCarrito(carrito.IdCarrito, cl.IdCliente);
 
             return RedirectToAction("Details", new { controller = "Pedidoes", action = "Details", Id = Id });
 
         }
 
+     
 
+        public void limpiarCarrito(int idCarrito, int idCliente)
+        {
+            borrarDetalleCarrito(idCarrito);
+            borrarCarrito(idCliente);
+        }
 
+        public void borrarDetalleCarrito(int idCarrito)
+        {
+            var detallesCarritos = db.DetallesCarritos.Where(d => d.IdCarrito == idCarrito).ToList();
+            foreach (DetalleCarrito dc in detallesCarritos)
+            {
+                try
+                {
+                    db.DetallesCarritos.Remove(dc);
+                    db.SaveChanges();
+                }catch(Exception e)
+                {
+                    Debug.WriteLine("Exception " + e);
+                }
+               
+            }
 
+        }
+
+        public void borrarCarrito(int idCliente)
+        {
+            var carritos = db.Carritos.Where(c => c.ClienteId == idCliente).ToList();
+            foreach (Carrito car in carritos)
+            {
+                try
+                {
+                    db.Carritos.Remove(car);
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("Exception " + e);
+                }
+
+            }
+        }
 
         public void anularPedidoDeta(int idDetalle)
         {
