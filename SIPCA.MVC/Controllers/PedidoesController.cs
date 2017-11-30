@@ -22,7 +22,7 @@ namespace SIPCA.MVC.Controllers
         {
             System.Diagnostics.Debug.WriteLine("el número de pedido es " + obtenerUltimoConsecutivo());
 
-            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega).Where(p => p.Eliminado == false).ToList();
+            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega).Where(p => p.Eliminado == false).Where(p=>p.Estado !=0).ToList();
             return View(pedidos);
         }
 
@@ -100,6 +100,27 @@ namespace SIPCA.MVC.Controllers
 
 
 
+        // cancelar pedido
+        
+        public ActionResult CancelarPedido(int id)
+        {
+            Pedido pedido = db.Pedidos.Where(p => p.IdPedido == id).FirstOrDefault();
+            pedido.Estado = 0;
+            db.Entry(pedido).State = EntityState.Modified;
+            try
+            {
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("EXCEPTION " + e);
+            }
+
+            return RedirectToAction("Index", new { controller = "Pedidoes", action = "Index"});
+        }
+
+        //
 
         //crear pedido de carrito
         [HttpPost]
@@ -117,6 +138,7 @@ namespace SIPCA.MVC.Controllers
             }
 
                 pedido.Eliminado = false;
+                pedido.Estado = 2; //Activo
                 pedido.FechaEliminacion = System.DateTime.Now;
                 pedido.Fecha = System.DateTime.Now;
                 pedido.FechaCorte = pedido.Fecha.AddDays(2);
