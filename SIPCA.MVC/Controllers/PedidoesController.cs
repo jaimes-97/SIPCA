@@ -34,6 +34,13 @@ namespace SIPCA.MVC.Controllers
             return View(pedidos);
         }
 
+        public ActionResult IndexTotal()
+        {
+            var pedidos = db.Pedidos.Include(p => p.Cliente).Include(p => p.TipoEntrega).Where(p => p.Eliminado == false && p.Estado != 1).ToList();
+            return View(pedidos);
+        }
+
+
         // GET: Pedidoes/Details/5
         public ActionResult Details(int? id)
         {
@@ -214,7 +221,22 @@ namespace SIPCA.MVC.Controllers
                      return ultimo2;
                 }
                 
-        
+        public ActionResult DetailPedido(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Pedido pedido = db.Pedidos.Find(id);
+            if (pedido == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ClienteId = new SelectList(db.Clientes, "IdCliente", "Nombre", pedido.ClienteId);
+            ViewBag.TipoEntregaId = new SelectList(db.TipoEntregas, "IdTipoEntrega", "NombreTipoEntrega", pedido.TipoEntregaId);
+            return View(pedido);
+        }
+
         // GET: Pedidoes/Edit/5
         public ActionResult Edit(int? id)
         {

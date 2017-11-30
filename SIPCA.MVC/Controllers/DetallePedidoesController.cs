@@ -35,6 +35,23 @@ namespace SIPCA.MVC.Controllers
             return PartialView("_index", detalles);
         }
 
+        public ActionResult Index2(int pedidoId)
+        {
+            ViewBag.PedidoId = pedidoId;
+
+
+            var detallePedidos = db.DetallePedidos.Include(d => d.Pedido).Where(f => f.PedidoId == pedidoId).OrderBy(f => f.IdDetallePedido).ToList(); ;
+            List<DetallePedido> detalles = new List<DetallePedido>();
+            foreach (DetallePedido dp in detallePedidos)
+            {
+                if (dp.Eliminado == false)
+                {
+                    detalles.Add(dp);
+                }
+            }
+            return PartialView("_index2", detalles);
+        }
+
         // GET: DetallePedidoes/Details/5
         public ActionResult Details(int? id)
         {

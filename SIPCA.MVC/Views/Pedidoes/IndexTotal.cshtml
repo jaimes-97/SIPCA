@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SIPCA.CLASES.Models.Pedido>
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoEntrega.NombreTipoEntrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoEntrega.NombreTipoEntrega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.ActionLink("Ver Detalles", "DetailPedido", new { id=item.IdPedido })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+
+    <a href="@Url.Action("Index2","Home")"><span class="btn btn-default btn-lg active">Panel Administrativo</span></a>
+
+</p>
