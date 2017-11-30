@@ -109,15 +109,17 @@ namespace SIPCA.MVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Producto producto = db.Productos.Find(id);
+            if (producto == null)
+            {
+                return HttpNotFound();
+            }
             if (producto.ImagenId != null)
             {
                 Imagen imagen = db.imagenes.Find(producto.ImagenId);
                 producto.Imagen = imagen;
             }
-            if (producto == null)
-            {
-                return HttpNotFound();
-            }
+            producto.Lotes = db.Lotes.Where(l => l.ProductoId == producto.IdProducto && l.Eliminado == false && l.Existencia > 0).ToList();
+
             return View(producto);
         }
 

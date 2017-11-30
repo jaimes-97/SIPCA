@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using SIPCA.MVC.ViewModels;
 using SIPCA.CLASES.Models;
 using PagedList;
+using SIPCA.CLASES.Context;
 
 namespace SIPCA.MVC.Controllers
 {
@@ -19,14 +20,6 @@ namespace SIPCA.MVC.Controllers
 
         public ActionResult Index(int? categoria)
         {
-            if (Session["contador"] == null)
-                Session["contador"] = 0;
-            else
-                if (int.Parse(Session["contador"].ToString()) == 20)
-                    Session["contador"] = null;
-                else
-                    Session["contador"] = int.Parse(Session["contador"].ToString()) + 1;
-
             var productos = db.Productos.ToList();
             var lotes = db.Lotes.ToList();
             var imagenes = db.imagenes.ToList();
@@ -34,7 +27,7 @@ namespace SIPCA.MVC.Controllers
 
             ModeloIndex modelo_index = new ModeloIndex();
             List<Producto> existentes = new List<Producto>();
-            
+            List<Producto> SliderProductos = new List<Producto>();
 
             foreach (Producto pro in productos)
             {
@@ -52,6 +45,7 @@ namespace SIPCA.MVC.Controllers
                                 }
                             }
                         }
+                        SliderProductos.Add(pro);
                         if (categoria == null)
                             existentes.Add(pro);
                         else {
@@ -61,10 +55,36 @@ namespace SIPCA.MVC.Controllers
                     }
                 }
             }
+            ViewBag.slider = crearSlider(SliderProductos);
             modelo_index.Productos = existentes;
             modelo_index.categorias = categorias.ToList();
 
             return View(modelo_index);
+        }
+
+        private List<Producto> crearSlider(List<Producto> productos) {
+            var items = 4;
+            var cantidadProductos = productos.Count();
+            if (cantidadProductos <= items)
+                return productos;
+            List<Producto> slider = new List<Producto>();
+            Random r = new Random();
+            for (int i = 0; i < items; i++)
+            {
+                bool estaEnLista = true;
+                while (estaEnLista)
+                {
+                    int random = r.Next(cantidadProductos);
+                    Debug.WriteLine("numero random: "+random);
+                    Producto p = productos.ElementAt(random);
+                    if (slider.Count() == 0 || slider.Find(pr => pr.IdProducto == p.IdProducto) == null)
+                    {
+                        slider.Add(p);
+                        estaEnLista = false;
+                    }
+                }
+            }
+            return slider;
         }
 
 
@@ -101,14 +121,23 @@ namespace SIPCA.MVC.Controllers
         [Authorize]
         public ActionResult DefineHome()
         {
-            var userId = User.Identity.GetUserId();
-            var userManager =
-                new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var result = userManager.IsInRole(userId, "Admin");
-            if (result)
-                return RedirectToAction("Index2");
-            else
-                return RedirectToAction("Index");
+            using (SIPCA.CLASES.Context.ModelContext db = new ModelContext())
+            {
+                var userId = User.Identity.GetUserId();
+                CLASES.Models.Cliente cl = db.Clientes.Where(c => c.UserId == userId).Where(c => c.Eliminado == false).FirstOrDefault();
+                if (cl != null)
+                {
+                    Carrito carrito = db.Carritos.Where(c => c.ClienteId == cl.IdCliente).FirstOrDefault();
+                    Session["contador"] = db.DetallesCarritos.Where(d => d.IdCarrito == carrito.IdCarrito).Count();
+                }
+                var userManager =
+                    new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var result = userManager.IsInRole(userId, "Admin");
+                if (result)
+                    return RedirectToAction("Index2");
+                else
+                    return RedirectToAction("Index");
+            }
         }
     }
 }

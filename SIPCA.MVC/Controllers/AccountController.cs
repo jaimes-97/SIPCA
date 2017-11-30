@@ -76,6 +76,8 @@ namespace SIPCA.MVC.Controllers
             }
 
             var user = await UserManager.FindByNameAsync(model.Email);
+            if (user == null)
+                return RedirectToAction("Register");
             if (!UserManager.IsInRole(user.Id, "Admin"))
             {
                 if (user != null)
@@ -478,7 +480,10 @@ namespace SIPCA.MVC.Controllers
         public ActionResult LogOff()
         {
 
-
+            if (Session["contador"] != null)
+            {
+                Session["contador"] = null;
+            }
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

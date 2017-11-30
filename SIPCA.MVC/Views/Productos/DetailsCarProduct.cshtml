@@ -15,7 +15,7 @@
         else
         {
             <div>
-                <h3 style="color: whitesmoke; height: 370px; text-align: center; padding-top: 185px;">No hay imagen</h3>
+                <h3 style="color: whitesmoke; height: 370px; text-align: center; padding-top: 185px; background-color: cadetblue;">No hay imagen</h3>
             </div>
 
         }
@@ -33,16 +33,31 @@
             <p style="font-size: 1.5em; color: thistle;">@Html.DisplayNameFor(model => model.Categoria)<p />
             <h3 style="text-indent: 30px;color: floralwhite;">@Html.DisplayFor(model => model.Categoria.Nombre)</h3>
 
-            <form>
+            <p style="font-size: 1.5em; color: thistle;">Cantidad en existencia:<p/>
+            @{var c = 0;}
+            @foreach (var item in Model.Lotes)
+            {
+                c += item.Existencia;
+            }
+            <h3 style="text-indent: 30px;color: floralwhite;">@c pares en existencia</h3>
+
+            @using (Html.BeginForm("Create", "DetalleCarritoes", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <input type="hidden" name="ProductoId" id="ProductoId" value="@Html.DisplayFor(model => model.IdProducto)" required/>
+                <input type="hidden" name="SubTotal" id="SubTotal" value="@Html.DisplayFor(model => model.PrecioVenta)" required/>
                 <div style="margin-top: 15px;" class="input-group">
                     <span class="input-group-addon text-info" style="font-weight: 600;">Cantidad</span>
-                    <input id="msg" type="number" class="form-control" name="cantidad" style="color: white;" min="1">
+                    <input id="msg" type="number" class="form-control" name="cantidad" style="color: sienna;" min="1" max="@c" required>
                 </div>
+                <input style="margin-bottom:5px; margin-top: 5px;" type="submit" value="Añadir al carrito" class="btn btn-default" />
+            }
+            <form>
+                
             </form>
         </div>
     </div>
 </div>
 <p>
-    @Html.ActionLink("Añadir al carrito", "create","Carritos", new { id = Model.IdProducto }) |
+    @Html.ActionLink("Ir al carrito", "Index","DetalleCarritoes") |
     @Html.ActionLink("Ir a Inicio", "Index", "Home")
 </p>

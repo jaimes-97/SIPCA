@@ -31,54 +31,66 @@
     }
 </style>
 <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
-
+@using SIPCA.CLASES.Models;
+@{
+    var listaP = (List < Producto >) ViewBag.slider;
+    var cantidad = listaP.Count();
+}
 <br/>
-<br />
+<br/>
 <div class="row text-center">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
+            @for (int i = 0; i < cantidad; i++){
+                if (i == 0){
+                    <li style="background-color:thistle;" data-target="#myCarousel" data-slide-to="@i" class="active"></li>
+                } else{
+                    <li style="background-color:thistle;" data-target="#myCarousel" data-slide-to="@i"></li>
+                }
+            }
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox" style="background-color: white;">
-
-            <div class="item active">
-                <img style="max-height:400px;" class="img-responsive icar" src="https://static.vix.com/es/sites/default/files/styles/large/public/imj/imujer/P/Pantuflas-de-invierno-para-mujeres3.jpg?itok=n8_9Qf0J" alt="Chania">
-                <div class="carousel-caption" style="background-color: rgba(214, 214, 230, 0.39);">
-                    <h3 class="label label-primary" style="font-size:1.6rem;">Pantunflas Tommy</h3>
-                    <p style="color:black">Producto con un 20% de descuento, aprovecha ya!.</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <img style="max-height:400px;" class="img-responsive icar" src="http://www.marinadelaredo.es/images/pfiosao/FxQ110-Zapatillas-Asics-Onitsuka-Tiger-Mexico-66-Hombre-Verde-Negro-Rojo-Zapatos-En-Madrid-84296671_6320.jpg" alt="Chania">
-                <div class="carousel-caption" style="background-color: rgba(214, 214, 230, 0.39);">
-                    <h3 class="label label-primary" style="font-size:1.6rem;">Onisuka Tiger</h3>
-                    <p style="color:black">Variados y en multiples Colores.</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <img style="max-height:400px;" class="img-responsive icar" src="http://zapachic.com/wp-content/uploads/2015/04/3-Colecci%C3%B3n-Heritage-de-Supra-Shoes.jpg " alt="Flower">
-                <div class="carousel-caption" style="background-color: rgba(214, 214, 230, 0.39);">
-                    <h3 class="label label-primary" style="font-size:1.6rem;">Supra</h3>
-                    <p style="color:black">Modelo de Botines 2015.</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <img style="max-height:400px;" class="img-responsive icar" src="http://www.catax.es/image/cache/data/category_5/tenis-levis-negros-enos-5512-636-500x416_0.jpg" alt="Flower">
-                <div class="carousel-caption" style="background-color: rgba(214, 214, 230, 0.39);">
-                    <h3 class="label label-primary" style="font-size:1.6rem;">Levi´s</h3>
-                    <p style="color:black">Llevalos este Viernes Negro en Liquidación.</p>
-                </div>
-            </div>
+            @for (int i = 0; i < cantidad; i++){
+                if (i == 0){
+                    <div class="item active">
+                        <a href="@Url.Action("DetailsCarProduct", "Productos", new { id = @listaP.ElementAt(i).IdProducto })" title="Ver detalles">
+                            @if (listaP.ElementAt(i).Imagen == null)
+                            {
+                                <h3 style="color: #986a54; height: 400px; width: 70%; margin: 0 auto; padding-top: 180px;">No hay imagen</h3>
+                            }
+                            else
+                            {
+                                <img style="max-height:400px;" class="img-responsive icar" src="@Url.Content(listaP.ElementAt(i).Imagen.ImagePath)" alt="imagen">
+                            }
+                        </a>
+                        <div class="carousel-caption" style="background-color: rgba(214, 214, 230, 0.39);">
+                            <h3 class="label label-primary" style="font-size:1.6rem;">@listaP.ElementAt(i).Nombre</h3>
+                            <p style="color:black; padding-top: 5px;">@listaP.ElementAt(i).Categoria.Nombre</p>
+                        </div>
+                    </div>
+                } else{
+                    <div class="item">
+                        <a href="@Url.Action("DetailsCarProduct", "Productos", new { id = @listaP.ElementAt(i).IdProducto })" title="Ver detalles">
+                            @if (listaP.ElementAt(i).Imagen == null)
+                            {
+                                <h3 style="color: #986a54; height: 400px; width: 70%; margin: 0 auto; padding-top: 180px;">No hay imagen</h3>
+                            }
+                            else
+                            {
+                                <img style="max-height:400px;" class="img-responsive icar" src="@Url.Content(listaP.ElementAt(i).Imagen.ImagePath)" alt="imagen">
+                            }
+                        </a>
+                        <div class="carousel-caption" style="background-color: rgba(214, 214, 230, 0.39);">
+                            <h3 class="label label-primary" style="font-size:1.6rem;">@listaP.ElementAt(i).Nombre</h3>
+                            <p style="color:black; padding-top: 5px;">@listaP.ElementAt(i).Categoria.Nombre</p>
+                        </div>
+                    </div>
+                }
+            }
         </div>
 
         <!-- Left and right controls -->
@@ -92,6 +104,7 @@
         </a>
     </div>
 </div>
+<div class="clearfix"></div>
 <br />
 <br />
 <div class="row">
@@ -100,7 +113,7 @@
             @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline" }))
             {
                 <div class="input-group">
-                    <select class="form-control" id="categoria" name="categoria" style="color: white;">
+                    <select class="form-control" id="categoria" name="categoria" style="color: sienna;">
                         @foreach (var item in Model.categorias){
                             <option value="@item.IdCategoria">@item.Nombre</option>
                         }
@@ -131,7 +144,7 @@
                 {
                     <a href="@Url.Action("DetailsCarProduct", "Productos", new { id = item.IdProducto })"
                        data-toggle="tooltip" data-placement="bottom" title="Ver detalles" style="text-decoration: none;">
-                        <h3 style="color: whitesmoke; height: 370px; text-align: center; padding-top: 185px;">No hay imagen</h3>
+                        <h3 style="color: whitesmoke; height: 370px; text-align: center; padding-top: 185px; margin-top: auto; margin-bottom: auto;">No hay imagen</h3>
                     </a>
                     
                 }
@@ -143,7 +156,14 @@
                     <p style="display: inline-block;"><b><span class="badge badge-primary">Precio:</span></b> C$@Html.DisplayFor(modelItem => item.PrecioVenta)</p>
 
 					<div class="text-right" style="display: inline-block; float: right; margin-top: -10px;">
-                        @Html.ActionLink("Añadir al carrito", "Create", "Carritos", new { id = item.IdProducto }, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+                        @using (Html.BeginForm("Create", "DetalleCarritoes", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            <input type="hidden" name="ProductoId" id="ProductoId" value="@Html.DisplayFor(modelItem => item.IdProducto)" />
+                            <input type="hidden" name="SubTotal" id="SubTotal" value="@Html.DisplayFor(modelItem => item.PrecioVenta)" />
+                            <input type="hidden" name="cantidad" id="cantidad" value="1" />
+                            <input type="submit" value="Añadir al carrito" class="btn btn-xs btn-info" />
+                        }
+                        @** @Html.ActionLink("Añadir al carrito", "Create", "DetalleCarritoes", new { ProductoId = item.IdProducto, cantidad = 1 }, htmlAttributes: new { @class = "btn btn-xs btn-info navbar" })**@
 					</div> 
                 </div>
             </div>
