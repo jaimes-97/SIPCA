@@ -38,9 +38,14 @@
             @Html.DisplayFor(modelItem => item.Total)
         </td>
         <td>
-            @Html.ActionLink("Anular", "Delete", new { id=item.IdPedido })
+            @Html.ActionLink("Cancelar Pedido", "AnularPedido", new { id = item.IdPedido })
         </td>
     </tr>
 }
 
 </table>
+<p>
+
+    <a href="@Url.Action("Index2","Home")"><span class="btn btn-default btn-lg active">Panel Administrativo</span></a>
+
+</p>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SIPCA.CLASES.Models.DetallePedido>
+
+<th>
+
+    @*@Html.ActionLink("Nuevo", "Create", "DetalleFacturas",
+        new { facturaId = ViewBag.FacturaId },
+        new { @class = "btn btn-primary btn-rounded", data_modal = "facturaDeta" })*@
+</th>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pedido.NPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aplicaIVA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porcentajeIVA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioVendido)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pedido.NPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aplicaIVA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentajeIVA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioVendido)
+        </td>
+    </tr>
+}
+
+</table>

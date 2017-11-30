@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<SIPCA.CLASES.Models.Pedido>
 
 @{
-    ViewBag.Title = "Pedidos sin cancelar";
+    ViewBag.Title = "Pedidos";
 }
 
 <h2>@ViewBag.Title</h2>
-
 
 <table class="table">
     <tr>
@@ -39,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.Total)
         </td>
         <td>
-            @Html.ActionLink("Cancelar Pedido", "CancelarPedido", new { id=item.IdPedido })
+            @Html.ActionLink("Ver Detalles", "DetailPedido", new { id=item.IdPedido })
         </td>
     </tr>
 }
